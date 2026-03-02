@@ -1,0 +1,134 @@
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollSection from "./Layout/ScrollSection.jsx";
+import SplitPanel from "./Layout/SplitPanel.jsx";
+import { getAsset } from "../../constants/themeAssets";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Sectionzwoelf = ({
+  theme = "blue", // ✅ NEW
+  heading,
+
+  p1Text,
+  p1Items = [], // ✅ [{ assetKey, text, alt? }] (3 items)
+
+  p2Text,
+  p2Items = [], // ✅ [{ assetKey, text, alt? }] (3 items)
+}) => {
+  const containerRef = useRef(null);
+  const initialRef = useRef(null);
+  const remainingRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(initialRef.current, { autoAlpha: 1, x: 0 });
+      gsap.set(remainingRef.current, { autoAlpha: 0, x: 200 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=200%",
+          scrub: true,
+          pin: true,
+        },
+      });
+
+      tl.to(initialRef.current, {
+        autoAlpha: 0,
+        x: -200,
+        duration: 1,
+        ease: "none",
+      });
+
+      tl.set(remainingRef.current, { autoAlpha: 1 });
+
+      tl.to(
+        remainingRef.current,
+        {
+          x: 0,
+          duration: 1,
+          ease: "none",
+        },
+        "<"
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const lineSrc = getAsset(theme, "line");
+
+  return (
+    <ScrollSection id="sectionzwoelf" ref={containerRef}>
+      {/* PANEL 1 */}
+      <SplitPanel
+        ref={initialRef}
+        left={
+          <h2>
+            {heading}
+            <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
+          </h2>
+        }
+        right={
+          <>
+            <p>{p1Text}</p>
+
+            <div className="grid grid-cols-3 gap-6 mt-6">
+              {p1Items.map((item, idx) => {
+                const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
+
+                return (
+                  <div key={idx} className="flex flex-col items-center text-center">
+                    <div className="h-32 w-full flex items-center justify-center">
+                      {src ? (
+                        <img
+                          src={src}
+                          alt={item.alt || item.text}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      ) : null}
+                    </div>
+                    <p className="mt-2">{item.text}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        }
+      />
+
+      {/* PANEL 2 */}
+      <SplitPanel
+        ref={remainingRef}
+        left={<p>{p2Text}</p>}
+        right={
+          <div className="w-1/2 grid grid-cols-3 gap-6">
+            {p2Items.map((item, idx) => {
+              const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
+
+              return (
+                <div key={idx} className="flex flex-col items-center text-center">
+                  <div className="h-32 w-full flex items-center justify-center">
+                    {src ? (
+                      <img
+                        src={src}
+                        alt={item.alt || item.text}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    ) : null}
+                  </div>
+                  <p className="mt-2">{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        }
+      />
+    </ScrollSection>
+  );
+};
+
+export default Sectionzwoelf;
