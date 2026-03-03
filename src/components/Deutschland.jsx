@@ -1,26 +1,40 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
-import CenterPanel from "./Layout/CenterPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { useLanguage } from "./Context/LanguageContext"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Deutschland = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
 
+  // Option A: {de,en} ODER string
   p1Left,
   p1Right,
   p2Left,
+  p3Text,
 
-  // ✅ theme-based image key
+  // theme-based images
   p2ImageKey, // e.g. "ratio"
   p2ImageAlt = "",
 
-  p3Text,
+  // ✅ NEW: theme-based image for panel 3 (placeholder for now)
+  p3ImageKey = "P3_IMAGE_PLACEHOLDER",
+  p3ImageAlt = "",
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
   const containerRef = useRef(null);
   const panel1 = useRef(null);
   const panel2 = useRef(null);
@@ -62,15 +76,22 @@ const Deutschland = ({
 
   const p2ImgSrc = p2ImageKey ? getAsset(theme, p2ImageKey) : undefined;
 
+  // ✅ NEW: panel 3 image (theme-based) — placeholder key for now
+  const p3ImgSrc = p3ImageKey ? getAsset(theme, p3ImageKey) : undefined;
+
   return (
     <ScrollSection id="deutschland" ref={containerRef}>
       {/* PANEL 1 */}
-      <SplitPanel ref={panel1} left={<p>{p1Left}</p>} right={<p>{p1Right}</p>} />
+      <SplitPanel
+        ref={panel1}
+        left={<p>{t(p1Left)}</p>}
+        right={<p>{t(p1Right)}</p>}
+      />
 
       {/* PANEL 2 */}
       <SplitPanel
         ref={panel2}
-        left={<p>{p2Left}</p>}
+        left={<p>{t(p2Left)}</p>}
         right={
           p2ImgSrc ? (
             <img
@@ -82,10 +103,20 @@ const Deutschland = ({
         }
       />
 
-      {/* PANEL 3 */}
-      <CenterPanel ref={panel3}>
-        <p>{p3Text}</p>
-      </CenterPanel>
+      {/* PANEL 3 (was CenterPanel, now SplitPanel) */}
+      <SplitPanel
+        ref={panel3}
+        left={<p>{t(p3Text)}</p>}
+        right={
+          p3ImgSrc ? (
+            <img
+              src={p3ImgSrc}
+              alt={p3ImageAlt}
+              className="max-w-full max-h-full"
+            />
+          ) : null
+        }
+      />
     </ScrollSection>
   );
 };

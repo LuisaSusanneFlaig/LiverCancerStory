@@ -2,7 +2,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import { Model as Leberneu } from "/src/components/Leberneu";
+import { Model as Leberneu } from "@/components/Leberneu";
 
 const ModelLeber = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });

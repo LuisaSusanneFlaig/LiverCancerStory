@@ -21,12 +21,14 @@ import weight_blue from "/src/images/blue_icons/weightgain.png";
 import smoking_blue from "/src/images/blue_icons/smoking.png";
 import scalewithweight_blue from "/src/images/blue_icons/scaleweight.png";
 import stroke_blue from "/src/images/blue_icons/stroke.png";
+import age_blue from "/src/images/blue_icons/age.png";
 
 // Photos and illsutrations 
 import ultraschall_blue from "/src/images/blue_icons/foto1.jpg";
 import CT_blue from "/src/images/blue_icons/Foto2.jpg";
 import MRT_blue from "/src/images/blue_icons/Foto3.jpg";
 import behandlung_blue from "/src/images/blue_icons/Behandlung.png";
+import behandlung_blue_en from "/src/images/blue_icons/Behandlung_en.png";
 import ratio_blue from "/src/images/blue_icons/img1.png";
 
 // ============ GREEN ============
@@ -50,12 +52,14 @@ import weight_green from "/src/images/green_icons/weightgain.png";
 import smoking_green from "/src/images/green_icons/nosmoking.png";
 import scalewithweight_green from "/src/images/green_icons/scaleweight.png";
 import stroke_green from "/src/images/green_icons/stroke.png";
+import age_green from "/src/images/green_icons/age.png";
 
 // Photos and illsutrations 
 import ultraschall_green from "/src/images/green_icons/foto1.jpg";
 import CT_green from "/src/images/green_icons/Foto2.jpg";
 import MRT_green from "/src/images/green_icons/Foto3.jpg";
 import behandlung_green from "/src/images/green_icons/Behandlung.png";
+import behandlung_green_en from "/src/images/green_icons/Behandlung_en.png";
 import ratio_green from "/src/images/green_icons/img1.png";
 
 // ============ RED ============
@@ -79,12 +83,14 @@ import weight_red from "/src/images/red_icons/weightgain.png";
 import smoking_red from "/src/images/red_icons/nosmoking.png";
 import scalewithweight_red from "/src/images/red_icons/scaleweight.png";
 import stroke_red from "/src/images/red_icons/stroke.png";
+import age_red from "/src/images/red_icons/age.png";
 
 // Photos and illsutrations 
 import ultraschall_red from "/src/images/red_icons/foto1.jpg";
 import CT_red from "/src/images/red_icons/Foto2.jpg";
 import MRT_red from "/src/images/red_icons/Foto3.jpg";
 import behandlung_red from "/src/images/red_icons/Behandlung.png";
+import behandlung_red_en from "/src/images/red_icons/Behandlung_en.png";
 import ratio_red from "/src/images/red_icons/img1.png";
 
 // ============ MAPS ============
@@ -111,6 +117,7 @@ export const assetsByTheme = {
     smoking: smoking_blue,
     scalewithweight: scalewithweight_blue,
     stroke: stroke_blue,
+    age: age_blue, 
 
 
 
@@ -118,7 +125,7 @@ export const assetsByTheme = {
     ultraschall: ultraschall_blue,
     CT: CT_blue,
     MRT: MRT_blue,
-    behandlung: behandlung_blue,
+    behandlung: {de: behandlung_blue, en: behandlung_blue_en},
     ratio: ratio_blue,
   },
 
@@ -142,11 +149,12 @@ export const assetsByTheme = {
     smoking: smoking_green,
     scalewithweight: scalewithweight_green,
     stroke: stroke_green,
+    age: age_green,
 
     ultraschall: ultraschall_green,
     CT: CT_green,
     MRT: MRT_green,
-    behandlung: behandlung_green,
+    behandlung: {de: behandlung_green, en: behandlung_green_en},
     ratio: ratio_green,
   },
 
@@ -170,16 +178,26 @@ export const assetsByTheme = {
     smoking: smoking_red,
     scalewithweight: scalewithweight_red,
     stroke: stroke_red,
+    age: age_red,
 
     ultraschall: ultraschall_red,
     CT: CT_red,
     MRT: MRT_red,
-    behandlung: behandlung_red,
+    behandlung: {de: behandlung_red, en: behandlung_red_en},
     ratio: ratio_red,
   },
 };
 
-export function getAsset(theme, key) {
+export function getAsset(theme, key, lang = "de") {
   const t = ["blue", "green", "red"].includes(theme) ? theme : "blue";
-  return assetsByTheme[t][key] || assetsByTheme.blue[key];
+
+  const asset = assetsByTheme[t][key] || assetsByTheme.blue[key];
+
+  // Falls das Asset sprachabhängig ist (also {de: ..., en: ...})
+  if (asset && typeof asset === "object" && (asset.de || asset.en)) {
+    return asset[lang] || asset.de || asset.en;
+  }
+
+  // normales Asset (string)
+  return asset;
 }

@@ -1,18 +1,29 @@
-import React, { useLayoutEffect, useRef, useCallback } from "react";
+import React, { useLayoutEffect, useRef, useCallback, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
-import { getAsset } from "../../constants/themeAssets";// ✅ Pfad ggf. anpassen
+import { getAsset } from "../../constants/themeAssets";
+import { useLanguage } from "./Context/LanguageContext"; // ✅ ggf. Pfad anpassen
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Sectionacht = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
   heading,
   introText,
-  items = [], // ✅ [{ assetKey, text, alt? }]
+  items = [], // [{ assetKey, text: {de,en}|string, alt?: {de,en}|string }]
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
   const sectionRef = useRef(null);
   const introRef = useRef(null);
   const cardRefs = useRef([]);
@@ -40,11 +51,7 @@ const Sectionacht = ({
         },
       });
 
-      tl.to(introRef.current, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-      });
+      tl.to(introRef.current, { x: -100, opacity: 0, duration: 1 });
 
       tl.to(
         cardRefs.current,
@@ -74,11 +81,11 @@ const Sectionacht = ({
         ref={introRef}
         left={
           <h2>
-            {heading}
+            {t(heading)}
             <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
           </h2>
         }
-        right={<p>{introText}</p>}
+        right={<p>{t(introText)}</p>}
       />
 
       {/* ICON GRID */}
@@ -98,12 +105,12 @@ const Sectionacht = ({
                   {src ? (
                     <img
                       src={src}
-                      alt={item.alt || item.text}
+                      alt={t(item.alt) || t(item.text)}
                       className="max-h-full max-w-full object-contain"
                     />
                   ) : null}
                 </div>
-                <p className="mt-4">{item.text}</p>
+                <p className="mt-4">{t(item.text)}</p>
               </div>
             );
           })}
@@ -123,12 +130,12 @@ const Sectionacht = ({
                     {src ? (
                       <img
                         src={src}
-                        alt={item.alt || item.text}
+                        alt={t(item.alt) || t(item.text)}
                         className="max-h-full max-w-full object-contain"
                       />
                     ) : null}
                   </div>
-                  <p className="mt-4">{item.text}</p>
+                  <p className="mt-4">{t(item.text)}</p>
                 </div>
               );
             })}

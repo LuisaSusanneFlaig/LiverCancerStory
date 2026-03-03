@@ -1,22 +1,34 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { useLanguage } from "./Context/LanguageContext"; // ✅ Pfad ggf. anpassen
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Sectionzwoelf = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
+
   heading,
 
   p1Text,
-  p1Items = [], // ✅ [{ assetKey, text, alt? }] (3 items)
+  p1Items = [], // [{ assetKey, text:{de,en}|string, alt?:{de,en}|string }]
 
   p2Text,
-  p2Items = [], // ✅ [{ assetKey, text, alt? }] (3 items)
+  p2Items = [], // [{ assetKey, text:{de,en}|string, alt?:{de,en}|string }]
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
   const containerRef = useRef(null);
   const initialRef = useRef(null);
   const remainingRef = useRef(null);
@@ -68,17 +80,19 @@ const Sectionzwoelf = ({
         ref={initialRef}
         left={
           <h2>
-            {heading}
+            {t(heading)}
             <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
           </h2>
         }
         right={
           <>
-            <p>{p1Text}</p>
+            <p>{t(p1Text)}</p>
 
             <div className="grid grid-cols-3 gap-6 mt-6">
               {p1Items.map((item, idx) => {
                 const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
+                const label = t(item.text);
+                const alt = item.alt ? t(item.alt) : label;
 
                 return (
                   <div key={idx} className="flex flex-col items-center text-center">
@@ -86,12 +100,12 @@ const Sectionzwoelf = ({
                       {src ? (
                         <img
                           src={src}
-                          alt={item.alt || item.text}
+                          alt={alt}
                           className="max-h-full max-w-full object-contain"
                         />
                       ) : null}
                     </div>
-                    <p className="mt-2">{item.text}</p>
+                    <p className="mt-2">{label}</p>
                   </div>
                 );
               })}
@@ -103,11 +117,13 @@ const Sectionzwoelf = ({
       {/* PANEL 2 */}
       <SplitPanel
         ref={remainingRef}
-        left={<p>{p2Text}</p>}
+        left={<p>{t(p2Text)}</p>}
         right={
           <div className="w-1/2 grid grid-cols-3 gap-6">
             {p2Items.map((item, idx) => {
               const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
+              const label = t(item.text);
+              const alt = item.alt ? t(item.alt) : label;
 
               return (
                 <div key={idx} className="flex flex-col items-center text-center">
@@ -115,12 +131,12 @@ const Sectionzwoelf = ({
                     {src ? (
                       <img
                         src={src}
-                        alt={item.alt || item.text}
+                        alt={alt}
                         className="max-h-full max-w-full object-contain"
                       />
                     ) : null}
                   </div>
-                  <p className="mt-2">{item.text}</p>
+                  <p className="mt-2">{label}</p>
                 </div>
               );
             })}

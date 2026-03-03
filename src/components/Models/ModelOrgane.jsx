@@ -2,7 +2,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import { Model as Ananeu } from "/src/components/Ananeu.jsx";
+import { Model as Ananeu } from "@/components/Ananeu.jsx";
 
 const ModelOrgane = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });

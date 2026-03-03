@@ -1,20 +1,40 @@
-import React, { useLayoutEffect, useRef, useCallback } from "react";
+import React, { useLayoutEffect, useRef, useCallback, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import CenterPanel from "./Layout/CenterPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { useLanguage } from "./Context/LanguageContext"; // ✅ Pfad ggf. anpassen
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Sectionvierzehn = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
+
   heading,
   introText,
   bullets = [],
-  items = [], // ✅ [{ assetKey, text, alt? }]
+  items = [], // [{ assetKey, text, alt? }]
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
+  const resolvedBullets = useMemo(() => {
+    if (Array.isArray(bullets)) return bullets;
+    if (bullets && typeof bullets === "object") {
+      return bullets[lang] ?? bullets.de ?? bullets.en ?? [];
+    }
+    return [];
+  }, [bullets, lang]);
+
   const sectionRef = useRef(null);
   const introRef = useRef(null);
   const cardRefs = useRef([]);
@@ -72,16 +92,16 @@ const Sectionvierzehn = ({
         ref={introRef}
         left={
           <h2>
-            {heading}
+            {t(heading)}
             <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
           </h2>
         }
         right={
           <div>
-            <p>{introText}</p>
+            <p>{t(introText)}</p>
             <ul className="list-disc m-10">
-              {bullets.map((b, i) => (
-                <li key={i}>{b}</li>
+              {resolvedBullets.map((b, i) => (
+                <li key={i}>{t(b)}</li>
               ))}
             </ul>
           </div>
@@ -103,12 +123,12 @@ const Sectionvierzehn = ({
                   {src ? (
                     <img
                       src={src}
-                      alt={item.alt || item.text}
+                      alt={t(item.alt) || t(item.text)}
                       className="max-h-full max-w-full object-contain"
                     />
                   ) : null}
                 </div>
-                <p className="mt-4">{item.text}</p>
+                <p className="mt-4">{t(item.text)}</p>
               </div>
             );
           })}

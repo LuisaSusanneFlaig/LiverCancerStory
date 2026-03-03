@@ -1,12 +1,23 @@
 import React, { useEffect, useMemo } from "react";
-import { navLinksByVersion, sectionGroupsByVersion } from "../../constants";
+import { navLinksByVersion, sectionGroupsByVersion, navTitlesEn } from "../../constants";
+import { useLanguage } from "./Context/LanguageContext";
 
 const Navbar = ({ version = "A" }) => {
-  const sectionGroups = sectionGroupsByVersion[version] || sectionGroupsByVersion.A;
-  const navLinks = navLinksByVersion[version] || navLinksByVersion.A;
+  const { lang, toggleLang } = useLanguage();
+
+  const sectionGroups =
+    sectionGroupsByVersion[version] || sectionGroupsByVersion.A;
+
+  const navLinks =
+    navLinksByVersion[version] || navLinksByVersion.A;
+
+  // translate title
+  const titleFor = (id, fallback) => {
+    if (lang === "en") return navTitlesEn?.[id] ?? fallback;
+    return fallback; // DE is your existing titles
+  };
 
   const allSectionIds = useMemo(() => {
-    // observe all grouped sections + optional hero + ending section
     return ["hero", ...Object.values(sectionGroups).flat(), "sectionfuenfzehn"];
   }, [sectionGroups]);
 
@@ -52,16 +63,26 @@ const Navbar = ({ version = "A" }) => {
 
   return (
     <nav>
-      <div>
+      <div className="flex items-center justify-between w-full">
         <ul className="flex gap-4">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a href={`#${link.id}`} data-link={link.id} className="px-2 py-1">
-                {link.title}
+                {titleFor(link.id, link.title)}
               </a>
             </li>
           ))}
         </ul>
+
+        {/* ✅ Language toggle (NOT URL-based) */}
+        <button
+          type="button"
+          onClick={toggleLang}
+          className="px-3 py-1 rounded"
+          aria-label="Toggle language"
+        >
+          {lang === "de" ? "ENG" : "DE"}
+        </button>
       </div>
     </nav>
   );

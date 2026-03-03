@@ -1,18 +1,31 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import React from "react";
+import React, { useMemo } from "react";
 import { SplitText } from "gsap/all";
-import { getAsset } from "../../constants/themeAssets"; // ✅ Pfad ggf. anpassen
+import { getAsset } from "../../constants/themeAssets"; // Pfad ok?
+import { useLanguage } from "./Context/LanguageContext"; // ✅ anpassen falls dein Pfad anders ist
 
 const Hero = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
+
+  // Option A: {de,en} ODER string
   title,
   subtitle,
   author,
   scrollText,
-  // lineImage removed -> now comes from themeAssets
+
   scrollTarget = "#thomas",
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
   useGSAP(() => {
     const ctx = gsap.context(() => {
       const heroSplit = new SplitText(".title", { type: "lines" });
@@ -55,24 +68,24 @@ const Hero = ({
     });
   };
 
-  const lineSrc = getAsset(theme, "line"); // ✅ theme-based line
+  const lineSrc = getAsset(theme, "line"); // theme-only
 
   return (
     <section id="hero">
       <div className="flex flex-col items-center">
-        <h1 className="title pt-20">{title}</h1>
+        <h1 className="title pt-20">{t(title)}</h1>
 
         <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
 
-        <h3 className="subtitle mt-10">{subtitle}</h3>
+        <h3 className="subtitle mt-10">{t(subtitle)}</h3>
 
-        <p className="subtitle">{author}</p>
+        <p className="subtitle">{t(author)}</p>
 
         <p
           className="subtitle scroll-indicator pt-50 cursor-pointer"
           onClick={scrollToDefinition}
         >
-          {scrollText}
+          {t(scrollText)}
         </p>
       </div>
     </section>

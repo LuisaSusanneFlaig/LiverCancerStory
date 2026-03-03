@@ -2,7 +2,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import { Model as Metastasen } from "/src/components/Metastasen.jsx";
+import { Model as Metastasen } from "@/components/Metastasen.jsx";
 
 const ModelMetastasen = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });

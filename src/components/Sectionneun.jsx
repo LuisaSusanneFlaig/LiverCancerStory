@@ -1,20 +1,21 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import CenterPanel from "./Layout/CenterPanel.jsx";
-import { getAsset } from "../../constants/themeAssets";// ✅ Pfad ggf. anpassen
+import { getAsset } from "../../constants/themeAssets";
+import { useLanguage } from "./Context/LanguageContext"; // ✅ ggf. Pfad anpassen
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Sectionneun = ({
-  theme = "blue", // ✅ NEW
+  theme = "blue",
 
   heading,
   introRight,
 
-  // Questions + images (layouts 8,5,6,7) — stay static
+  // Questions + images (layouts 8,5,6,7) — images stay static
   q1Text,
   q1ImageSrc,
   q1ImageAlt = "",
@@ -33,18 +34,28 @@ const Sectionneun = ({
 
   // Imaging methods (layouts 2,3,4) — theme-based images
   methodsIntro,
-  method1ImageKey, // ✅ e.g. "ultraschall"
+  method1ImageKey,
   method1Label,
   method1Alt = "",
 
-  method2ImageKey, // ✅ e.g. "CT"
+  method2ImageKey,
   method2Label,
   method2Alt = "",
 
-  method3ImageKey, // ✅ e.g. "MRT"
+  method3ImageKey,
   method3Label,
   method3Alt = "",
 }) => {
+  const { lang } = useLanguage();
+
+  const t = useMemo(() => {
+    return (value) => {
+      if (typeof value === "string") return value;
+      if (!value) return "";
+      return value[lang] ?? value.de ?? "";
+    };
+  }, [lang]);
+
   const containerRef = useRef(null);
 
   const layout1Ref = useRef(null);
@@ -119,28 +130,30 @@ const Sectionneun = ({
         ref={layout1Ref}
         left={
           <h2>
-            {heading}
+            {t(heading)}
             <img src={lineSrc} alt="Decorative line" className="mt-4 mb-6" />
           </h2>
         }
-        right={<p>{introRight}</p>}
+        right={<p>{t(introRight)}</p>}
       />
 
       {/* Layout 8 (static image) */}
       <CenterPanel ref={layout8Ref}>
-        <p>{q1Text}</p>
-        <img src={q1ImageSrc} alt={q1ImageAlt} />
+        <p>{t(q1Text)}</p>
+        <img src={q1ImageSrc} alt={t(q1ImageAlt)} />
       </CenterPanel>
 
       {/* Layout 2 (theme image) */}
       <SplitPanel
         ref={layout2Ref}
         className="absolute inset-0 w-full flex pt-50"
-        left={<p>{methodsIntro}</p>}
+        left={<p>{t(methodsIntro)}</p>}
         right={
           <>
-            {method1Src ? <img src={method1Src} alt={method1Alt || method1Label} /> : null}
-            <p>{method1Label}</p>
+            {method1Src ? (
+              <img src={method1Src} alt={t(method1Alt) || t(method1Label)} />
+            ) : null}
+            <p>{t(method1Label)}</p>
           </>
         }
       />
@@ -148,35 +161,35 @@ const Sectionneun = ({
       {/* Layout 3 (theme image) */}
       <CenterPanel ref={layout3Ref}>
         {method2Src ? (
-          <img src={method2Src} alt={method2Alt || method2Label} className="max-w" />
+          <img src={method2Src} alt={t(method2Alt) || t(method2Label)} className="max-w" />
         ) : null}
-        <p>{method2Label}</p>
+        <p>{t(method2Label)}</p>
       </CenterPanel>
 
       {/* Layout 4 (theme image) */}
       <CenterPanel ref={layout4Ref}>
         {method3Src ? (
-          <img src={method3Src} alt={method3Alt || method3Label} className="max-w" />
+          <img src={method3Src} alt={t(method3Alt) || t(method3Label)} className="max-w" />
         ) : null}
-        <p>{method3Label}</p>
+        <p>{t(method3Label)}</p>
       </CenterPanel>
 
       {/* Layout 5 (static image) */}
       <CenterPanel ref={layout5Ref}>
-        <p>{q2Text}</p>
-        <img src={q2ImageSrc} alt={q2ImageAlt} />
+        <p>{t(q2Text)}</p>
+        <img src={q2ImageSrc} alt={t(q2ImageAlt)} />
       </CenterPanel>
 
       {/* Layout 6 (static image) */}
       <CenterPanel ref={layout6Ref}>
-        <p>{q3Text}</p>
-        <img src={q3ImageSrc} alt={q3ImageAlt} />
+        <p>{t(q3Text)}</p>
+        <img src={q3ImageSrc} alt={t(q3ImageAlt)} />
       </CenterPanel>
 
       {/* Layout 7 (static image) */}
       <CenterPanel ref={layout7Ref}>
-        <p>{q4Text}</p>
-        <img src={q4ImageSrc} alt={q4ImageAlt} />
+        <p>{t(q4Text)}</p>
+        <img src={q4ImageSrc} alt={t(q4ImageAlt)} />
       </CenterPanel>
     </ScrollSection>
   );

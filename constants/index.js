@@ -10,6 +10,16 @@ export const navTitles = {
   prävention: "Prävention",
 };
 
+export const navTitlesEn = {
+  definition: "Definition",
+  anatomie: "Anatomy",
+  symptome: "Symptoms",
+  diagnose: "Diagnosis",
+  behandlung: "Treatment",
+  prognose: "Prognosis",
+  prävention: "Prevention",
+};
+
 export const sectionGroupsByVersion = {
   A: {
     definition: ["leber", "deutschland"],
