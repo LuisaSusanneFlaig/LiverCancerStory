@@ -57,10 +57,12 @@ const Sectiondreizehn = ({
   const step2ImagesRef = useRef(null);
   const step3TextRef = useRef(null);
   const step3ImageRef = useRef(null);
+  const l1RateBlockRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(layout2Ref.current, { opacity: 0, x: 200 });
+      gsap.set(l1RateBlockRef.current, { opacity: 0, x: 30 });
       gsap.set(step1Ref.current, { opacity: 0, x: 30 });
       gsap.set(step2TextRef.current, { opacity: 0, x: 30 });
       gsap.set(step2ImagesRef.current, { opacity: 0, x: 30 });
@@ -77,8 +79,9 @@ const Sectiondreizehn = ({
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 1 });
-      tl.to(layout2Ref.current, { opacity: 1, x: 0, duration: 0.6 });
+      tl.to(l1RateBlockRef.current, { opacity: 1, x: 0, duration: 0.5 });
+      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 0.5 });
+      tl.to(layout2Ref.current, { opacity: 1, x: 0, duration: 0.5 });
       tl.to(step1Ref.current, { opacity: 1, x: 0, duration: 0.5 });
       tl.to(step2TextRef.current, { opacity: 1, x: 0, duration: 0.5 });
       tl.to(step2ImagesRef.current, {
@@ -116,7 +119,7 @@ const Sectiondreizehn = ({
             <p>{t(l1Text1)}</p>
             <p>{t(l1Text2)}</p>
 
-            <div className="flex flex-col m-20">
+            <div ref={l1RateBlockRef} className="flex flex-col m-20">
               <h2>{t(l1Rate)}</h2>
               {l1IconSrc ? (
                 <img
@@ -134,12 +137,12 @@ const Sectiondreizehn = ({
       <SplitPanel
         ref={layout2Ref}
         left={
-          <div ref={step1Ref} className="grid grid-cols-2 m-20">
+          <div ref={step1Ref} className="grid grid-cols-2 m-20 gap-x-12 lg:gap-x-20">
             <p>{t(step1Label)}</p>
 
             {/* ✅ Theme-based bar (uses your CSS variable) */}
             <div
-              className="w-1 h-full"
+              className="w-3 h-24 sm:h-28 md:h-36 lg:h-600 self-center justify-self-end"
               style={{ backgroundColor: "var(--nav-active)" }}
             />
           </div>
@@ -152,23 +155,23 @@ const Sectiondreizehn = ({
 
               {/* STEP 2 ICONS */}
               <div ref={step2ImagesRef} className="grid grid-cols-2 mt-20">
-                <div className="flex flex-row items-center gap-3">
+                <div className="flex flex-col items-center gap-3 text-center">
                   <p>{t(step2FemaleRate)}</p>
                   {femaleSrc ? (
                     <img
                       src={femaleSrc}
                       alt={t(step2FemaleIconAlt)}
-                      className="w-16 h-16"
+                      className="w-16 h-auto object-contain"
                     />
                   ) : null}
                 </div>
-                <div className="flex flex-row items-center gap-3">
+                <div className="flex flex-col items-center gap-3 text-center">
                   <p>{t(step2MaleRate)}</p>
                   {maleSrc ? (
                     <img
                       src={maleSrc}
                       alt={t(step2MaleIconAlt)}
-                      className="w-16 h-16"
+                      className="w-16 h-auto object-contain"
                     />
                   ) : null}
                 </div>
@@ -179,7 +182,7 @@ const Sectiondreizehn = ({
             <p ref={step3TextRef}>{t(step3Text)}</p>
 
             {/* STEP 3 ICON */}
-            <div ref={step3ImageRef} className="flex flex-row items-center gap-3">
+            <div ref={step3ImageRef} className="flex flex-col items-center gap-3 text-center">
               <p>{t(step3Rate)}</p>
               {step3Src ? (
                 <img

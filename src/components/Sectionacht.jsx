@@ -90,7 +90,7 @@ const Sectionacht = ({
 
       {/* ICON GRID */}
       <div className="absolute inset-0 flex items-center justify-center p-20">
-        <div className="grid grid-cols-3 gap-8">
+        <div className="w-full max-w-5xl lg:max-w-7xl xl:max-w-[100rem] grid grid-cols-3 gap-8 lg:gap-10">
           {/* FIRST ROW */}
           {firstRow.map((item, idx) => {
             const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
@@ -99,9 +99,9 @@ const Sectionacht = ({
               <div
                 key={idx}
                 ref={addToRefs}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center text-center w-full"
               >
-                <div className="h-32 w-full flex items-center justify-center">
+                <div className="h-32 lg:h-40 w-full flex items-center justify-center">
                   {src ? (
                     <img
                       src={src}
@@ -110,13 +110,15 @@ const Sectionacht = ({
                     />
                   ) : null}
                 </div>
-                <p className="mt-4">{t(item.text)}</p>
+                <p className="mt-4 min-h-[2.75rem] lg:min-h-[4rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                  {t(item.text)}
+                </p>
               </div>
             );
           })}
 
           {/* SECOND ROW */}
-          <div className="col-span-3 grid grid-cols-4 gap-8">
+          <div className="col-span-3 grid grid-cols-4 gap-8 lg:gap-10">
             {secondRow.map((item, idx) => {
               const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
 
@@ -124,9 +126,9 @@ const Sectionacht = ({
                 <div
                   key={idx + 3}
                   ref={addToRefs}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center w-full"
                 >
-                  <div className="h-32 w-full flex items-center justify-center">
+                  <div className="h-32 lg:h-40 w-full flex items-center justify-center">
                     {src ? (
                       <img
                         src={src}
@@ -135,7 +137,9 @@ const Sectionacht = ({
                       />
                     ) : null}
                   </div>
-                  <p className="mt-4">{t(item.text)}</p>
+                  <p className="mt-4 min-h-[2.75rem] lg:min-h-[4rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                    {t(item.text)}
+                  </p>
                 </div>
               );
             })}

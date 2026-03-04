@@ -218,13 +218,13 @@ A: [
         de: "Zum Auffinden von Lebertumoren können verschiedene bildgebende Verfahren eingesetzt werden, darunter:",
         en: "To detect liver tumors, different imaging methods can be used, including:",
       },
-      method1ImageKey: "Ultrasound",
+      method1ImageKey: "ultraschall",
       method1Label: { de: "Ultraschall", en: "Ultrasound" },
 
       method2ImageKey: "CT",
       method2Label: { de: "CT", en: "CT scan" },
 
-      method3ImageKey: "MRI",
+      method3ImageKey: "MRT",
       method3Label: { de: "MRT", en: "MRI" },
 
       q2Text: { de: "2. Wo genau befinden sich die Tumore?", en: "2. Where exactly are the tumors located?" },
