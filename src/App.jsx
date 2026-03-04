@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useLayoutEffect, useMemo } from "react";
 import gsap from "gsap";
 import { useSearchParams } from "react-router-dom";
 import { narratives, componentMap } from "../constants/narratives";
@@ -117,11 +117,13 @@ const App = () => {
   // =========================================================
   // ✅ Apply theme to <body> for your CSS variables (Solution A)
   // =========================================================
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const root = document.documentElement;
     const body = document.body;
+    root.classList.remove("theme-blue", "theme-green", "theme-red");
     body.classList.remove("theme-blue", "theme-green", "theme-red");
+    root.classList.add(`theme-${theme}`);
     body.classList.add(`theme-${theme}`);
-    return () => body.classList.remove(`theme-${theme}`);
   }, [theme]);
 
   const selectedNarrative = narratives[version] || narratives.A;

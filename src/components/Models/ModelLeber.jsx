@@ -1,12 +1,32 @@
-import React from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Model as Leberneu } from "@/components/Leberneu";
 
+const RotatingLeber = ({ isMobile, isTablet }) => {
+  const groupRef = useRef(null);
+
+  useFrame(() => {
+    if (groupRef.current) groupRef.current.rotation.y += 0.003;
+  });
+
+  return (
+    <group
+      ref={groupRef}
+      scale={isMobile ? 0.012 : isTablet ? 0.016 : 0.02}
+      position={[0, 0, 0]}
+      rotation={[0, -Math.PI / 4, 0]}
+    >
+      <Leberneu />
+    </group>
+  );
+};
+
 const ModelLeber = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
 <Canvas camera={{ position: [1, 1, 5], fov: 50 }}>
   {/* Soft base light */}
@@ -31,13 +51,7 @@ const ModelLeber = () => {
     minDistance={5}
   />
 
-  <group
-    scale={isMobile ? 0.005 : 0.02}
-    position={[0, 0, 0]}
-    rotation={[0, -Math.PI / 4, 0]}
-  >
-    <Leberneu />
-  </group>
+  <RotatingLeber isMobile={isMobile} isTablet={isTablet} />
 </Canvas>
 
   )

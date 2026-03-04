@@ -18,18 +18,21 @@
   --nav-active: #83b3e3;
 }
 
+html.theme-blue,
 body.theme-blue {
   --bg: #0d243a;
   --text: #e2edf8;
   --nav-active: #83b3e3;
 }
 
+html.theme-green,
 body.theme-green {
   --bg: #0b2a1a;
   --text: #e8fff2;
   --nav-active: #6fe3a3;
 }
 
+html.theme-red,
 body.theme-red {
   --bg: #2a0b10;
   --text: #ffe8ee;
