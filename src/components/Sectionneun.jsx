@@ -128,6 +128,8 @@ const Sectionneun = ({
       {/* Layout 1 */}
       <SplitPanel
         ref={layout1Ref}
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
         left={
           <h2>
             {t(heading)}
@@ -138,59 +140,112 @@ const Sectionneun = ({
       />
 
       {/* Layout 8 (static image) */}
-      <CenterPanel ref={layout8Ref}>
-        <p>{t(q1Text)}</p>
-        <img src={q1ImageSrc} alt={t(q1ImageAlt)} />
-      </CenterPanel>
+      <SplitPanel
+        ref={layout8Ref}
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
+        left={<p>{t(q1Text)}</p>}
+        right={
+          <img
+            src={q1ImageSrc}
+            alt={t(q1ImageAlt)}
+            className="max-w-full mx-auto object-contain"
+          />
+        }
+      />
 
       {/* Layout 2 (theme image) */}
       <SplitPanel
         ref={layout2Ref}
-        className="absolute inset-0 w-full flex pt-50"
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
         left={<p>{t(methodsIntro)}</p>}
         right={
-          <>
+          <div className="flex flex-col items-center justify-center gap-4 text-center">
             {method1Src ? (
-              <img src={method1Src} alt={t(method1Alt) || t(method1Label)} />
+              <img
+                src={method1Src}
+                alt={t(method1Alt) || t(method1Label)}
+                className="max-w-full mx-auto object-contain"
+              />
             ) : null}
-            <p>{t(method1Label)}</p>
-          </>
+            <p className="text-center">{t(method1Label)}</p>
+          </div>
         }
       />
 
       {/* Layout 3 (theme image) */}
       <CenterPanel ref={layout3Ref}>
-        {method2Src ? (
-          <img src={method2Src} alt={t(method2Alt) || t(method2Label)} className="max-w" />
-        ) : null}
-        <p>{t(method2Label)}</p>
+        <div className="w-full flex flex-col items-center justify-center gap-6 text-center">
+          {method2Src ? (
+            <img
+              src={method2Src}
+              alt={t(method2Alt) || t(method2Label)}
+              className="max-w-full mx-auto object-contain"
+            />
+          ) : null}
+          <p className="text-center">{t(method2Label)}</p>
+        </div>
       </CenterPanel>
 
       {/* Layout 4 (theme image) */}
       <CenterPanel ref={layout4Ref}>
-        {method3Src ? (
-          <img src={method3Src} alt={t(method3Alt) || t(method3Label)} className="max-w" />
-        ) : null}
-        <p>{t(method3Label)}</p>
+        <div className="w-full flex flex-col items-center justify-center gap-6 text-center">
+          {method3Src ? (
+            <img
+              src={method3Src}
+              alt={t(method3Alt) || t(method3Label)}
+              className="max-w-full mx-auto object-contain"
+            />
+          ) : null}
+          <p className="text-center">{t(method3Label)}</p>
+        </div>
       </CenterPanel>
 
       {/* Layout 5 (static image) */}
-      <CenterPanel ref={layout5Ref}>
-        <p>{t(q2Text)}</p>
-        <img src={q2ImageSrc} alt={t(q2ImageAlt)} />
-      </CenterPanel>
+      <SplitPanel
+        ref={layout5Ref}
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
+        left={<p>{t(q2Text)}</p>}
+        right={
+          <img
+            src={q2ImageSrc}
+            alt={t(q2ImageAlt)}
+            className="max-w-full mx-auto object-contain"
+          />
+        }
+      />
 
       {/* Layout 6 (static image) */}
-      <CenterPanel ref={layout6Ref}>
-        <p>{t(q3Text)}</p>
-        <img src={q3ImageSrc} alt={t(q3ImageAlt)} />
-      </CenterPanel>
+      <SplitPanel
+        ref={layout6Ref}
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
+        left={<p>{t(q3Text)}</p>}
+        right={
+          <img
+            src={q3ImageSrc}
+            alt={t(q3ImageAlt)}
+            className="max-w-full mx-auto object-contain"
+          />
+        }
+      />
 
       {/* Layout 7 (static image) */}
-      <CenterPanel ref={layout7Ref}>
-        <p>{t(q4Text)}</p>
-        <img src={q4ImageSrc} alt={t(q4ImageAlt)} />
-      </CenterPanel>
+      <SplitPanel
+        ref={layout7Ref}
+        className="px-4 lg:px-8"
+        panelClassName="p-4 lg:p-8"
+        left={<p>{t(q4Text)}</p>}
+        right={
+          <img
+            src={q4ImageSrc}
+            alt={t(q4ImageAlt)}
+            className="max-w-full mx-auto object-contain"
+          />
+        }
+      />
     </ScrollSection>
   );
 };

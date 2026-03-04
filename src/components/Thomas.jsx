@@ -22,6 +22,9 @@ const Thomas = ({
   panel2Text,
   panel2ImageSrc,
   panel2ImageAlt = "",
+  // Backward-compatible aliases used in narratives A/B
+  imageSrc,
+  imageAlt = "",
 }) => {
   const { lang } = useLanguage();
 
@@ -66,6 +69,8 @@ const Thomas = ({
   }, []);
 
   const lineSrc = getAsset(theme, "line"); // theme-based only
+  const resolvedPanel2ImageSrc = panel2ImageSrc || imageSrc;
+  const resolvedPanel2ImageAlt = t(panel2ImageAlt || imageAlt);
 
   return (
     <ScrollSection id="thomas" ref={triggerRef}>
@@ -84,13 +89,13 @@ const Thomas = ({
       {/* PANEL 2 */}
       {panel2Variant === "image" ? (
         <CenterPanel ref={panel2Ref}>
-          <img src={panel2ImageSrc} alt={panel2ImageAlt} />
+          <img src={resolvedPanel2ImageSrc} alt={resolvedPanel2ImageAlt} />
         </CenterPanel>
       ) : (
         <SplitPanel
           ref={panel2Ref}
           left={<p>{t(panel2Text)}</p>}
-          right={<img src={panel2ImageSrc} alt={panel2ImageAlt} />}
+          right={<img src={resolvedPanel2ImageSrc} alt={resolvedPanel2ImageAlt} />}
         />
       )}
     </ScrollSection>

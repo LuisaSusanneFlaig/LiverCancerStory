@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 
+
+
+
+
 /* ================================
    THEME TOKENS
 ================================ */
@@ -109,7 +113,7 @@ body.theme-red {
   }
 
   p {
-    @apply md:flex-1 text-base sm:text-lg md:text-3xl lg:text-3xl xl:text-5xl leading-relaxed font-medium;
+    @apply md:flex-1 text-base/relaxed sm:text-lg/relaxed md:text-3xl/relaxed lg:text-3xl/relaxed xl:text-5xl/relaxed font-medium;
   }
 
   li {
@@ -123,14 +127,14 @@ body.theme-red {
 
   #hero h1 {
     @apply mt-28 sm:mt-32 md:mt-32
-           text-5xl sm:text-6xl md:text-[15vw]
+           text-9xl sm:text-9xl lg:text-[14rem]
            leading-none text-center;
   }
 
   #hero h3 {
     @apply mt-20 sm:mt-24 md:mt-32
            text-center leading-none
-           text-sm sm:text-base md:text-[2vw];
+           text-sm sm:text-base ;
   }
 
   #hero p {
