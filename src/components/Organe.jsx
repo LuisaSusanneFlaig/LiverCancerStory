@@ -15,6 +15,7 @@ const Organe = ({ heading, theme = "blue" }) => {
   }, [lang]);
 
   const lineSrc = getAsset(theme, "line");
+  const interactionSrc = getAsset(theme, "interaction");
 
   return (
     <section id="organe" className="relative h-screen overflow-hidden">
@@ -29,7 +30,12 @@ const Organe = ({ heading, theme = "blue" }) => {
         </h2>
       </div>
 
-      <div className="hero-3d-layout">
+      <div className="hero-3d-layout relative">
+        <img
+          src={interactionSrc}
+          alt="Interaction icon"
+          className="pointer-events-none absolute top-4 left-1/2 z-20 w-16 -translate-x-1/2 md:w-20 lg:w-24"
+        />
         <ModelOrgane />
       </div>
     </section>

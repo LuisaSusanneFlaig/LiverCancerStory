@@ -30,6 +30,7 @@ import MRT_blue from "/src/images/blue_icons/Foto3.jpg";
 import behandlung_blue from "/src/images/blue_icons/Behandlung.png";
 import behandlung_blue_en from "/src/images/blue_icons/Behandlung_en.png";
 import ratio_blue from "/src/images/blue_icons/img1.png";
+import interaction_blue from "/src/images/blue_icons/Interaction.png";
 
 // ============ GREEN ============
 import line_green from "/src/images/green_icons/Line.svg";
@@ -61,6 +62,7 @@ import MRT_green from "/src/images/green_icons/Foto3.jpg";
 import behandlung_green from "/src/images/green_icons/Behandlung.png";
 import behandlung_green_en from "/src/images/green_icons/Behandlung_en.png";
 import ratio_green from "/src/images/green_icons/img1.png";
+import interaction_green from "/src/images/green_icons/Interaction.png";
 
 // ============ RED ============
 import line_red from "/src/images/red_icons/Line.svg";
@@ -92,6 +94,7 @@ import MRT_red from "/src/images/red_icons/Foto3.jpg";
 import behandlung_red from "/src/images/red_icons/Behandlung.png";
 import behandlung_red_en from "/src/images/red_icons/Behandlung_en.png";
 import ratio_red from "/src/images/red_icons/img1.png";
+import interaction_red from "/src/images/red_icons/Interaction.png";
 
 // ============ MAPS ============
 export const assetsByTheme = {
@@ -127,6 +130,7 @@ export const assetsByTheme = {
     MRT: MRT_blue,
     behandlung: {de: behandlung_blue, en: behandlung_blue_en},
     ratio: ratio_blue,
+    interaction: interaction_blue,
   },
 
   green: {
@@ -156,6 +160,7 @@ export const assetsByTheme = {
     MRT: MRT_green,
     behandlung: {de: behandlung_green, en: behandlung_green_en},
     ratio: ratio_green,
+    interaction: interaction_green,
   },
 
   red: {
@@ -185,6 +190,7 @@ export const assetsByTheme = {
     MRT: MRT_red,
     behandlung: {de: behandlung_red, en: behandlung_red_en},
     ratio: ratio_red,
+    interaction: interaction_red,
   },
 };
 

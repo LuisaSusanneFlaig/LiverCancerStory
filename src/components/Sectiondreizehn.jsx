@@ -119,13 +119,13 @@ const Sectiondreizehn = ({
             <p>{t(l1Text1)}</p>
             <p>{t(l1Text2)}</p>
 
-            <div ref={l1RateBlockRef} className="flex flex-col m-20">
+            <div ref={l1RateBlockRef} className="flex flex-col ">
               <h2>{t(l1Rate)}</h2>
               {l1IconSrc ? (
                 <img
                   src={l1IconSrc}
                   alt={t(l1RateImageAlt)}
-                  className="w-32 h-auto"
+                  className="w-20 md:w-40 h-auto object-contain"
                 />
               ) : null}
             </div>
@@ -137,31 +137,33 @@ const Sectiondreizehn = ({
       <SplitPanel
         ref={layout2Ref}
         left={
-          <div ref={step1Ref} className="grid grid-cols-2 m-20 gap-x-12 lg:gap-x-20">
-            <p>{t(step1Label)}</p>
+          <div ref={step1Ref} className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 lg:gap-x-20 items-stretch">
+            <p className="w-full max-w-xl mx-auto !text-center justify-self-center self-center">
+              {t(step1Label)}
+            </p>
 
             {/* ✅ Theme-based bar (uses your CSS variable) */}
             <div
-              className="w-3 h-24 sm:h-28 md:h-36 lg:h-600 self-center justify-self-end"
+              className="h-3 w-[85vw] max-w-md justify-self-center md:justify-self-end rounded-full md:w-3 md:h-full md:min-h-72 lg:min-h-[32rem]"
               style={{ backgroundColor: "var(--nav-active)" }}
             />
           </div>
         }
         right={
           <>
-            <div className="grid mb-20">
+            <div className="grid ">
               {/* STEP 2 TEXT */}
               <p ref={step2TextRef}>{t(step2Text)}</p>
 
               {/* STEP 2 ICONS */}
-              <div ref={step2ImagesRef} className="grid grid-cols-2 mt-20">
+              <div ref={step2ImagesRef} className="grid grid-cols-2 ">
                 <div className="flex flex-col items-center gap-3 text-center">
                   <p>{t(step2FemaleRate)}</p>
                   {femaleSrc ? (
                     <img
                       src={femaleSrc}
                       alt={t(step2FemaleIconAlt)}
-                      className="w-16 h-auto object-contain"
+                      className="w-10 md:w-12 h-auto object-contain"
                     />
                   ) : null}
                 </div>
@@ -171,7 +173,7 @@ const Sectiondreizehn = ({
                     <img
                       src={maleSrc}
                       alt={t(step2MaleIconAlt)}
-                      className="w-16 h-auto object-contain"
+                      className="w-10 md:w-12 h-auto object-contain"
                     />
                   ) : null}
                 </div>
@@ -182,13 +184,13 @@ const Sectiondreizehn = ({
             <p ref={step3TextRef}>{t(step3Text)}</p>
 
             {/* STEP 3 ICON */}
-            <div ref={step3ImageRef} className="flex flex-col items-center gap-3 text-center">
+            <div ref={step3ImageRef} className="flex flex-col items-center gap-3 text-center -mt-10">
               <p>{t(step3Rate)}</p>
               {step3Src ? (
                 <img
                   src={step3Src}
                   alt={t(step3IconAlt)}
-                  className="w-12 h-12"
+                  className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
                 />
               ) : null}
             </div>
