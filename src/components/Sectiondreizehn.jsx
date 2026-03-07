@@ -163,7 +163,7 @@ const Sectiondreizehn = ({
                     <img
                       src={femaleSrc}
                       alt={t(step2FemaleIconAlt)}
-                      className="w-10 md:w-12 h-auto object-contain"
+                      className="w-8 md:w-10 h-auto object-contain"
                     />
                   ) : null}
                 </div>
@@ -173,7 +173,7 @@ const Sectiondreizehn = ({
                     <img
                       src={maleSrc}
                       alt={t(step2MaleIconAlt)}
-                      className="w-10 md:w-12 h-auto object-contain"
+                      className="w-8 md:w-10 h-auto object-contain"
                     />
                   ) : null}
                 </div>
@@ -190,7 +190,7 @@ const Sectiondreizehn = ({
                 <img
                   src={step3Src}
                   alt={t(step3IconAlt)}
-                  className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
+                  className="w-20 h-20 md:w-24 md:h-24 lg:w-26 lg:h-26 object-contain"
                 />
               ) : null}
             </div>

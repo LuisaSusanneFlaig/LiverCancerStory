@@ -140,6 +140,7 @@ const App = () => {
           <Component
             key={`${section.name}-${index}`}
             theme={theme}
+            version={version}
             pid={pid}     // useful for logging later
             cond={cond}   // useful for logging later
             {...section.props}

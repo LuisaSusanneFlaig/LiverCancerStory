@@ -63,11 +63,11 @@ const Navbar = ({ version = "A" }) => {
 
   return (
     <nav>
-      <div className="flex items-center justify-between w-full">
-        <ul className="flex gap-4">
+      <div className="flex items-center justify-between w-full gap-2">
+        <ul className="flex flex-1 min-w-0 gap-3 overflow-x-auto whitespace-nowrap">
           {navLinks.map((link) => (
             <li key={link.id}>
-              <a href={`#${link.id}`} data-link={link.id} className="px-2 py-1">
+              <a href={`#${link.id}`} data-link={link.id} className="px-2 py-0.5">
                 {titleFor(link.id, link.title)}
               </a>
             </li>
@@ -78,7 +78,7 @@ const Navbar = ({ version = "A" }) => {
         <button
           type="button"
           onClick={toggleLang}
-          className="px-3 py-1 rounded"
+          className="shrink-0 px-2 py-0.5 rounded text-xs sm:text-sm"
           aria-label="Toggle language"
         >
           {lang === "de" ? "ENG" : "DE"}
