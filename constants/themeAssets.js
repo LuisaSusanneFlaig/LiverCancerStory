@@ -65,8 +65,8 @@ import age_green from "/src/images/green_icons/age.png";
 
 // Photos and illsutrations 
 import ultraschall_green from "/src/images/green_icons/foto1.jpg";
-import CT_green from "/src/images/green_icons/Foto2.jpg";
-import MRT_green from "/src/images/green_icons/Foto3.jpg";
+import CT_green from "/src/images/green_icons/foto2.jpg";
+import MRT_green from "/src/images/green_icons/foto3.jpg";
 import behandlung_green from "/src/images/green_icons/Behandlung.png";
 import behandlung_green_en from "/src/images/green_icons/Behandlung_en.png";
 import biopsie_green_de from "/src/images/green_icons/Biopsie_green_ger.png";
@@ -105,8 +105,8 @@ import age_red from "/src/images/red_icons/age.png";
 
 // Photos and illsutrations 
 import ultraschall_red from "/src/images/red_icons/foto1.jpg";
-import CT_red from "/src/images/red_icons/Foto2.jpg";
-import MRT_red from "/src/images/red_icons/Foto3.jpg";
+import CT_red from "/src/images/red_icons/foto2.jpg";
+import MRT_red from "/src/images/red_icons/foto3.jpg";
 import behandlung_red from "/src/images/red_icons/Behandlung.png";
 import behandlung_red_en from "/src/images/red_icons/Behandlung_en.png";
 import biopsie_red_de from "/src/images/red_icons/Biopsie_red_ger.png";
