@@ -134,7 +134,8 @@ body.theme-red {
   #hero h1 {
     @apply mt-28 sm:mt-32 md:mt-32
            text-8xl sm:text-8xl lg:text-[8rem]
-           leading-none text-center;
+           text-center;
+    line-height: 1.4;
   }
 
   #hero h3 {

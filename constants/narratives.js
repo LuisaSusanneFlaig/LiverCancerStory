@@ -24,7 +24,7 @@ import LT3 from "../src/images/LT3.png";
 import LT4 from "../src/images/LT4.png";
 import BiopsieImg from "/src/images/Biopsie.jpg";
 import BiopsieImg_en from "/src/images/Biopsie_en.jpg"; 
-import Curative2_en from "/src/images/Curative2_en.jpg";
+import Curative2_en from "/src/images/Curative2_en.png";
 import Curative3_en from "/src/images/Curative3_en.jpg";
 import Curative4_en from "/src/images/Curative4_en.jpg";
 import Curative2 from "/src/images/Curative2.jpg";
@@ -96,7 +96,7 @@ A: [
   {
     name: "Hero",
     props: {
-      title: { de: "Leberkrebs", en: "Liver Cancer" },
+      title: { de: "Leberkrebs: Ein Überblick", en: "Liver Cancer: An Overview" },
       subtitle: { de: "Eine interaktive Geschichte", en: "An interactive story" },
       author: { de: "von LUISA FLAIG", en: "by LUISA FLAIG" },
       scrollText: { de: "zum Beginnen Scrollen", en: "Scroll to begin" },

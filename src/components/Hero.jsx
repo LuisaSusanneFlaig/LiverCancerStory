@@ -71,9 +71,14 @@ const Hero = ({
   const lineSrc = getAsset(theme, "line"); // theme-only
 
   return (
-    <section id="hero" className="relative">
-      <div className="flex flex-col items-center pb-24">
-        <h1 className="title pt-20">{t(title)}</h1>
+    <section
+      id="hero"
+      className="relative flex min-h-screen items-center justify-center"
+    >
+      <div className="flex flex-col items-center justify-center pb-24 text-center">
+        <h1 className="title max-w-[10ch] text-center ">
+          {t(title)}
+        </h1>
 
         <img src={lineSrc} alt="Decorative line" className="mt-4" />
 
