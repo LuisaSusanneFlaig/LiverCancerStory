@@ -14,14 +14,17 @@ const Sectionelf = ({
   heading = "Heilende Behandlung für Leberkrebs",
 
   l1RightText,
+  l1ImageKey,
   l1ImageSrc, // string ODER {de,en}
   l1ImageAlt = "",
 
   l2LeftText,
+  l2ImageKey,
   l2ImageSrc, // string ODER {de,en}
   l2ImageAlt = "",
 
   l3LeftText,
+  l3ImageKey,
   l3ImageSrc, // string ODER {de,en}
   l3ImageAlt = "",
 }) => {
@@ -83,9 +86,9 @@ const Sectionelf = ({
 
   const lineSrc = getAsset(theme, "line");
 
-  const img1 = pickImg(l1ImageSrc);
-  const img2 = pickImg(l2ImageSrc);
-  const img3 = pickImg(l3ImageSrc);
+  const img1 = l1ImageKey ? getAsset(theme, l1ImageKey, lang) : pickImg(l1ImageSrc);
+  const img2 = l2ImageKey ? getAsset(theme, l2ImageKey, lang) : pickImg(l2ImageSrc);
+  const img3 = l3ImageKey ? getAsset(theme, l3ImageKey, lang) : pickImg(l3ImageSrc);
 
   return (
     <ScrollSection id="sectionelf" ref={containerRef}>

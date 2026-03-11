@@ -18,18 +18,12 @@ import Sectionfuenfzehn from "../src/components/Sectionfuenfzehn";
 
 
 import ThomasIll from "../src/images/Thomas_ill.png";
+import ThomasHealthy from "../src/images/Thomas_healthy.png";
+import ThomasDead from "../src/images/Thomas_dead.png";
 import LT1 from "../src/images/LT1.png";
 import LT2 from "../src/images/LT2.png";
 import LT3 from "../src/images/LT3.png";
 import LT4 from "../src/images/LT4.png";
-import BiopsieImg from "/src/images/Biopsie.jpg";
-import BiopsieImg_en from "/src/images/Biopsie_en.jpg"; 
-import Curative2_en from "/src/images/Curative2_en.png";
-import Curative3_en from "/src/images/Curative3_en.jpg";
-import Curative4_en from "/src/images/Curative4_en.jpg";
-import Curative2 from "/src/images/Curative2.jpg";
-import Curative3 from "/src/images/Curative3.jpg";
-import Curative4 from "/src/images/Curative4.jpg";
 import ThomasAndDoctor from "/src/images/Thomas_and_doctor.png";
 
 const ORDER_FIXED = ["hero","thomas","sectionfuenfzehn"]; 
@@ -252,10 +246,7 @@ A: [
       },
 
       // âœ… theme-based: you said this needs an EN photo too â†’ placeholder key
-      l1ImageKey: {
-        de: "behandlung",
-        en: "behandlung_en", // <-- placeholder: add to themeAssets later
-      },
+      l1ImageKey: "behandlung",
       l1ImageAlt: { de: "Behandlung", en: "Treatment" },
 
       l2LeftText: {
@@ -273,10 +264,7 @@ A: [
       },
 
       // âœ… needs EN image â†’ placeholder
-      l3ImageSrc: {
-        de: BiopsieImg,
-        en: BiopsieImg_en, // <-- placeholder import/variable
-      },
+      l3ImageKey: "biopsie",
       l3ImageAlt: { de: "Biopsie", en: "Biopsy" },
 
       l3Order: "textFirst",
@@ -294,7 +282,7 @@ A: [
       },
 
       // âœ… needs EN image â†’ placeholder
-      l1ImageSrc: { de: Curative2, en: Curative2_en },
+      l1ImageKey: "curative2",
       l1ImageAlt: { de: "Operation / Resektion", en: "Surgery / resection" },
 
       l2LeftText: {
@@ -303,7 +291,7 @@ A: [
       },
 
       // âœ… needs EN image â†’ placeholder
-      l2ImageSrc: { de: Curative3, en: Curative3_en },
+      l2ImageKey: "curative3",
       l2ImageAlt: { de: "Ablation", en: "Ablation" },
 
       l3LeftText: {
@@ -312,7 +300,7 @@ A: [
       },
 
       // âœ… needs EN image â†’ placeholder
-      l3ImageSrc: { de: Curative4, en: Curative4_en },
+      l3ImageKey: "curative4",
       l3ImageAlt: { de: "Interne Strahlentherapie", en: "Internal radiation therapy" },
     },
   },
@@ -600,10 +588,7 @@ B: [
       },
 
       // âœ… Platzhalter fÃ¼r EN-Bild (sprachabhÃ¤ngig)
-      l3ImageSrc: {
-        de: BiopsieImg,
-        en: BiopsieImg_en, // <-- spÃ¤ter ersetzen
-      },
+      l3ImageKey: "biopsie",
       l3ImageAlt: { de: "Biopsie", en: "Biopsy" },
 
       l3Order: "imageFirst",
@@ -619,30 +604,21 @@ B: [
         de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
         en: "In surgery, parts of the liver that contain tumors are removed.",
       },
-      l1ImageSrc: {
-        de: Curative2,
-        en: Curative2_en, // <-- spÃ¤ter ersetzen
-      },
+      l1ImageKey: "curative2",
       l1ImageAlt: { de: "Operation / Resektion", en: "Surgery / Resection" },
 
       l2LeftText: {
         de: "Tumore kÃ¶nnen auch mit einer Ablation behandelt werden. Dabei wird eine Nadel in den Tumor eingefÃ¼hrt, durch die Hitze oder Mikrowellen geleitet werden, um den Tumor zu zerstÃ¶ren.",
         en: "Tumors can also be treated with ablation. A needle is inserted into the tumor and heat or microwaves are applied to destroy it.",
       },
-      l2ImageSrc: {
-        de: Curative3,
-        en: Curative3_en, // <-- spÃ¤ter ersetzen
-      },
+      l2ImageKey: "curative3",
       l2ImageAlt: { de: "Ablation", en: "Ablation" },
 
       l3LeftText: {
         de: "DarÃ¼ber hinaus kÃ¶nnen winzige, mit radioaktivem Material gefÃ¼llte KÃ¼gelchen in die LebergefÃ¤ÃŸe eingebracht werden. Der Tumor wird lokal von innen bestrahlt, was zum Absterben der Tumorzellen fÃ¼hrt.",
         en: "In addition, tiny beads filled with radioactive material can be placed into liver vessels. The tumor is irradiated locally from the inside, which causes tumor cells to die.",
       },
-      l3ImageSrc: {
-        de: Curative4,
-        en: Curative4_en, // <-- spÃ¤ter ersetzen
-      },
+      l3ImageKey: "curative4",
       l3ImageAlt: { de: "Interne Strahlentherapie", en: "Internal Radiation Therapy" },
     },
   },
@@ -775,8 +751,8 @@ B: [
           iconAlt: { de: "Gesunder Lebensstil", en: "Healthy lifestyle" },
         },
       ],
-      l2AltImageSrc: "",
-      l2AltImageAlt: { de: "Platzhalterbild", en: "Placeholder image" },
+      l2AltImageSrc: ThomasHealthy,
+      l2AltImageAlt: { de: "Thomas gesund", en: "Thomas healthy" },
       l2ImageSrc: ThomasAndDoctor, // spÃ¤ter ggf. EN-Variante
       l2ImageAlt: { de: "Thomas und Arzt", en: "Thomas and doctor" },
     },
@@ -965,10 +941,7 @@ C: [
       },
 
       // âœ… Platzhalter fÃ¼r EN-Bild
-      l3ImageSrc: {
-        de: BiopsieImg,
-        en: BiopsieImg_en,
-      },
+      l3ImageKey: "biopsie",
       l3ImageAlt: { de: "Biopsie", en: "Biopsy" },
 
       l3Order: "imageFirst",
@@ -984,30 +957,21 @@ C: [
       de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
       en: "During surgery, parts of the liver that contain tumors are removed.",
     },
-    l1ImageSrc: {
-      de: Curative2,
-      en: Curative2_en,
-    },
+    l1ImageKey: "curative2",
     l1ImageAlt: { de: "Operation / Resektion", en: "Surgery / Resection" },
 
     l2LeftText: {
       de: "Tumore kÃ¶nnen auch mit einer Ablation behandelt werden. Dabei wird eine Nadel in den Tumor eingefÃ¼hrt, durch die Hitze oder Mikrowellen geleitet werden, um den Tumor zu zerstÃ¶ren.",
       en: "Tumors can also be treated with ablation. A needle is inserted into the tumor and heat or microwaves are applied to destroy it.",
     },
-    l2ImageSrc: {
-      de: Curative3,
-      en: Curative3_en
-    },
+    l2ImageKey: "curative3",
     l2ImageAlt: { de: "Ablation", en: "Ablation" },
 
     l3LeftText: {
       de: "DarÃ¼ber hinaus kÃ¶nnen winzige, mit radioaktivem Material gefÃ¼llte KÃ¼gelchen in die LebergefÃ¤ÃŸe eingebracht werden. Der Tumor wird lokal von innen bestrahlt, was zum Absterben der Tumorzellen fÃ¼hrt.",
       en: "In addition, tiny beads filled with radioactive material can be placed into liver vessels. This irradiates the tumor locally from the inside, causing tumor cells to die.",
     },
-    l3ImageSrc: {
-      de: Curative4,
-      en: Curative4_en,
-    },
+    l3ImageKey: "curative4",
     l3ImageAlt: { de: "Interne Strahlentherapie", en: "Internal Radiotherapy" },
   },
 },
@@ -1141,8 +1105,8 @@ C: [
           iconAlt: { de: "Zu spÃ¤te Ã„nderung", en: "Change too late" },
         },
       ],
-      l2AltImageSrc: "",
-      l2AltImageAlt: { de: "Platzhalterbild", en: "Placeholder image" },
+      l2AltImageSrc: ThomasDead,
+      l2AltImageAlt: { de: "Thomas verstorben", en: "Thomas deceased" },
       l2ImageSrc: ThomasAndDoctor,
       l2ImageAlt: { de: "Thomas und Arzt", en: "Thomas and doctor" },
     },

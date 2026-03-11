@@ -4,6 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { narratives, componentMap } from "../constants/narratives";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Navbar from "./components/Navbar";
+import { useLanguage } from "./components/Context/LanguageContext";
+import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -52,6 +54,7 @@ function getOrCreateLocalPid() {
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { lang } = useLanguage();
 
   // =========================================================
   // ✅ PID SOURCE
@@ -125,6 +128,25 @@ const App = () => {
     root.classList.add(`theme-${theme}`);
     body.classList.add(`theme-${theme}`);
   }, [theme]);
+
+  useEffect(() => {
+    let active = true;
+
+    initAnalytics().then((enabled) => {
+      if (!active || !enabled) return;
+
+      trackStudyVisit({
+        cond,
+        version,
+        theme,
+        language: lang,
+      });
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [cond, lang, theme, version]);
 
   const selectedNarrative = narratives[version] || narratives.A;
 

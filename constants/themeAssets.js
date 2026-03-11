@@ -29,6 +29,14 @@ import CT_blue from "/src/images/blue_icons/Foto2.jpg";
 import MRT_blue from "/src/images/blue_icons/Foto3.jpg";
 import behandlung_blue from "/src/images/blue_icons/Behandlung.png";
 import behandlung_blue_en from "/src/images/blue_icons/Behandlung_en.png";
+import biopsie_blue_de from "/src/images/blue_icons/Biopsie_blue_ger.png";
+import biopsie_blue_en from "/src/images/blue_icons/Biopsie_blue_en.png";
+import curative2_blue_de from "/src/images/blue_icons/Currative2_blue_ger.png";
+import curative2_blue_en from "/src/images/blue_icons/Currative2_blue_en.png";
+import curative3_blue_de from "/src/images/blue_icons/Currative3_blue_ger.png";
+import curative3_blue_en from "/src/images/blue_icons/Currative3_blue_en.png";
+import curative4_blue_de from "/src/images/blue_icons/Currative4_blue_ger.png";
+import curative4_blue_en from "/src/images/blue_icons/Currative4_blue_en.png";
 import ratio_blue from "/src/images/blue_icons/img1.png";
 import interaction_blue from "/src/images/blue_icons/Interaction.png";
 
@@ -61,6 +69,14 @@ import CT_green from "/src/images/green_icons/Foto2.jpg";
 import MRT_green from "/src/images/green_icons/Foto3.jpg";
 import behandlung_green from "/src/images/green_icons/Behandlung.png";
 import behandlung_green_en from "/src/images/green_icons/Behandlung_en.png";
+import biopsie_green_de from "/src/images/green_icons/Biopsie_green_ger.png";
+import biopsie_green_en from "/src/images/green_icons/Biopsie_green_en.png";
+import curative2_green_de from "/src/images/green_icons/Currative2_green_ger.png";
+import curative2_green_en from "/src/images/green_icons/Currative2_green_en.png";
+import curative3_green_de from "/src/images/green_icons/Currative3_green_ger.png";
+import curative3_green_en from "/src/images/green_icons/Currative3_green_en.png";
+import curative4_green_de from "/src/images/green_icons/Currative4_green_ger.png";
+import curative4_green_en from "/src/images/green_icons/Currative4_green_en.png";
 import ratio_green from "/src/images/green_icons/img1.png";
 import interaction_green from "/src/images/green_icons/Interaction.png";
 
@@ -93,6 +109,14 @@ import CT_red from "/src/images/red_icons/Foto2.jpg";
 import MRT_red from "/src/images/red_icons/Foto3.jpg";
 import behandlung_red from "/src/images/red_icons/Behandlung.png";
 import behandlung_red_en from "/src/images/red_icons/Behandlung_en.png";
+import biopsie_red_de from "/src/images/red_icons/Biopsie_red_ger.png";
+import biopsie_red_en from "/src/images/red_icons/Biopsie_red_en.png";
+import curative2_red_de from "/src/images/red_icons/Currative2_red_ger.png";
+import curative2_red_en from "/src/images/red_icons/Currative2_red_en.png";
+import curative3_red_de from "/src/images/red_icons/Currative3_red_ger.png";
+import curative3_red_en from "/src/images/red_icons/Currative3_red_en.png";
+import curative4_red_de from "/src/images/red_icons/Currative4_red_ger.png";
+import curative4_red_en from "/src/images/red_icons/Currative4_red_en.png";
 import ratio_red from "/src/images/red_icons/img1.png";
 import interaction_red from "/src/images/red_icons/Interaction.png";
 
@@ -129,6 +153,10 @@ export const assetsByTheme = {
     CT: CT_blue,
     MRT: MRT_blue,
     behandlung: {de: behandlung_blue, en: behandlung_blue_en},
+    biopsie: { de: biopsie_blue_de, en: biopsie_blue_en },
+    curative2: { de: curative2_blue_de, en: curative2_blue_en },
+    curative3: { de: curative3_blue_de, en: curative3_blue_en },
+    curative4: { de: curative4_blue_de, en: curative4_blue_en },
     ratio: ratio_blue,
     interaction: interaction_blue,
   },
@@ -159,6 +187,10 @@ export const assetsByTheme = {
     CT: CT_green,
     MRT: MRT_green,
     behandlung: {de: behandlung_green, en: behandlung_green_en},
+    biopsie: { de: biopsie_green_de, en: biopsie_green_en },
+    curative2: { de: curative2_green_de, en: curative2_green_en },
+    curative3: { de: curative3_green_de, en: curative3_green_en },
+    curative4: { de: curative4_green_de, en: curative4_green_en },
     ratio: ratio_green,
     interaction: interaction_green,
   },
@@ -189,6 +221,10 @@ export const assetsByTheme = {
     CT: CT_red,
     MRT: MRT_red,
     behandlung: {de: behandlung_red, en: behandlung_red_en},
+    biopsie: { de: biopsie_red_de, en: biopsie_red_en },
+    curative2: { de: curative2_red_de, en: curative2_red_en },
+    curative3: { de: curative3_red_de, en: curative3_red_en },
+    curative4: { de: curative4_red_de, en: curative4_red_en },
     ratio: ratio_red,
     interaction: interaction_red,
   },

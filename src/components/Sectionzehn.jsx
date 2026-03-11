@@ -21,6 +21,7 @@ const Sectionzehn = ({
   l2RightText,
 
   l3LeftText,
+  l3ImageKey,
   l3ImageSrc, // ✅ string ODER {de,en}
   l3ImageAlt = "",
   l3Order = "textFirst",
@@ -73,9 +74,11 @@ const Sectionzehn = ({
     return () => ctx.revert();
   }, []);
 
-  const lineSrc = getAsset(theme, "line"); // line bleibt theme-only
- const l1ImgSrc = l1ImageKey ? getAsset(theme, l1ImageKey, lang) : undefined;// ✅ theme + language
-  const l3ImgSrc = pickImg(l3ImageSrc); // ✅ language only
+  const lineSrc = getAsset(theme, "line");
+  const l1ImgSrc = l1ImageKey ? getAsset(theme, l1ImageKey, lang) : undefined;
+  const l3ImgSrc = l3ImageKey
+    ? getAsset(theme, l3ImageKey, lang)
+    : pickImg(l3ImageSrc);
 
   return (
     <ScrollSection id="sectionzehn" ref={containerRef}>
