@@ -6,8 +6,10 @@ Command: npx gltfjsx@6.5.3 Ananeu.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
+const modelPath = `${import.meta.env.BASE_URL}meshes/Ananeu.glb`;
+
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/meshes/Ananeu.glb')
+  const { nodes, materials } = useGLTF(modelPath)
   return (
     <group {...props} dispose={null}>
       <group rotation={[-0.004, 0, 0]}>
@@ -21,4 +23,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/meshes/Ananeu.glb')
+useGLTF.preload(modelPath)

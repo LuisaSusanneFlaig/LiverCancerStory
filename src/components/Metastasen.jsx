@@ -6,8 +6,10 @@ Command: npx gltfjsx@6.5.3 Metastasen.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
+const modelPath = `${import.meta.env.BASE_URL}meshes/Metastasen.glb`;
+
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/meshes/Metastasen.glb')
+  const { nodes, materials } = useGLTF(modelPath)
   return (
     <group {...props} dispose={null}>
       <group rotation={[-0.01, 0, 0]}>
@@ -18,4 +20,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/meshes/Metastasen.glb')
+useGLTF.preload(modelPath)

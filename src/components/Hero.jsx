@@ -27,38 +27,56 @@ const Hero = ({
   }, [lang]);
 
   useGSAP(() => {
-    const ctx = gsap.context(() => {
-      const heroSplit = new SplitText(".title", { type: "lines" });
-      const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
+    let cancelled = false;
+    let cleanup = () => {};
 
-      gsap.from(heroSplit.lines, {
-        yPercent: 150,
-        duration: 1.8,
-        ease: "expo.out",
-        stagger: 0.06,
+    const runAnimation = () => {
+      const ctx = gsap.context(() => {
+        const heroSplit = new SplitText(".title", { type: "lines" });
+        const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
+
+        gsap.from(heroSplit.lines, {
+          yPercent: 150,
+          duration: 1.8,
+          ease: "expo.out",
+          stagger: 0.06,
+        });
+
+        gsap.from(paragraphSplit.lines, {
+          opacity: 0,
+          yPercent: 150,
+          duration: 1.8,
+          ease: "expo.out",
+          stagger: 0.06,
+          delay: 1,
+        });
+
+        gsap.to(".scroll-indicator", {
+          y: 10,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          duration: 1,
+          delay: 2,
+        });
       });
 
-      gsap.from(paragraphSplit.lines, {
-        opacity: 0,
-        yPercent: 150,
-        duration: 1.8,
-        ease: "expo.out",
-        stagger: 0.06,
-        delay: 1,
-      });
+      cleanup = () => ctx.revert();
+    };
 
-      gsap.to(".scroll-indicator", {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-        duration: 1,
-        delay: 2,
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (!cancelled) runAnimation();
       });
-    });
+    } else {
+      runAnimation();
+    }
 
-    return () => ctx.revert();
-  }, []);
+    return () => {
+      cancelled = true;
+      cleanup();
+    };
+  }, [lang]);
 
   const scrollToDefinition = () => {
     gsap.to(window, {

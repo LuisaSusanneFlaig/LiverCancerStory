@@ -6,8 +6,10 @@ Command: npx gltfjsx@6.5.3 Leberneu.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
+const modelPath = `${import.meta.env.BASE_URL}meshes/Leberneu.glb`;
+
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/meshes/Leberneu.glb')
+  const { nodes, materials } = useGLTF(modelPath)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes['liver-normal'].geometry} material={materials['m_liver.fullopaque']} position={[4.045, 4.773, 4.647]} rotation={[-0.027, -1.072, 0]} />
@@ -15,4 +17,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/meshes/Leberneu.glb')
+useGLTF.preload(modelPath)
