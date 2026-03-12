@@ -23,7 +23,7 @@ const RotatingLeber = ({ isMobile, isTablet }) => {
   );
 };
 
-const ModelLeber = () => {
+const ModelLeber = ({ controlsEnabled = true }) => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -45,6 +45,7 @@ const ModelLeber = () => {
   />
 
   <OrbitControls
+    enabled={controlsEnabled}
     enablePan={false}
     enableZoom={false}
     maxDistance={20}

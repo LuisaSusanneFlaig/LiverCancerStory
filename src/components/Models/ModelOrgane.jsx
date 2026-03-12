@@ -82,7 +82,7 @@ const RotatingOrgane = ({ isMobile, isTablet, lang }) => {
   );
 };
 
-const ModelOrgane = () => {
+const ModelOrgane = ({ controlsEnabled = true }) => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const { lang } = useLanguage();
@@ -92,7 +92,7 @@ const ModelOrgane = () => {
       <ambientLight intensity={10} color="#1a1a40" />
       <directionalLight position={[5, 5, 5]} intensity={2} />
       <directionalLight position={[-5, -5, -5]} intensity={2} />
-      <OrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={5} />
+      <OrbitControls enabled={controlsEnabled} enablePan={false} enableZoom={false} maxDistance={20} minDistance={5} />
       <RotatingOrgane isMobile={isMobile} isTablet={isTablet} lang={lang} />
     </Canvas>
   );

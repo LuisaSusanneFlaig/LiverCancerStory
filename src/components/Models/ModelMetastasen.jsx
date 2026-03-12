@@ -64,7 +64,7 @@ const RotatingMetastasen = ({ isMobile, isTablet, text }) => {
   );
 };
 
-const ModelMetastasen = () => {
+const ModelMetastasen = ({ controlsEnabled = true }) => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const { lang } = useLanguage();
@@ -87,6 +87,7 @@ const ModelMetastasen = () => {
     intensity={2}
   />
       <OrbitControls
+        enabled={controlsEnabled}
         enablePan={false}
         enableZoom={false}
         maxDistance={20}
