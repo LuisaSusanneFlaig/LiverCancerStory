@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Html, Line } from "@react-three/drei";
+import { OrbitControls, Html, Line } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Model as Metastasen } from "@/components/Metastasen.jsx";
 import { useLanguage } from "../Context/LanguageContext";
-import TouchOrbitControls from "./TouchOrbitControls";
 
 const METASTASEN_TOOLTIP = {
   anchor: [0.18, 0.05, 0.04],
@@ -87,7 +86,7 @@ const ModelMetastasen = () => {
     position={[-5, -5, -5]}
     intensity={2}
   />
-      <TouchOrbitControls
+      <OrbitControls
         enablePan={false}
         enableZoom={false}
         maxDistance={20}

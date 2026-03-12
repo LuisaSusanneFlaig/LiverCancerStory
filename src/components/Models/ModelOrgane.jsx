@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Html, Line } from "@react-three/drei";
+import { OrbitControls, Html, Line } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Model as Ananeu } from "@/components/Ananeu.jsx";
 import { useLanguage } from "../Context/LanguageContext";
-import TouchOrbitControls from "./TouchOrbitControls";
 
 const ORGANE_TOOLTIPS = [
   {
@@ -93,7 +92,7 @@ const ModelOrgane = () => {
       <ambientLight intensity={10} color="#1a1a40" />
       <directionalLight position={[5, 5, 5]} intensity={2} />
       <directionalLight position={[-5, -5, -5]} intensity={2} />
-      <TouchOrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={5} />
+      <OrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={5} />
       <RotatingOrgane isMobile={isMobile} isTablet={isTablet} lang={lang} />
     </Canvas>
   );
