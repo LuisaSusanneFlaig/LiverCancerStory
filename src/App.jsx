@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const VALID_VERSIONS = ["A", "B", "C"];
 const VALID_THEMES = ["blue", "green", "red"];
+const IS_DEV = import.meta.env.DEV;
 
 // 9 Bedingungen (für späteres Logging)
 const CONDITIONS = [
@@ -75,15 +76,17 @@ const App = () => {
 
   const hasValidVersion = VALID_VERSIONS.includes(urlVersionRaw);
   const hasValidTheme = VALID_THEMES.includes(urlThemeRaw);
+  const hasCondOverride = searchParams.has("cond");
 
   // =========================================================
   // ✅ Assign condition deterministically
   // =========================================================
   const assigned = useMemo(() => assignCondition(pid), [pid]);
 
-  const version = hasValidVersion ? urlVersionRaw : assigned.version;
-  const theme = hasValidTheme ? urlThemeRaw : assigned.theme;
-  const cond = searchParams.get("cond") || assigned.cond;
+  const manualOverride = IS_DEV && (hasValidVersion || hasValidTheme || hasCondOverride);
+  const version = IS_DEV && hasValidVersion ? urlVersionRaw : assigned.version;
+  const theme = IS_DEV && hasValidTheme ? urlThemeRaw : assigned.theme;
+  const cond = IS_DEV && hasCondOverride ? searchParams.get("cond") || assigned.cond : assigned.cond;
 
   // =========================================================
   // ✅ OPTIONAL: write chosen params into URL
@@ -93,22 +96,37 @@ const App = () => {
     let changed = false;
 
     // Always ensure there's a pid in URL during DEV (nice for debugging)
-    if (!searchParams.get("pid")) {
+    if (IS_DEV && !searchParams.get("pid")) {
       next.set("pid", pid);
       changed = true;
     }
 
-    if (!hasValidVersion) {
-      next.set("version", assigned.version);
-      changed = true;
-    }
-    if (!hasValidTheme) {
-      next.set("theme", assigned.theme);
-      changed = true;
-    }
-    if (!searchParams.get("cond")) {
-      next.set("cond", assigned.cond);
-      changed = true;
+    if (IS_DEV) {
+      if (!hasValidVersion) {
+        next.set("version", assigned.version);
+        changed = true;
+      }
+      if (!hasValidTheme) {
+        next.set("theme", assigned.theme);
+        changed = true;
+      }
+      if (!searchParams.get("cond")) {
+        next.set("cond", assigned.cond);
+        changed = true;
+      }
+    } else {
+      if (next.has("version")) {
+        next.delete("version");
+        changed = true;
+      }
+      if (next.has("theme")) {
+        next.delete("theme");
+        changed = true;
+      }
+      if (next.has("cond")) {
+        next.delete("cond");
+        changed = true;
+      }
     }
 
     if (changed) {
@@ -140,13 +158,14 @@ const App = () => {
         version,
         theme,
         language: lang,
+        manualOverride,
       });
     });
 
     return () => {
       active = false;
     };
-  }, [cond, lang, theme, version]);
+  }, [cond, lang, manualOverride, theme, version]);
 
   const selectedNarrative = narratives[version] || narratives.A;
 

@@ -75,8 +75,8 @@ export function trackEvent(eventName, params = {}) {
   window.gtag("event", eventName, params);
 }
 
-export function trackStudyVisit({ cond, version, theme, language }) {
-  const sessionKey = `study_visit:${cond}:${version}:${theme}:${language}`;
+export function trackStudyVisit({ cond, version, theme, language, manualOverride }) {
+  const sessionKey = `study_visit:${cond}:${version}:${theme}:${language}:${manualOverride}`;
 
   if (sessionStorage.getItem(sessionKey)) {
     return;
@@ -89,6 +89,7 @@ export function trackStudyVisit({ cond, version, theme, language }) {
     color_dimension: theme,
     site_language: language,
     device_category: getDeviceCategory(),
+    manual_override: manualOverride ? "true" : "false",
   });
 
   sessionStorage.setItem(sessionKey, "1");
