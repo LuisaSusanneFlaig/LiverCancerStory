@@ -87,7 +87,7 @@ export function trackStudyVisit({ cond, version, theme, language }) {
     condition_index: cond,
     narrative_version: version,
     color_dimension: theme,
-    language,
+    site_language: language,
     device_category: getDeviceCategory(),
   });
 
