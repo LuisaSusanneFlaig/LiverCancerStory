@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Model as Leberneu } from "@/components/Leberneu";
+import TouchOrbitControls from "./TouchOrbitControls";
 
 const RotatingLeber = ({ isMobile, isTablet }) => {
   const groupRef = useRef(null);
@@ -44,7 +44,7 @@ const ModelLeber = () => {
     intensity={2}
   />
 
-  <OrbitControls
+  <TouchOrbitControls
     enablePan={false}
     enableZoom={false}
     maxDistance={20}
