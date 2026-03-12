@@ -101,10 +101,10 @@ A: [
   {
     name: "Thomas",
     props: {
-      heading: { de: "Was bedeutet eine Leberkrebsdiagnose?", en: "What does a liver cancer diagnosis mean?" },
+      heading: { de: "Was bedeutet eine Leberkrebsdiagnose?", en: "What Does a Liver Cancer Diagnosis Mean?" },
       body: {
         de: "Thomas ist 52 Jahre alt. Bei einer Routineuntersuchung stellt sein Hausarzt erhöhte Leberwerte fest. Weitere Untersuchungen bringen Gewissheit: In seiner Leber haben sich mehrere Tumore gebildet, im übrigen Körper sind jedoch keine Metastasen nachweisbar.",
-        en: "Thomas is 52 years old. During a routine check-up, his GP finds elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detectable in the rest of his body.",
+        en: "Thomas is 52 years old. During a routine check-up, his doctor finds elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detectable in the rest of his body.",
       },
       imageSrc: ThomasIll,
       imageAlt: { de: "Thomas", en: "Thomas" },
@@ -114,7 +114,7 @@ A: [
   {
     name: "Leber",
     props: {
-      heading: { de: "Was ist Leberkrebs?", en: "What is liver cancer?" },
+      heading: { de: "Was ist Leberkrebs?", en: "What Is Liver Cancer?" },
     },
   },
 
@@ -152,7 +152,7 @@ A: [
   {
     name: "Organe",
     props: {
-      heading: { de: "Die Leber: ein besonderes Organ", en: "The liver: a special organ" },
+      heading: { de: "Die Leber: ein besonderes Organ", en: "The Liver: A Special Organ" },
     },
   },
 
@@ -178,7 +178,7 @@ A: [
   {
     name: "Sectionacht",
     props: {
-      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "What are the symptoms of liver cancer?" },
+      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "What Are the Symptoms of Liver Cancer?" },
       introText: {
         de: "Da die Leber nicht schmerzempfindlich ist, verursacht Leberkrebs in der Regel zunächst keine Symptome. Im fortgeschrittenen Stadium äußert sich Leberkrebs auf verschiedene Weise.",
         en: "Because the liver itself is not sensitive to pain, liver cancer usually causes no symptoms at first. At an advanced stage, it can present in different ways.",
@@ -189,8 +189,8 @@ A: [
         { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Fever" } },
         { assetKey: "stroke", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
         { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "nausea", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
-        { assetKey: "liver", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin (jaundice)" } },
+        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "nausea", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin (jaundice)" } },
       ],
     },
   },
@@ -198,7 +198,7 @@ A: [
   {
     name: "Sectionneun",
     props: {
-      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How is liver cancer diagnosed?" },
+      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How Is Liver Cancer Diagnosed?" },
       introRight: {
         de: "Die Diagnostik soll klären, wie weit die Erkrankung fortgeschritten ist.",
         en: "Diagnosis aims to determine how advanced the disease is.",
@@ -238,7 +238,7 @@ A: [
   {
     name: "Sectionzehn",
     props: {
-      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How is liver cancer treated?" },
+      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How Is Liver Cancer Treated?" },
 
       l1Text: {
         de: "Die Behandlungsplanung hängt davon ab, wie weit die Krankheit  fortgeschritten ist und in welchem Zustand sich die Leber befindet.",
@@ -274,7 +274,7 @@ A: [
   {
     name: "Sectionelf",
     props: {
-      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative treatment for liver cancer" },
+      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative Treatment for Liver Cancer" },
 
       l1RightText: {
         de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -308,7 +308,7 @@ A: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative treatment for liver cancer" },
+      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative Treatment for Liver Cancer" },
 
       p1Text: {
         de: "Wenn keine Aussicht auf Heilung besteht, kann eine palliative Therapie das Wachstum des Tumors verlangsamen und die Symptome lindern.",
@@ -316,9 +316,9 @@ A: [
       },
 
       p1Items: [
-        { assetKey: "weight", text: { de: "Abnehmen ohne Anstrengung", en: "Unintentional weight loss" } },
-        { assetKey: "junkfood", text: { de: "Appetitlosigkeit", en: "Loss of appetite" } },
-        { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Fever" } },
+        { assetKey: "stroke", text: { de: "Schmerzen", en: "Pain" } },
+        { assetKey: "liver", text: { de: "Übelkeit", en: "Nausea" } },
+        { assetKey: "scale", text: { de: "Weiterer Gewichtsverlust", en: "Further weight loss" } },
       ],
 
       p2Text: {
@@ -327,9 +327,9 @@ A: [
       },
 
       p2Items: [
-        { assetKey: "pain", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
-        { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "infusion", text: { de: "Chemotherapie", en: "Chemotherapy" } },
+        { assetKey: "medication", text: { de: "Schmerzmittel", en: "Pain medication" } },
+        { assetKey: "junkfood", text: { de: "Kalorienreiches Essen", en: "High-calorie food" } },
       ],
     },
   },
@@ -337,7 +337,7 @@ A: [
   {
     name: "Sectiondreizehn",
     props: {
-      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of liver cancer" },
+      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of Liver Cancer" },
 
       l1Text1: { de: "Das hängt vom Stadium des Krebses und dem Zustand der Leber ab.", en: "It depends on the stage of the cancer and the condition of the liver." },
       l1Text2: { de: "5 Jahres Überlebensrate:", en: "5-year survival rate:" },
@@ -368,7 +368,7 @@ A: [
   {
     name: "Sectionvierzehn",
     props: {
-      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How can I prevent liver cancer?" },
+      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How Can I Prevent Liver Cancer?" },
 
       introText: { de: "Einige Risikofaktoren für Leberkrebs sind vermeidbar:", en: "Some risk factors for liver cancer are preventable:" },
       bullets: {
@@ -379,7 +379,7 @@ A: [
       items: [
         { assetKey: "vaccine", text: { de: "Impfung gegen Hepatitis", en: "Hepatitis vaccination" } },
         { assetKey: "alcohol", text: { de: "Alkoholkonsum einschränken", en: "Reduce alcohol consumption" } },
-        { assetKey: "weightgain", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
+        { assetKey: "scalewithweight", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
         { assetKey: "smoking", text: { de: "Aufhören zu rauchen", en: "Quit smoking" } },
       ],
     },
@@ -388,7 +388,7 @@ A: [
   {
     name: "Sectionfuenfzehn",
     props: {
-      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The outcome of Thomas’s story" },
+      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The Outcome of Thomas’s Story" },
 
       l1Text: {
         de: "Thomas steht am Anfang seiner Reise mit der Diagnose Leberkrebs. Sein Leben wird sich grundlegend verändern, denn gemeinsam mit seinem Arzt muss er nun eine passende Behandlungsmethode wählen und sich zugleich mit der Frage auseinandersetzen, wie sein zukünftiger Lebensstil aussehen soll.",
@@ -421,10 +421,10 @@ B: [
   {
     name: "Thomas",
     props: {
-      heading: { de: "Wie findet man zurück ins Lebens?", en: "How Do You Find Your Way Back to Life?" },
+      heading: { de: "Wie findet man zurück ins Lebens?", en: "How do you find your way back to life?" },
       body: {
         de: "Thomas ist 52 Jahre alt. Bei einer Routineuntersuchung stellt sein Hausarzt erhöhte Leberwerte fest. Weitere Untersuchungen bringen Gewissheit: In seiner Leber haben sich mehrere Tumore gebildet, im übrigen Körper sind jedoch keine Metastasen nachweisbar.",
-        en: "Thomas is 52 years old. During a routine check-up, his GP notices elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detected elsewhere in the body.",
+        en: "Thomas is 52 years old. During a routine check-up, his doctor notices elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detected elsewhere in the body.",
       },
 
       panel2Variant: "textImage",
@@ -440,7 +440,7 @@ B: [
   {
     name: "Leber",
     props: {
-      heading: { de: "Was ist Leberkrebs?", en: "What Is Liver Cancer?" },
+      heading: { de: "Was ist Leberkrebs?", en: "What is liver cancer?" },
     },
   },
 
@@ -478,7 +478,7 @@ B: [
   {
     name: "Organe",
     props: {
-      heading: { de: "Die Leber: ein besonderes Organ", en: "The Liver: A Special Organ" },
+      heading: { de: "Die Leber: ein besonderes Organ", en: "The liver: a special organ" },
     },
   },
 
@@ -501,7 +501,7 @@ B: [
   {
     name: "Sectionacht",
     props: {
-      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "How Does Liver Cancer Present Itself?" },
+      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "How does liver cancer present itself?" },
       introText: {
         de: "Da die Leber nicht schmerzempfindlich ist, verursacht der Leberkrebs zunächst keine Symptome bei Thomas. Im fortgeschrittenen Stadium äußert sich der Leberkrebs auf unterschiedliche Weise, die er rückblickend als Warnsignale erkennt.",
         en: "Because the liver does not feel pain, liver cancer often causes no symptoms at first. At a later stage, it can show up in different ways that Thomas later recognizes as warning signs.",
@@ -513,8 +513,8 @@ B: [
         { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Elevated temperature" } },
         { assetKey: "stroke", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
         { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "nausea", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
-        { assetKey: "liver", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin" } },
+        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "nausea", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin" } },
       ],
     },
   },
@@ -522,7 +522,7 @@ B: [
   {
     name: "Sectionneun",
     props: {
-      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How Is Liver Cancer Diagnosed?" },
+      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How is liver cancer diagnosed?" },
       introRight: {
         de: "Die Diagnostik soll klären, wie weit die Erkrankung fortgeschritten ist. Thomas ist zuversichtlich, denn der behandelnde Arzt bespricht alles Schritt für Schritt mit ihm.",
         en: "Diagnostics aim to determine how advanced the disease is. Thomas feels reassured because his doctor explains everything step by step.",
@@ -562,7 +562,7 @@ B: [
   {
     name: "Sectionzehn",
     props: {
-      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How Is Liver Cancer Treated?" },
+      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How is liver cancer treated?" },
 
       l1Text: {
         de: "Thomas erfährt das sein Behandlungsplan davon abhängt, wie weit die Krankheit fortgeschritten ist und in welchem Zustand sich seine Leber befindet.",
@@ -598,7 +598,7 @@ B: [
   {
     name: "Sectionelf",
     props: {
-      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative Treatment for Liver Cancer" },
+      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative treatment for liver cancer" },
 
       l1RightText: {
         de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -626,7 +626,7 @@ B: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative Treatment for Liver Cancer" },
+      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative treatment for liver cancer" },
 
       p1Text: {
         de: "Zu einer palliativen Behandlung möchte Thomas es nicht kommen lassen, da diese nur noch das Tumorwachstum verlangsamen und die Symptome lindern würde.",
@@ -634,9 +634,9 @@ B: [
       },
 
       p1Items: [
-        { assetKey: "weightgain", text: { de: "Abnehmen ohne Anstrengung", en: "Unintentional weight loss" } },
-        { assetKey: "junkfood", text: { de: "Appetitlosigkeit", en: "Loss of appetite" } },
-        { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Elevated temperature" } },
+        { assetKey: "stroke", text: { de: "Schmerzen", en: "Pain" } },
+        { assetKey: "liver", text: { de: "Übelkeit", en: "Nausea" } },
+        { assetKey: "scale", text: { de: "Weiterer Gewichtsverlust", en: "Further weight loss" } },
       ],
 
       p2Text: {
@@ -645,9 +645,9 @@ B: [
       },
 
       p2Items: [
-        { assetKey: "stroke", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
-        { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "infusion", text: { de: "Chemotherapie", en: "Chemotherapy" } },
+        { assetKey: "medication", text: { de: "Schmerzmittel", en: "Pain medication" } },
+        { assetKey: "junkfood", text: { de: "Kalorienreiches Essen", en: "High-calorie food" } },
       ],
     },
   },
@@ -655,7 +655,7 @@ B: [
   {
     name: "Sectiondreizehn",
     props: {
-      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of Liver Cancer" },
+      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of liver cancer" },
 
       l1Text1: { de: "Das hängt vom Stadium des Krebses und dem Zustand der Leber ab.", en: "This depends on the cancer stage and the condition of the liver." },
       l1Text2: { de: "5 Jahres Überlebensrate:", en: "5-year survival rate:" },
@@ -686,7 +686,7 @@ B: [
   {
     name: "Sectionvierzehn",
     props: {
-      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How Can I Prevent Liver Cancer?" },
+      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How can I prevent liver cancer?" },
 
       // ⚠️ dein DE-Text hat gerade einen Copy/Paste-Glitch – ich habe es sauber gemacht:
       introText: {
@@ -704,7 +704,7 @@ B: [
       items: [
         { assetKey: "vaccine", text: { de: "Impfung gegen Hepatitis", en: "Vaccination against hepatitis" } },
         { assetKey: "alcohol", text: { de: "Alkoholkonsum einschränken", en: "Limit alcohol consumption" } },
-        { assetKey: "weightgain", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
+        { assetKey: "scalewithweight", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
         { assetKey: "smoking", text: { de: "Aufhören zu rauchen", en: "Quit smoking" } },
       ],
     },
@@ -713,7 +713,7 @@ B: [
   {
     name: "Sectionfuenfzehn",
     props: {
-      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The Outcome of Thomas’s Story" },
+      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The outcome of Thomas’s story" },
 
       l1Text: {
         de: "Nach der heilenden Behandlung zeigen die Nachuntersuchungen, dass der Krebs verschwunden ist. Thomas spürt Erleichterung und Zuversicht, da die Therapie erfolgreich war. Die Ärzte erklären ihm, dass regelmäßige Nachkontrollen und ein gesunder Lebensstil weiterhin wichtig sind, um die Chancen auf ein dauerhaft krebsfreies Leben zu sichern",
@@ -727,28 +727,28 @@ B: [
 
       l2ExtraItems: [
         {
-          iconKey: "vaccine",
+          iconKey: "smoking",
           text: {
-            de: "Er nimmt empfohlene Vorsorge- und Kontrolltermine regelmäßig wahr.",
-            en: "He consistently attends recommended prevention and follow-up appointments.",
+            de: "Aufhören zu rauchen",
+            en: "Quit smoking",
           },
-          iconAlt: { de: "Vorsorge", en: "Prevention" },
+          iconAlt: { de: "Nichtrauchen", en: "No smoking" },
         },
         {
           iconKey: "alcohol",
           text: {
-            de: "Er reduziert Risikofaktoren wie Alkoholkonsum deutlich.",
-            en: "He significantly reduces risk factors such as alcohol consumption.",
+            de: "Weniger Alkohol trinken",
+            en: "Drink less alcohol",
           },
-          iconAlt: { de: "Alkohol reduzieren", en: "Reduce alcohol" },
+          iconAlt: { de: "Weniger Alkohol", en: "Less alcohol" },
         },
         {
-          iconKey: "weightgain",
+          iconKey: "sport",
           text: {
-            de: "Er stabilisiert seinen Alltag mit Bewegung, Ernährung und Erholung.",
-            en: "He stabilizes daily life with exercise, nutrition, and recovery.",
+            de: "Regelmäßig Sport treiben",
+            en: "Exercise regularly",
           },
-          iconAlt: { de: "Gesunder Lebensstil", en: "Healthy lifestyle" },
+          iconAlt: { de: "Sport", en: "Sport" },
         },
       ],
       l2AltImageSrc: ThomasHealthy,
@@ -764,7 +764,7 @@ C: [
     name: "Hero",
     props: {
       title: { de: "Leberkrebs und die Konsequenzen", en: "Liver Cancer and the Consequences" },
-      subtitle: { de: "Eine interaktive Geschichte", en: "An Interactive Story" },
+      subtitle: { de: "Eine interaktive Geschichte", en: "An interactive story" },
       author: { de: "von LUISA FLAIG", en: "by LUISA FLAIG" },
       scrollText: { de: "zum Beginnen Scrollen", en: "Scroll to Begin" },
       scrollTarget: "#definition",
@@ -774,10 +774,10 @@ C: [
   {
     name: "Thomas",
     props: {
-      heading: { de: "Gibt es eine Chance auf Heilung?", en: "Is There a Chance of a Cure?" },
+      heading: { de: "Gibt es eine Chance auf Heilung?", en: "Is there a chance of a cure?" },
       body: {
         de: "Thomas ist 52 Jahre alt. Bei einer Routineuntersuchung stellt sein Hausarzt erhöhte Leberwerte fest. Weitere Untersuchungen bringen Gewissheit: In seiner Leber haben sich mehrere Tumore gebildet, im übrigen Körper sind jedoch keine Metastasen nachweisbar.",
-        en: "Thomas is 52 years old. During a routine check-up, his GP notices elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detected elsewhere in the body.",
+        en: "Thomas is 52 years old. During a routine check-up, his doctor notices elevated liver values. Further tests confirm the diagnosis: several tumors have formed in his liver, but no metastases are detected elsewhere in the body.",
       },
 
       panel2Variant: "textImage",
@@ -793,7 +793,7 @@ C: [
   {
     name: "Leber",
     props: {
-      heading: { de: "Was ist Leberkrebs?", en: "What Is Liver Cancer?" },
+      heading: { de: "Was ist Leberkrebs?", en: "What is liver cancer?" },
     },
   },
 
@@ -831,7 +831,7 @@ C: [
   {
     name: "Organe",
     props: {
-      heading: { de: "Die Leber: ein besonderes Organ", en: "The Liver: A Special Organ" },
+      heading: { de: "Die Leber: ein besonderes Organ", en: "The liver: a special organ" },
     },
   },
 
@@ -854,7 +854,7 @@ C: [
   {
     name: "Sectionacht",
     props: {
-      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "How Does Liver Cancer Present Itself?" },
+      heading: { de: "Wie macht sich Leberkrebs bemerkbar?", en: "How does liver cancer present itself?" },
       introText: {
         de: "Da die Leber nicht schmerzempfindlich ist, verursacht der Leberkrebs zunächst keine Symptome bei Thomas. Im fortgeschrittenen Stadium äußert sich der Leberkrebs auf unterschiedliche Weise, die er rückblickend als Warnsignale hätte wahrnehmen können.",
         en: "Because the liver does not feel pain, liver cancer often causes no symptoms at first. At a later stage, it can show up in different ways that Thomas could, in hindsight, have recognized as warning signs.",
@@ -866,8 +866,8 @@ C: [
         { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Elevated temperature" } },
         { assetKey: "stroke", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
         { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "nausea", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
-        { assetKey: "liver", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin" } },
+        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "nausea", text: { de: "Gelbe Hautverfärbung", en: "Yellowing of the skin" } },
       ],
     },
   },
@@ -875,7 +875,7 @@ C: [
   {
     name: "Sectionneun",
     props: {
-      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How Is Liver Cancer Diagnosed?" },
+      heading: { de: "Wie wird Leberkrebs diagnostiziert?", en: "How is liver cancer diagnosed?" },
       introRight: {
         de: "Die Diagnostik soll klären, wie weit die Erkrankung fortgeschritten ist. Für Thomas bedeutet jeder Untersuchungsschritt eine neue unangenehme Konfrontation mit seiner Situation.",
         en: "Diagnostics aim to determine how advanced the disease is. For Thomas, each step of the examination feels like another unpleasant confrontation with his situation.",
@@ -917,7 +917,7 @@ C: [
   {
     name: "Sectionzehn",
     props: {
-      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How Is Liver Cancer Treated?" },
+      heading: { de: "Wie wird Leberkrebs behandelt?", en: "How is liver cancer treated?" },
 
       l1Text: {
         de: "Thomas erfährt das sein Behandlungsplan davon abhängt, wie weit die Krankheit fortgeschritten ist und in welchem Zustand sich seine Leber befindet.",
@@ -951,7 +951,7 @@ C: [
   {
   name: "Sectionelf",
   props: {
-    heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative Treatment for Liver Cancer" },
+    heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative treatment for liver cancer" },
 
     l1RightText: {
       de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -979,7 +979,7 @@ C: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative Treatment for Liver Cancer" },
+      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative treatment for liver cancer" },
 
       p1Text: {
         de: "Da der Krebs bei Thomas nach der heilenden Behandlung zurückkomt, kann eine palliative Therapie das Wachstum des Tumors nur noch verlangsamen und die Symptome lindern.",
@@ -987,9 +987,9 @@ C: [
       },
 
       p1Items: [
-        { assetKey: "weightgain", text: { de: "Abnehmen ohne Anstrengung", en: "Unintentional weight loss" } },
-        { assetKey: "junkfood", text: { de: "Appetitlosigkeit", en: "Loss of appetite" } },
-        { assetKey: "temperature", text: { de: "Erhöhte Temperatur", en: "Elevated temperature" } },
+        { assetKey: "stroke", text: { de: "Schmerzen", en: "Pain" } },
+        { assetKey: "liver", text: { de: "Übelkeit", en: "Nausea" } },
+        { assetKey: "scale", text: { de: "Weiterer Gewichtsverlust", en: "Further weight loss" } },
       ],
 
       p2Text: {
@@ -998,9 +998,9 @@ C: [
       },
 
       p2Items: [
-        { assetKey: "stroke", text: { de: "Schmerzen im Oberbauch", en: "Upper abdominal pain" } },
-        { assetKey: "fatigue", text: { de: "Schwäche und Müdigkeit", en: "Weakness and fatigue" } },
-        { assetKey: "weightgain", text: { de: "Schwellungen des Bauches", en: "Abdominal swelling" } },
+        { assetKey: "infusion", text: { de: "Chemotherapie", en: "Chemotherapy" } },
+        { assetKey: "medication", text: { de: "Schmerzmittel", en: "Pain medication" } },
+        { assetKey: "junkfood", text: { de: "Kalorienreiches Essen", en: "High-calorie food" } },
       ],
     },
   },
@@ -1008,7 +1008,7 @@ C: [
   {
     name: "Sectiondreizehn",
     props: {
-      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of Liver Cancer" },
+      heading: { de: "Prognose von Leberkrebs", en: "Prognosis of liver cancer" },
 
       l1Text1: { de: "Das hängt vom Stadium des Krebses und dem Zustand der Leber ab.", en: "This depends on the cancer stage and the condition of the liver." },
       l1Text2: { de: "5 Jahres Überlebensrate:", en: "5-year survival rate:" },
@@ -1041,7 +1041,7 @@ C: [
   {
     name: "Sectionvierzehn",
     props: {
-      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How Can I Prevent Liver Cancer?" },
+      heading: { de: "Wie kann ich Leberkrebs vorbeugen?", en: "How can I prevent liver cancer?" },
 
       introText: {
         de: "Trotz vermeidbarer Risikofaktoren für Leberkrebs weigert sich Thomas, seinen ungesunden Lebensstil anzupassen.",
@@ -1058,7 +1058,7 @@ C: [
       items: [
         { assetKey: "vaccine", text: { de: "Impfung gegen Hepatitis", en: "Vaccination against hepatitis" } },
         { assetKey: "alcohol", text: { de: "Alkoholkonsum einschränken", en: "Limit alcohol consumption" } },
-        { assetKey: "weightgain", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
+        { assetKey: "scalewithweight", text: { de: "Gewicht in einem gesunden Bereich halten", en: "Maintain a healthy weight" } },
         { assetKey: "smoking", text: { de: "Aufhören zu rauchen", en: "Quit smoking" } },
       ],
     },
@@ -1067,7 +1067,7 @@ C: [
   {
     name: "Sectionfuenfzehn",
     props: {
-      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The Outcome of Thomas’s Story" },
+      heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The outcome of Thomas’s story" },
 
       l1Text: {
         de: "Trotz palliativer Behandlung verschlechtert sich Thomas’ Zustand weiter; wenige Monate später stirbt er an den Folgen des Leberkrebses. Rückblickend wird deutlich, dass eine frühzeitige Änderung des Lebensstils seine Chancen auf eine Verlangsamung der Erkrankung hätte erhöhen können, da ein stabilerer Leberzustand den Krankheitsverlauf positiv beeinflusst hätte.",
@@ -1081,28 +1081,28 @@ C: [
 
       l2ExtraItems: [
         {
-          iconKey: "vaccine",
+          iconKey: "smoking",
           text: {
-            de: "Er nahm medizinische Unterstützung und Nachsorge nicht konsequent an.",
-            en: "He did not consistently accept medical support and follow-up care.",
+            de: "Nicht aufgehört zu rauchen",
+            en: "Did not quit smoking",
           },
-          iconAlt: { de: "Nachsorge verpasst", en: "Missed follow-up" },
+          iconAlt: { de: "Weiter geraucht", en: "Continued smoking" },
         },
         {
           iconKey: "alcohol",
           text: {
-            de: "Er hielt an belastenden Gewohnheiten fest, obwohl Risiken bekannt waren.",
-            en: "He maintained harmful habits despite known risks.",
+            de: "Alkoholkonsum nicht reduziert",
+            en: "Did not reduce alcohol consumption",
           },
-          iconAlt: { de: "Risikoverhalten", en: "Risk behavior" },
+          iconAlt: { de: "Alkohol nicht reduziert", en: "Alcohol not reduced" },
         },
         {
-          iconKey: "smoking",
+          iconKey: "sport",
           text: {
-            de: "Er änderte seinen Lebensstil zu spät, um den Verlauf noch zu beeinflussen.",
-            en: "He changed his lifestyle too late to still influence the course.",
+            de: "Keine nachhaltige Veränderung des Lebensstils",
+            en: "No lasting lifestyle change",
           },
-          iconAlt: { de: "Zu späte Änderung", en: "Change too late" },
+          iconAlt: { de: "Kein Sport", en: "No sport" },
         },
       ],
       l2AltImageSrc: ThomasDead,

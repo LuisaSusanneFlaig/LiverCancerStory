@@ -99,9 +99,14 @@ const Sectionvierzehn = ({
         right={
           <div>
             <p>{t(introText)}</p>
-            <ul className="list-disc m-10">
+            <ul className="list-disc m-10 text-base/relaxed sm:text-lg/relaxed md:text-3xl/relaxed lg:text-2xl/relaxed xl:text-3xl/relaxed font-medium">
               {resolvedBullets.map((b, i) => (
-                <li key={i}>{t(b)}</li>
+                <li
+                  key={i}
+                  className="text-base/relaxed sm:text-lg/relaxed md:text-3xl/relaxed lg:text-2xl/relaxed xl:text-3xl/relaxed font-medium"
+                >
+                  {t(b)}
+                </li>
               ))}
             </ul>
           </div>
@@ -109,7 +114,7 @@ const Sectionvierzehn = ({
       />
 
       <CenterPanel>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {items.map((item, idx) => {
             const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
 
@@ -117,7 +122,7 @@ const Sectionvierzehn = ({
               <div
                 key={idx}
                 ref={addToRefs}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center text-center w-full"
               >
                 <div className="h-32 w-full flex items-center justify-center">
                   {src ? (

@@ -20,6 +20,7 @@ import alcohol_blue from "/src/images/blue_icons/alcohol.png";
 import weight_blue from "/src/images/blue_icons/weightgain.png";
 import smoking_blue from "/src/images/blue_icons/smoking.png";
 import scalewithweight_blue from "/src/images/blue_icons/scaleweight.png";
+import sport_blue from "/src/images/blue_icons/sport.png";
 import stroke_blue from "/src/images/blue_icons/stroke.png";
 import age_blue from "/src/images/blue_icons/age.png";
 
@@ -60,6 +61,7 @@ import alcohol_green from "/src/images/green_icons/alcohol.png";
 import weight_green from "/src/images/green_icons/weightgain.png";
 import smoking_green from "/src/images/green_icons/nosmoking.png";
 import scalewithweight_green from "/src/images/green_icons/scaleweight.png";
+import sport_green from "/src/images/green_icons/sport.png";
 import stroke_green from "/src/images/green_icons/stroke.png";
 import age_green from "/src/images/green_icons/age.png";
 
@@ -100,6 +102,7 @@ import alcohol_red from "/src/images/red_icons/alcohol.png";
 import weight_red from "/src/images/red_icons/weightgain.png";
 import smoking_red from "/src/images/red_icons/nosmoking.png";
 import scalewithweight_red from "/src/images/red_icons/scaleweight.png";
+import sport_red from "/src/images/red_icons/sport.png";
 import stroke_red from "/src/images/red_icons/stroke.png";
 import age_red from "/src/images/red_icons/age.png";
 
@@ -143,6 +146,7 @@ export const assetsByTheme = {
     weightgain: weight_blue,
     smoking: smoking_blue,
     scalewithweight: scalewithweight_blue,
+    sport: sport_blue,
     stroke: stroke_blue,
     age: age_blue, 
 
@@ -180,6 +184,7 @@ export const assetsByTheme = {
     weightgain: weight_green,
     smoking: smoking_green,
     scalewithweight: scalewithweight_green,
+    sport: sport_green,
     stroke: stroke_green,
     age: age_green,
 
@@ -214,6 +219,7 @@ export const assetsByTheme = {
     weightgain: weight_red,
     smoking: smoking_red,
     scalewithweight: scalewithweight_red,
+    sport: sport_red,
     stroke: stroke_red,
     age: age_red,
 
