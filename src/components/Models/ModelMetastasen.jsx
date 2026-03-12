@@ -73,7 +73,7 @@ const ModelMetastasen = ({ controlsEnabled = true }) => {
       ? "In liver cancer, abnormal growth of cells in the liver forms tumors."
       : "Bei Leberkrebs bildet das abnorme Wachstum von Zellen in der Leber Tumore.";
   return (
-    <Canvas camera={{ position: [0, 1, 1], fov: 50 }}>
+    <Canvas camera={{ position: [0, 1, 5], fov: 50 }}>
       <ambientLight intensity={10} color="#1a1a40"/>
        {/* Key light */}
   <directionalLight

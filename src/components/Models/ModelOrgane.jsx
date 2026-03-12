@@ -88,7 +88,7 @@ const ModelOrgane = ({ controlsEnabled = true }) => {
   const { lang } = useLanguage();
 
   return (
-    <Canvas camera={{ position: [0, 1, 1], fov: 50 }}>
+    <Canvas camera={{ position: [0, 1, 5], fov: 50 }}>
       <ambientLight intensity={10} color="#1a1a40" />
       <directionalLight position={[5, 5, 5]} intensity={2} />
       <directionalLight position={[-5, -5, -5]} intensity={2} />

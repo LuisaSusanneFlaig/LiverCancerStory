@@ -28,7 +28,7 @@ const Organe = ({ heading, theme = "blue" }) => {
     : { de: "3D-Interaktion einschalten", en: "Turn on 3D interaction" };
 
   return (
-    <section id="organe" className="relative h-screen overflow-hidden">
+    <section id="organe" className="relative overflow-hidden">
       <div className="flex flex-col gap-7">
         <h2>
           {t(heading)}
