@@ -62,7 +62,10 @@ const App = () => {
   // =========================================================
 
   // --- DEV: use pid from URL if present; otherwise create a local PID
-  const pidFromUrl = searchParams.get("pid") || "";
+  const pidFromUrl =
+    searchParams.get("PROLIFIC_PID") ||
+    searchParams.get("pid") ||
+    "";
   const pid = pidFromUrl || getOrCreateLocalPid();
 
   // --- PROLIFIC (later): you will typically receive pid in URL already

@@ -7,7 +7,7 @@ import { useLanguage } from "../Context/LanguageContext";
 
 const METASTASEN_TOOLTIP = {
   anchor: [-60, 20, 0.4],
-  label: [170, 25, 0.32],
+  label: [140, 25, 0.32],
 };
 
 const MetastasenTooltip = ({ isMobile, isTablet, text }) => {
