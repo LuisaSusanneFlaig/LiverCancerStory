@@ -19,7 +19,7 @@ import Sectionfuenfzehn from "../src/components/Sectionfuenfzehn";
 
 import ThomasIll from "../src/images/Thomas_ill.png";
 import ThomasHealthy from "../src/images/Thomas_healthy.png";
-import ThomasDead from "../src/images/Thomas_dead.png";
+import ThomasSick from "../src/images/Thomas_sick.png";
 import LT1 from "../src/images/LT1.png";
 import LT2 from "../src/images/LT2.png";
 import LT3 from "../src/images/LT3.png";
@@ -1070,13 +1070,13 @@ C: [
       heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The outcome of Thomas’s story" },
 
       l1Text: {
-        de: "Trotz palliativer Behandlung verschlechtert sich Thomas’ Zustand weiter; wenige Monate später stirbt er an den Folgen des Leberkrebses. Rückblickend wird deutlich, dass eine frühzeitige Änderung des Lebensstils seine Chancen auf eine Verlangsamung der Erkrankung hätte erhöhen können, da ein stabilerer Leberzustand den Krankheitsverlauf positiv beeinflusst hätte.",
-        en: "Despite palliative treatment, Thomas’s condition continues to worsen; a few months later he dies from the consequences of liver cancer. In hindsight, it becomes clear that an earlier lifestyle change could have increased his chances of slowing the disease, as a more stable liver condition could have positively influenced the course.",
+        de: "Trotz palliativer Behandlung ist der Leberkrebs bei Thomas nicht verschwunden. Sein Zustand bleibt instabil, und er fühlt sich im Alltag häufig erschöpft und krank. Rückblickend wird deutlich, dass eine frühzeitige Änderung seines Lebensstils seine Chancen auf einen günstigeren Krankheitsverlauf hätte verbessern können.",
+        en: "Despite palliative treatment, Thomas’s liver cancer has not gone away. His condition remains unstable, and he often feels exhausted and unwell in everyday life. In hindsight, it becomes clear that an earlier change in lifestyle could have improved his chances of a more favorable course of disease.",
       },
 
       l2LeftText: {
-        de: "Thomas hat bewusst Gelegenheiten verpasst, die ihm hätten ein längeres Leben ermöglichen können.",
-        en: "Thomas knowingly missed opportunities that could have allowed him to live longer.",
+        de: "Thomas lebt weiter mit der Erkrankung, aber sein Alltag ist stark von Beschwerden und Unsicherheit geprägt.",
+        en: "Thomas continues to live with the disease, but his daily life is heavily shaped by symptoms and uncertainty.",
       },
 
       l2ExtraItems: [
@@ -1105,8 +1105,8 @@ C: [
           iconAlt: { de: "Kein Sport", en: "No sport" },
         },
       ],
-      l2AltImageSrc: ThomasDead,
-      l2AltImageAlt: { de: "Thomas verstorben", en: "Thomas deceased" },
+      l2AltImageSrc: ThomasSick,
+      l2AltImageAlt: { de: "Thomas krank", en: "Thomas sick" },
       l2ImageSrc: ThomasAndDoctor,
       l2ImageAlt: { de: "Thomas und Arzt", en: "Thomas and doctor" },
     },

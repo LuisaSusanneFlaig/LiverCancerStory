@@ -4,11 +4,11 @@ import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Model as Leberneu } from "@/components/Leberneu";
 
-const RotatingLeber = ({ isMobile, isTablet }) => {
+const RotatingLeber = ({ isMobile, isTablet, shouldRotate }) => {
   const groupRef = useRef(null);
 
   useFrame(() => {
-    if (groupRef.current) groupRef.current.rotation.y += 0.003;
+    if (shouldRotate && groupRef.current) groupRef.current.rotation.y += 0.003;
   });
 
   return (
@@ -28,7 +28,7 @@ const ModelLeber = ({ controlsEnabled = true }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (
-<Canvas camera={{ position: [1, 1, 5], fov: 50 }}>
+<Canvas camera={{ position: [1, 1, 6], fov: 50 }}>
   {/* Soft base light */}
   <ambientLight intensity={0.6} color="#1a1a40" />
 
@@ -50,9 +50,17 @@ const ModelLeber = ({ controlsEnabled = true }) => {
     enableZoom={false}
     maxDistance={20}
     minDistance={5}
+    minPolarAngle={Math.PI / 3.2}
+    maxPolarAngle={Math.PI / 1.85}
+    minAzimuthAngle={-Math.PI / 3}
+    maxAzimuthAngle={Math.PI / 3}
   />
 
-  <RotatingLeber isMobile={isMobile} isTablet={isTablet} />
+  <RotatingLeber
+    isMobile={isMobile}
+    isTablet={isTablet}
+    shouldRotate={controlsEnabled}
+  />
 </Canvas>
 
   )

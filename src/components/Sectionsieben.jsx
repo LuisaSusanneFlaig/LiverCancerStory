@@ -10,8 +10,8 @@ const Sectionsieben = ({ theme = "blue" }) => {
   const [controlsEnabled, setControlsEnabled] = useState(!isTouchLayout);
   const interactionSrc = getAsset(theme, "interaction");
   const interactionLabel = controlsEnabled
-    ? { de: "3D-Interaktion ausschalten", en: "Turn off 3D interaction" }
-    : { de: "3D-Interaktion einschalten", en: "Turn on 3D interaction" };
+    ? { de: "Interaktion stoppen", en: "Stop interaction" }
+    : { de: "Interaktion starten", en: "Start interaction" };
 
   useEffect(() => {
     setControlsEnabled(!isTouchLayout);
@@ -25,23 +25,27 @@ const Sectionsieben = ({ theme = "blue" }) => {
 
   return (
     <section id="sectionsieben" className="relative overflow-hidden">
-      <div className="hero-3d-layout relative">
+      <div className="flex flex-col items-center gap-4">
         <button
           type="button"
           aria-pressed={controlsEnabled}
           aria-label={t(interactionLabel)}
           onClick={() => setControlsEnabled((value) => !value)}
-          className={`absolute top-4 left-1/2 z-20 -translate-x-1/2 rounded-full transition-opacity ${
+          className={`z-20 flex items-center gap-3 rounded-full bg-white/55 px-4 py-2 text-sm font-medium text-slate-900 shadow-md backdrop-blur-sm transition-opacity ${
             controlsEnabled ? "opacity-100" : "opacity-65"
           }`}
         >
           <img
             src={interactionSrc}
             alt=""
-            className="w-16 md:w-20 lg:w-24"
+            className="w-10 md:w-12 lg:w-14"
           />
+          <span>{t(interactionLabel)}</span>
         </button>
+
+        <div className="hero-3d-layout relative w-full">
         <ModelMetastasen controlsEnabled={controlsEnabled} />
+        </div>
       </div>
     </section>
   );

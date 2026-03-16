@@ -9,13 +9,13 @@ const ORGANE_TOOLTIPS = [
   {
     id: "heart",
     anchor: [1, 0.8, 0.1],
-    label: [0.65, 0.52, 0.22],
+    label: [2.5, 1.12, 0.26],
     text: { de: "Herz", en: "Heart" },
   },
   {
     id: "liver_vessels",
     anchor: [-0.9, -0.04, 0.08],
-    label: [-0.72, 0.18, 0.24],
+    label: [-2.5, 0.42, 0.3],
     text: {
       de: "Zahlreiche Blutgefaesse versorgen und entwaessern die Leber",
       en: "Numerous blood vessels supply and drain the liver",
@@ -51,7 +51,9 @@ const OrganeTooltips = ({ isMobile, isTablet, lang }) => {
                 padding: "6px 10px",
                 fontSize: textSize,
                 lineHeight: "1.25",
-                whiteSpace: "nowrap",
+                whiteSpace: "normal",
+                maxWidth: isMobile ? "150px" : isTablet ? "190px" : "230px",
+                textAlign: "center",
                 pointerEvents: "none",
               }}
             >
@@ -64,12 +66,12 @@ const OrganeTooltips = ({ isMobile, isTablet, lang }) => {
   );
 };
 
-const RotatingOrgane = ({ isMobile, isTablet, lang }) => {
+const RotatingOrgane = ({ isMobile, isTablet, lang, shouldRotate }) => {
   const groupRef = useRef(null);
   const modelScale = isMobile ? 0.012 : isTablet ? 0.016 : 0.02;
 
   useFrame(() => {
-    if (groupRef.current) groupRef.current.rotation.y += 0.003;
+    if (shouldRotate && groupRef.current) groupRef.current.rotation.y += 0.003;
   });
 
   return (
@@ -88,12 +90,27 @@ const ModelOrgane = ({ controlsEnabled = true }) => {
   const { lang } = useLanguage();
 
   return (
-    <Canvas camera={{ position: [0, 1, 5], fov: 50 }}>
+    <Canvas camera={{ position: [0, 1, 6], fov: 50 }}>
       <ambientLight intensity={10} color="#1a1a40" />
       <directionalLight position={[5, 5, 5]} intensity={2} />
       <directionalLight position={[-5, -5, -5]} intensity={2} />
-      <OrbitControls enabled={controlsEnabled} enablePan={false} enableZoom={false} maxDistance={20} minDistance={5} />
-      <RotatingOrgane isMobile={isMobile} isTablet={isTablet} lang={lang} />
+      <OrbitControls
+        enabled={controlsEnabled}
+        enablePan={false}
+        enableZoom={false}
+        maxDistance={20}
+        minDistance={5}
+        minPolarAngle={Math.PI / 3.2}
+        maxPolarAngle={Math.PI / 1.85}
+        minAzimuthAngle={-Math.PI / 3}
+        maxAzimuthAngle={Math.PI / 3}
+      />
+      <RotatingOrgane
+        isMobile={isMobile}
+        isTablet={isTablet}
+        lang={lang}
+        shouldRotate={controlsEnabled}
+      />
     </Canvas>
   );
 };

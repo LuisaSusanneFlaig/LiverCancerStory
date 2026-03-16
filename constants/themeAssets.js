@@ -40,6 +40,9 @@ import curative4_blue_de from "/src/images/blue_icons/Currative4_blue_ger.png";
 import curative4_blue_en from "/src/images/blue_icons/Currative4_blue_en.png";
 import ratio_blue from "/src/images/blue_icons/img1.png";
 import interaction_blue from "/src/images/blue_icons/Interaction.png";
+import liver_1_blue from "/src/images/blue_icons/Liver_1.png";
+import liver_2_blue from "/src/images/blue_icons/Liver_2.png";
+import liver_3_blue from "/src/images/blue_icons/Liver_3.png";
 
 // ============ GREEN ============
 import line_green from "/src/images/green_icons/Line.svg";
@@ -81,6 +84,9 @@ import curative4_green_de from "/src/images/green_icons/Currative4_green_ger.png
 import curative4_green_en from "/src/images/green_icons/Currative4_green_en.png";
 import ratio_green from "/src/images/green_icons/img1.png";
 import interaction_green from "/src/images/green_icons/Interaction.png";
+import liver_1_green from "/src/images/green_icons/Liver_1.png";
+import liver_2_green from "/src/images/green_icons/Liver_2.png";
+import liver_3_green from "/src/images/green_icons/Liver_3.png";
 
 // ============ RED ============
 import line_red from "/src/images/red_icons/Line.svg";
@@ -122,6 +128,9 @@ import curative4_red_de from "/src/images/red_icons/Currative4_red_ger.png";
 import curative4_red_en from "/src/images/red_icons/Currative4_red_en.png";
 import ratio_red from "/src/images/red_icons/img1.png";
 import interaction_red from "/src/images/red_icons/Interaction.png";
+import liver_1_red from "/src/images/red_icons/Liver_1.png";
+import liver_2_red from "/src/images/red_icons/Liver_2.png";
+import liver_3_red from "/src/images/red_icons/Liver_3.png";
 
 // ============ MAPS ============
 export const assetsByTheme = {
@@ -163,6 +172,9 @@ export const assetsByTheme = {
     curative4: { de: curative4_blue_de, en: curative4_blue_en },
     ratio: ratio_blue,
     interaction: interaction_blue,
+    liver1: liver_1_blue,
+    liver2: liver_2_blue,
+    liver3: liver_3_blue,
   },
 
   green: {
@@ -198,6 +210,9 @@ export const assetsByTheme = {
     curative4: { de: curative4_green_de, en: curative4_green_en },
     ratio: ratio_green,
     interaction: interaction_green,
+    liver1: liver_1_green,
+    liver2: liver_2_green,
+    liver3: liver_3_green,
   },
 
   red: {
@@ -233,6 +248,9 @@ export const assetsByTheme = {
     curative4: { de: curative4_red_de, en: curative4_red_en },
     ratio: ratio_red,
     interaction: interaction_red,
+    liver1: liver_1_red,
+    liver2: liver_2_red,
+    liver3: liver_3_red,
   },
 };
 

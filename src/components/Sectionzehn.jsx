@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useMemo } from "react";
+import React, { useLayoutEffect, useRef, useMemo, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
@@ -27,6 +27,7 @@ const Sectionzehn = ({
   l3Order = "textFirst",
 }) => {
   const { lang = "de" } = useLanguage();
+  const [openInfo, setOpenInfo] = useState(null);
 
   const t = useMemo(() => {
     return (value) => {
@@ -79,11 +80,32 @@ const Sectionzehn = ({
   const l3ImgSrc = l3ImageKey
     ? getAsset(theme, l3ImageKey, lang)
     : pickImg(l3ImageSrc);
+  const treatmentInfos = {
+    curative: {
+      title: { de: "Heilende Behandlung", en: "Curative treatment" },
+      body: {
+        de: "Ziel ist es, den Krebs vollständig zu entfernen oder zu zerstören.",
+        en: "The goal is to remove or destroy the cancer completely.",
+      },
+      positionClassName: "left-[19%] top-[58%]",
+      popupClassName: "left-[22%] top-[66%] -translate-x-1/2",
+    },
+    palliative: {
+      title: { de: "Palliative Behandlung", en: "Palliative treatment" },
+      body: {
+        de: "Sie kann den Krebs nicht heilen, aber Beschwerden lindern und das Tumorwachstum verlangsamen.",
+        en: "It cannot cure the cancer, but it can relieve symptoms and slow tumor growth.",
+      },
+      positionClassName: "right-[19%] top-[58%]",
+      popupClassName: "right-[22%] top-[66%] translate-x-1/2",
+    },
+  };
 
   return (
     <ScrollSection id="sectionzehn" ref={containerRef}>
       <SplitPanel
         ref={layout1Ref}
+        className="z-10"
         left={
           <h2>
             {t(heading)}
@@ -93,19 +115,51 @@ const Sectionzehn = ({
         right={
           <>
             <p>{t(l1Text)}</p>
-            {l1ImgSrc ? <img src={l1ImgSrc} alt={t(l1ImageAlt)} /> : null}
+            {l1ImgSrc ? (
+              <div className="relative w-full max-w-3xl">
+                <img src={l1ImgSrc} alt={t(l1ImageAlt)} className="w-full" />
+                {Object.entries(treatmentInfos).map(([key, info]) => {
+                  const isOpen = openInfo === key;
+                  return (
+                    <React.Fragment key={key}>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-label={t(info.title)}
+                        onClick={() =>
+                          setOpenInfo((current) => (current === key ? null : key))
+                        }
+                        className={`absolute ${info.positionClassName} flex h-8 w-8 items-center justify-center rounded-full border border-white/70 bg-slate-900/85 text-lg font-semibold text-white shadow-md transition hover:scale-105`}
+                      >
+                        ?
+                        </button>
+                      {isOpen ? (
+                        <div
+                          className={`absolute ${info.popupClassName} z-10 w-56 rounded-xl border border-white/15 bg-slate-950/90 p-3 text-sm text-white shadow-xl backdrop-blur-sm md:w-64`}
+                        >
+                          <p className="mb-1 text-base font-semibold">{t(info.title)}</p>
+                          <p className="text-sm leading-relaxed">{t(info.body)}</p>
+                        </div>
+                      ) : null}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            ) : null}
           </>
         }
       />
 
       <SplitPanel
         ref={layout2Ref}
+        className="z-0"
         left={<p>{t(l2LeftText)}</p>}
         right={<p>{t(l2RightText)}</p>}
       />
 
       <SplitPanel
         ref={layout3Ref}
+        className="z-0"
         left={
           l3Order === "imageFirst" ? (
             l3ImgSrc ? <img src={l3ImgSrc} alt={t(l3ImageAlt)} /> : null

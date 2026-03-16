@@ -6,8 +6,8 @@ import { Model as Metastasen } from "@/components/Metastasen.jsx";
 import { useLanguage } from "../Context/LanguageContext";
 
 const METASTASEN_TOOLTIP = {
-  anchor: [0.18, 0.05, 0.04],
-  label: [75, 25, 0.26],
+  anchor: [-60, 20, 0.4],
+  label: [170, 25, 0.32],
 };
 
 const MetastasenTooltip = ({ isMobile, isTablet, text }) => {
@@ -31,8 +31,8 @@ const MetastasenTooltip = ({ isMobile, isTablet, text }) => {
             padding: "8px 12px",
             lineHeight: "1.25",
             fontSize: textSize,
-            width: isMobile ? "190px" : isTablet ? "240px" : "280px",
-            maxWidth: "280px",
+            width: isMobile ? "170px" : isTablet ? "210px" : "240px",
+            maxWidth: "240px",
             textAlign: "center",
             pointerEvents: "none",
           }}
@@ -44,11 +44,11 @@ const MetastasenTooltip = ({ isMobile, isTablet, text }) => {
   );
 };
 
-const RotatingMetastasen = ({ isMobile, isTablet, text }) => {
+const RotatingMetastasen = ({ isMobile, isTablet, text, shouldRotate }) => {
   const groupRef = useRef(null);
 
   useFrame(() => {
-    if (groupRef.current) groupRef.current.rotation.y += 0.003;
+    if (shouldRotate && groupRef.current) groupRef.current.rotation.y += 0.003;
   });
 
   return (
@@ -73,7 +73,7 @@ const ModelMetastasen = ({ controlsEnabled = true }) => {
       ? "In liver cancer, abnormal growth of cells in the liver forms tumors."
       : "Bei Leberkrebs bildet das abnorme Wachstum von Zellen in der Leber Tumore.";
   return (
-    <Canvas camera={{ position: [0, 1, 5], fov: 50 }}>
+    <Canvas camera={{ position: [0, 1, 6], fov: 50 }}>
       <ambientLight intensity={10} color="#1a1a40"/>
        {/* Key light */}
   <directionalLight
@@ -92,8 +92,17 @@ const ModelMetastasen = ({ controlsEnabled = true }) => {
         enableZoom={false}
         maxDistance={20}
         minDistance={5}
+        minPolarAngle={Math.PI / 3.2}
+        maxPolarAngle={Math.PI / 1.85}
+        minAzimuthAngle={-Math.PI / 3}
+        maxAzimuthAngle={Math.PI / 3}
       />
-      <RotatingMetastasen isMobile={isMobile} isTablet={isTablet} text={metastasenText} />
+      <RotatingMetastasen
+        isMobile={isMobile}
+        isTablet={isTablet}
+        text={metastasenText}
+        shouldRotate={controlsEnabled}
+      />
     </Canvas>
   )
 }   

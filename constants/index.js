@@ -1,5 +1,4 @@
 
-
 export const navTitles = {
   definition: "Definition",
   anatomie: "Anatomie",
@@ -32,23 +31,23 @@ export const sectionGroupsByVersion = {
   },
 
   B: {
-    prävention: ["sectionvierzehn"],
+    definition: ["leber", "deutschland"],
     anatomie: ["organe", "sectionsechs", "sectionsieben"],
     symptome: ["sectionacht", "sectionneun"],
-    definition: ["leber", "deutschland"],
     diagnose: ["sectionzehn"],
     behandlung: ["sectionelf", "sectionzwoelf"],
     prognose: ["sectiondreizehn"],
+    prävention: ["sectionvierzehn"],
   },
 
   C: {
-    symptome: ["sectionacht", "sectionneun"],
-    prognose: ["sectiondreizehn"],
     definition: ["leber", "deutschland"],
     anatomie: ["organe", "sectionsechs", "sectionsieben"],
-    prävention: ["sectionvierzehn"],
+    symptome: ["sectionacht", "sectionneun"],
     diagnose: ["sectionzehn"],
     behandlung: ["sectionelf", "sectionzwoelf"],
+    prognose: ["sectiondreizehn"],
+    prävention: ["sectionvierzehn"],
   },
 };
 
