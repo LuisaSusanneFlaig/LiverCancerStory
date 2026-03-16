@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext"; // ✅ Pfad ggf. anpassen
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,8 +43,8 @@ const Sectionzwoelf = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=200%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
@@ -51,7 +52,7 @@ const Sectionzwoelf = ({
       tl.to(initialRef.current, {
         autoAlpha: 0,
         x: -200,
-        duration: 1,
+        duration: animationConfig.panel.transitionDuration,
         ease: "none",
       });
 
@@ -61,11 +62,12 @@ const Sectionzwoelf = ({
         remainingRef.current,
         {
           x: 0,
-          duration: 1,
+          duration: animationConfig.panel.transitionDuration,
           ease: "none",
         },
         "<"
       );
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

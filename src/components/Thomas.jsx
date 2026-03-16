@@ -6,6 +6,7 @@ import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import CenterPanel from "./Layout/CenterPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext"; // ✅ ggf. Pfad anpassen
 
 gsap.registerPlugin(ScrollTrigger);
@@ -46,8 +47,8 @@ const Thomas = ({
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "+=100%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
@@ -55,14 +56,15 @@ const Thomas = ({
       tl.to(panel1Ref.current, {
         opacity: 0,
         x: -100,
-        duration: 1,
+        duration: animationConfig.panel.transitionDuration,
       });
 
       tl.fromTo(
         panel2Ref.current,
         { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: 1 }
+        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, triggerRef);
 
     return () => ctx.revert();

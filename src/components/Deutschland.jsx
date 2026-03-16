@@ -5,6 +5,7 @@ import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
 import { useLanguage } from "./Context/LanguageContext"; 
+import { animationConfig } from "../lib/animationConfig";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,27 +49,29 @@ const Deutschland = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=100%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(panel1.current, { x: -100, opacity: 0, duration: 1 });
+      tl.to(panel1.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(
         panel2.current,
         { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: 1 }
+        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
 
-      tl.to(panel2.current, { x: -100, opacity: 0, duration: 1 });
+      tl.to(panel2.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(
         panel3.current,
         { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: 1 }
+        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

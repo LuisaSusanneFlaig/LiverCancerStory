@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext"; // ✅ Pfad ggf. anpassen
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,18 +59,20 @@ const Sectionzehn = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=400%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
+      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import { SplitText } from "gsap/all";
 import { getAsset } from "../../constants/themeAssets"; // Pfad ok?
 import { useLanguage } from "./Context/LanguageContext"; // anpassen falls dein Pfad anders ist
+import { animationConfig } from "../lib/animationConfig";
 
 const Hero = ({
   theme = "blue",
@@ -37,17 +38,17 @@ const Hero = ({
 
         gsap.from(heroSplit.lines, {
           yPercent: 150,
-          duration: 1.8,
+          duration: animationConfig.hero.introDuration,
           ease: "expo.out",
-          stagger: 0.06,
+          stagger: animationConfig.hero.textStagger,
         });
 
         gsap.from(paragraphSplit.lines, {
           opacity: 0,
           yPercent: 150,
-          duration: 1.8,
+          duration: animationConfig.hero.introDuration,
           ease: "expo.out",
-          stagger: 0.06,
+          stagger: animationConfig.hero.textStagger,
           delay: 1,
         });
 
@@ -56,7 +57,7 @@ const Hero = ({
           repeat: -1,
           yoyo: true,
           ease: "power1.inOut",
-          duration: 1,
+          duration: animationConfig.hero.indicatorDuration,
           delay: 2,
         });
       });
@@ -81,7 +82,7 @@ const Hero = ({
   const scrollToDefinition = () => {
     gsap.to(window, {
       scrollTo: scrollTarget,
-      duration: 1.2,
+      duration: animationConfig.hero.scrollJumpDuration,
       ease: "power2.inOut",
     });
   };

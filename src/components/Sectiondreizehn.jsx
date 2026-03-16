@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext"; // ✅ Pfad ggf. anpassen
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,25 +74,26 @@ const Sectiondreizehn = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=300%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(l1RateBlockRef.current, { opacity: 1, x: 0, duration: 0.5 });
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 0.5 });
-      tl.to(layout2Ref.current, { opacity: 1, x: 0, duration: 0.5 });
-      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: 0.5 });
-      tl.to(step2TextRef.current, { opacity: 1, x: 0, duration: 0.5 });
+      tl.to(l1RateBlockRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout2Ref.current, { opacity: 1, x: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step2TextRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
       tl.to(step2ImagesRef.current, {
         opacity: 1,
         x: 0,
-        duration: 0.5,
-        stagger: 0.2,
+        duration: animationConfig.reveal.defaultDuration,
+        stagger: animationConfig.panel.staggerDelay,
       });
-      tl.to(step3TextRef.current, { opacity: 1, x: 0, duration: 0.5 });
-      tl.to(step3ImageRef.current, { opacity: 1, x: 0, duration: 0.5 });
+      tl.to(step3TextRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step3ImageRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

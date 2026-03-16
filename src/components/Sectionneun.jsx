@@ -7,6 +7,7 @@ import CenterPanel from "./Layout/CenterPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
 import ThomasMrt from "../images/Thomas_MRT.png";
 import { useLanguage } from "./Context/LanguageContext";
+import { animationConfig } from "../lib/animationConfig";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,33 +77,40 @@ const Sectionneun = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=400%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout8Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout8Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout8Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout8Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout3Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout3Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout4Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout4Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout4Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout4Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout5Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout5Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout5Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout5Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout6Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
-      tl.to(layout6Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.fromTo(layout6Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
+      tl.to(layout6Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout7Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 1 });
+      tl.fromTo(layout7Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

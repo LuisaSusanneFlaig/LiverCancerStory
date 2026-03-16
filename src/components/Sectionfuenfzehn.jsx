@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -60,28 +61,29 @@ const Sectionfuenfzehn = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: useAltLayout2 ? "+=400%" : "+=260%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: 1 });
+      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(
         layout2Ref.current,
-        { opacity: 1, x: 0, duration: 0.8 },
-        useAltLayout2 ? "-=0.2" : "-=0.5"
+        { opacity: 1, x: 0, duration: animationConfig.panel.transitionDuration },
+        useAltLayout2 ? animationConfig.panel.overlapTight : animationConfig.panel.overlapLoose
       );
-      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: 0.6 });
+      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
 
       if (useAltLayout2) {
-        tl.to(extraItem1Ref.current, { opacity: 1, x: 0, duration: 0.4 });
-        tl.to(extraItem2Ref.current, { opacity: 1, x: 0, duration: 0.4 });
-        tl.to(extraItem3Ref.current, { opacity: 1, x: 0, duration: 0.4 });
-        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: 0.4 });
+        tl.to(extraItem1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(extraItem2Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(extraItem3Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
       } else {
-        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: 0.6 });
+        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
       }
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
     return () => ctx.revert();

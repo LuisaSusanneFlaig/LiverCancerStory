@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
 import SplitPanel from "./Layout/SplitPanel.jsx";
 import { getAsset } from "../../constants/themeAssets";
+import { animationConfig } from "../lib/animationConfig";
 import { useLanguage } from "./Context/LanguageContext"; // ✅ ggf. Pfad anpassen
 
 gsap.registerPlugin(ScrollTrigger);
@@ -45,25 +46,26 @@ const Sectionacht = ({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=400%",
-          scrub: true,
+          end: animationConfig.scrollTrigger.panelEnd,
+          scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
       });
 
-      tl.to(introRef.current, { x: -100, opacity: 0, duration: 1 });
+      tl.to(introRef.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.to(
         cardRefs.current,
         {
           opacity: 1,
           x: 0,
-          stagger: 0.2,
-          duration: 0.8,
+          stagger: animationConfig.panel.staggerDelay,
+          duration: animationConfig.panel.staggerDuration,
           ease: "power3.out",
         },
-        "-=0.3"
+        animationConfig.panel.overlapNormal
       );
+      tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, sectionRef);
 
     return () => ctx.revert();
