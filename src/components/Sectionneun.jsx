@@ -83,33 +83,33 @@ const Sectionneun = ({
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout8Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout8Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout8Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout8Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout2Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout2Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout3Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout3Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout3Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout4Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout4Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout4Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout4Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout5Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout5Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout5Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout5Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout6Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout6Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout6Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout6Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout7Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout7Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 

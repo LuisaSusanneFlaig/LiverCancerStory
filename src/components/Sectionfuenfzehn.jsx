@@ -45,16 +45,16 @@ const Sectionfuenfzehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(layout2Ref.current, { opacity: 0, x: 200 });
-      gsap.set(step1Ref.current, { opacity: 0, x: 30 });
+      gsap.set(layout2Ref.current, { opacity: 0, y: 200 });
+      gsap.set(step1Ref.current, { opacity: 0, y: 30 });
 
       if (useAltLayout2) {
-        gsap.set(step5Ref.current, { opacity: 0, x: 30 });
-        gsap.set(extraItem1Ref.current, { opacity: 0, x: 30 });
-        gsap.set(extraItem2Ref.current, { opacity: 0, x: 30 });
-        gsap.set(extraItem3Ref.current, { opacity: 0, x: 30 });
+        gsap.set(step5Ref.current, { opacity: 0, y: 30 });
+        gsap.set(extraItem1Ref.current, { opacity: 0, y: 30 });
+        gsap.set(extraItem2Ref.current, { opacity: 0, y: 30 });
+        gsap.set(extraItem3Ref.current, { opacity: 0, y: 30 });
       } else {
-        gsap.set(step5Ref.current, { opacity: 0, x: 30 });
+        gsap.set(step5Ref.current, { opacity: 0, y: 30 });
       }
 
       const tl = gsap.timeline({
@@ -67,21 +67,21 @@ const Sectionfuenfzehn = ({
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(
         layout2Ref.current,
-        { opacity: 1, x: 0, duration: animationConfig.panel.transitionDuration },
+        { opacity: 1, y: 0, duration: animationConfig.panel.transitionDuration },
         useAltLayout2 ? animationConfig.panel.overlapTight : animationConfig.panel.overlapLoose
       );
-      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step1Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
 
       if (useAltLayout2) {
-        tl.to(extraItem1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
-        tl.to(extraItem2Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
-        tl.to(extraItem3Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
-        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(extraItem1Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(extraItem2Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(extraItem3Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.smallStepDuration });
+        tl.to(step5Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.smallStepDuration });
       } else {
-        tl.to(step5Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+        tl.to(step5Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
       }
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);

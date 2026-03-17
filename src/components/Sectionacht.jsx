@@ -13,6 +13,7 @@ const Sectionacht = ({
   theme = "blue",
   heading,
   introText,
+  chapterIntro = false,
   items = [], // [{ assetKey, text: {de,en}|string, alt?: {de,en}|string }]
 }) => {
   const { lang } = useLanguage();
@@ -39,8 +40,8 @@ const Sectionacht = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(cardRefs.current, { opacity: 0, x: 120 });
-      gsap.set(introRef.current, { x: 0 });
+      gsap.set(cardRefs.current, { opacity: 0, y: 120 });
+      gsap.set(introRef.current, chapterIntro ? { x: 200, opacity: 0 } : { y: 0, opacity: 1 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -52,13 +53,18 @@ const Sectionacht = ({
         },
       });
 
-      tl.to(introRef.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      if (chapterIntro) {
+        tl.to(introRef.current, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+        tl.to({}, { duration: animationConfig.panel.holdDuration });
+      }
+
+      tl.to(introRef.current, { x: 0, y: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.to(
         cardRefs.current,
         {
           opacity: 1,
-          x: 0,
+          y: 0,
           stagger: animationConfig.panel.staggerDelay,
           duration: animationConfig.panel.staggerDuration,
           ease: "power3.out",
@@ -69,7 +75,7 @@ const Sectionacht = ({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [chapterIntro]);
 
   const firstRow = items.slice(0, 3);
   const secondRow = items.slice(3);

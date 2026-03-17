@@ -16,6 +16,7 @@ const Sectionvierzehn = ({
   heading,
   introText,
   bullets = [],
+  chapterIntro = false,
   items = [], // [{ assetKey, text, alt? }]
 }) => {
   const { lang } = useLanguage();
@@ -49,8 +50,8 @@ const Sectionvierzehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(introRef.current, { x: 0, opacity: 1 });
-      gsap.set(cardRefs.current, { x: 120, opacity: 0 });
+      gsap.set(introRef.current, chapterIntro ? { x: 200, opacity: 0 } : { y: 0, opacity: 1 });
+      gsap.set(cardRefs.current, { y: 120, opacity: 0 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -62,8 +63,19 @@ const Sectionvierzehn = ({
         },
       });
 
+      if (chapterIntro) {
+        tl.to(introRef.current, {
+          x: 0,
+          opacity: 1,
+          duration: animationConfig.panel.transitionDuration,
+          ease: "power3.out",
+        });
+        tl.to({}, { duration: animationConfig.panel.holdDuration });
+      }
+
       tl.to(introRef.current, {
-        x: -100,
+        x: 0,
+        y: -100,
         opacity: 0,
         duration: animationConfig.panel.transitionDuration,
         ease: "power2.inOut",
@@ -72,7 +84,7 @@ const Sectionvierzehn = ({
       tl.to(
         cardRefs.current,
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           stagger: animationConfig.panel.staggerDelay,
           duration: animationConfig.panel.staggerDuration,
@@ -84,7 +96,7 @@ const Sectionvierzehn = ({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [chapterIntro]);
 
   const lineSrc = getAsset(theme, "line");
 
