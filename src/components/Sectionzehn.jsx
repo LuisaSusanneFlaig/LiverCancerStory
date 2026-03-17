@@ -65,13 +65,13 @@ const Sectionzehn = ({
         },
       });
 
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout2Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout2Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
-      tl.to(layout2Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout2Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
-      tl.fromTo(layout3Ref.current, { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+      tl.fromTo(layout3Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 

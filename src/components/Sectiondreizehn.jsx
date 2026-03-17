@@ -62,13 +62,13 @@ const Sectiondreizehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(layout2Ref.current, { opacity: 0, x: 200 });
-      gsap.set(l1RateBlockRef.current, { opacity: 0, x: 30 });
-      gsap.set(step1Ref.current, { opacity: 0, x: 30 });
-      gsap.set(step2TextRef.current, { opacity: 0, x: 30 });
-      gsap.set(step2ImagesRef.current, { opacity: 0, x: 30 });
-      gsap.set(step3TextRef.current, { opacity: 0, x: 30 });
-      gsap.set(step3ImageRef.current, { opacity: 0, x: 30 });
+      gsap.set(layout2Ref.current, { opacity: 0, y: 200 });
+      gsap.set(l1RateBlockRef.current, { opacity: 0, y: 30 });
+      gsap.set(step1Ref.current, { opacity: 0, y: 30 });
+      gsap.set(step2TextRef.current, { opacity: 0, y: 30 });
+      gsap.set(step2ImagesRef.current, { opacity: 0, y: 30 });
+      gsap.set(step3TextRef.current, { opacity: 0, y: 30 });
+      gsap.set(step3ImageRef.current, { opacity: 0, y: 30 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -80,19 +80,19 @@ const Sectiondreizehn = ({
         },
       });
 
-      tl.to(l1RateBlockRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(layout1Ref.current, { x: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
-      tl.to(layout2Ref.current, { opacity: 1, x: 0, duration: animationConfig.panel.transitionDuration });
-      tl.to(step1Ref.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(step2TextRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(l1RateBlockRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout2Ref.current, { opacity: 1, y: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(step1Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step2TextRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
       tl.to(step2ImagesRef.current, {
         opacity: 1,
-        x: 0,
+        y: 0,
         duration: animationConfig.reveal.defaultDuration,
         stagger: animationConfig.panel.staggerDelay,
       });
-      tl.to(step3TextRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(step3ImageRef.current, { opacity: 1, x: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step3TextRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step3ImageRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 

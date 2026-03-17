@@ -55,21 +55,21 @@ const Deutschland = ({
         },
       });
 
-      tl.to(panel1.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(panel1.current, { y: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(
         panel2.current,
-        { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
       tl.to({}, { duration: animationConfig.panel.holdDuration });
 
-      tl.to(panel2.current, { x: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(panel2.current, { y: -100, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(
         panel3.current,
-        { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);

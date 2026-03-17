@@ -36,8 +36,8 @@ const Sectionzwoelf = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(initialRef.current, { autoAlpha: 1, x: 0 });
-      gsap.set(remainingRef.current, { autoAlpha: 0, x: 200 });
+      gsap.set(initialRef.current, { autoAlpha: 1, y: 0 });
+      gsap.set(remainingRef.current, { autoAlpha: 0, y: 200 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -51,7 +51,7 @@ const Sectionzwoelf = ({
 
       tl.to(initialRef.current, {
         autoAlpha: 0,
-        x: -200,
+        y: -200,
         duration: animationConfig.panel.transitionDuration,
         ease: "none",
       });
@@ -61,7 +61,7 @@ const Sectionzwoelf = ({
       tl.to(
         remainingRef.current,
         {
-          x: 0,
+          y: 0,
           duration: animationConfig.panel.transitionDuration,
           ease: "none",
         },

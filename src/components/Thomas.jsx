@@ -55,14 +55,14 @@ const Thomas = ({
 
       tl.to(panel1Ref.current, {
         opacity: 0,
-        x: -100,
+        y: -100,
         duration: animationConfig.panel.transitionDuration,
       });
 
       tl.fromTo(
         panel2Ref.current,
-        { x: "100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: animationConfig.panel.transitionDuration }
       );
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, triggerRef);

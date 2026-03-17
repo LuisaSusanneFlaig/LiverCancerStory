@@ -49,8 +49,8 @@ const Sectionvierzehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(introRef.current, { x: 0, opacity: 1 });
-      gsap.set(cardRefs.current, { x: 120, opacity: 0 });
+      gsap.set(introRef.current, { y: 0, opacity: 1 });
+      gsap.set(cardRefs.current, { y: 120, opacity: 0 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -63,7 +63,7 @@ const Sectionvierzehn = ({
       });
 
       tl.to(introRef.current, {
-        x: -100,
+        y: -100,
         opacity: 0,
         duration: animationConfig.panel.transitionDuration,
         ease: "power2.inOut",
@@ -72,7 +72,7 @@ const Sectionvierzehn = ({
       tl.to(
         cardRefs.current,
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           stagger: animationConfig.panel.staggerDelay,
           duration: animationConfig.panel.staggerDuration,
