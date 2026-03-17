@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo } from "react";
 import gsap from "gsap";
 import { useSearchParams } from "react-router-dom";
 import { narratives, componentMap } from "../constants/narratives";
+import { sectionGroupsByVersion } from "../constants";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Navbar from "./components/Navbar";
 import { useLanguage } from "./components/Context/LanguageContext";
@@ -52,6 +53,16 @@ function getOrCreateLocalPid() {
   }
   return pid;
 }
+
+const componentNameBySectionId = {
+  leber: "Leber",
+  organe: "Organe",
+  sectionacht: "Sectionacht",
+  sectionzehn: "Sectionzehn",
+  sectionelf: "Sectionelf",
+  sectiondreizehn: "Sectiondreizehn",
+  sectionvierzehn: "Sectionvierzehn",
+};
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -171,6 +182,15 @@ const App = () => {
   }, [cond, lang, manualOverride, theme, version]);
 
   const selectedNarrative = narratives[version] || narratives.A;
+  const sectionGroups = sectionGroupsByVersion[version] || sectionGroupsByVersion.A;
+  const chapterIntroNames = useMemo(() => {
+    return new Set(
+      Object.values(sectionGroups)
+        .map((sections) => sections[0])
+        .map((sectionId) => componentNameBySectionId[sectionId])
+        .filter(Boolean)
+    );
+  }, [sectionGroups]);
 
   return (
     <main>
@@ -187,6 +207,7 @@ const App = () => {
             version={version}
             pid={pid}
             cond={cond}
+            chapterIntro={chapterIntroNames.has(section.name)}
             {...section.props}
           />
         );

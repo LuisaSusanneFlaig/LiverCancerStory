@@ -28,6 +28,7 @@ const Sectionelf = ({
   l3ImageKey,
   l3ImageSrc, // string ODER {de,en}
   l3ImageAlt = "",
+  chapterIntro = false,
 }) => {
   const { lang = "de" } = useLanguage();
 
@@ -54,6 +55,7 @@ const Sectionelf = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.set(layout1Ref.current, chapterIntro ? { x: 200, opacity: 0 } : { x: 0, y: 0, opacity: 1 });
       gsap.set([layout2Ref.current, layout3Ref.current], { opacity: 0 });
 
       const tl = gsap.timeline({
@@ -66,7 +68,12 @@ const Sectionelf = ({
         },
       });
 
-      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      if (chapterIntro) {
+        tl.to(layout1Ref.current, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+        tl.to({}, { duration: animationConfig.panel.holdDuration });
+      }
+
+      tl.to(layout1Ref.current, { x: 0, y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(
         layout2Ref.current,
@@ -85,7 +92,7 @@ const Sectionelf = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [chapterIntro]);
 
   const lineSrc = getAsset(theme, "line");
 

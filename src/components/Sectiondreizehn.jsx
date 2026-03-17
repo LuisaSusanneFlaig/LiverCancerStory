@@ -38,6 +38,7 @@ const Sectiondreizehn = ({
   step3Rate,
   step3IconKey,
   step3IconAlt = "",
+  chapterIntro = false,
 }) => {
   const { lang } = useLanguage();
 
@@ -62,6 +63,7 @@ const Sectiondreizehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.set(layout1Ref.current, chapterIntro ? { x: 200, opacity: 0 } : { x: 0, y: 0, opacity: 1 });
       gsap.set(layout2Ref.current, { opacity: 0, y: 200 });
       gsap.set(l1RateBlockRef.current, { opacity: 0, y: 30 });
       gsap.set(step1Ref.current, { opacity: 0, y: 30 });
@@ -80,8 +82,13 @@ const Sectiondreizehn = ({
         },
       });
 
+      if (chapterIntro) {
+        tl.to(layout1Ref.current, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+        tl.to({}, { duration: animationConfig.panel.holdDuration });
+      }
+
       tl.to(l1RateBlockRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      tl.to(layout1Ref.current, { x: 0, y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(layout2Ref.current, { opacity: 1, y: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(step1Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
       tl.to(step2TextRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
@@ -97,7 +104,7 @@ const Sectiondreizehn = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [chapterIntro]);
 
   const lineSrc = getAsset(theme, "line");
   const l1IconSrc = l1RateImageKey ? getAsset(theme, l1RateImageKey) : undefined;

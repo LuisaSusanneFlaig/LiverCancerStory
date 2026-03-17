@@ -26,6 +26,7 @@ const Sectionzehn = ({
   l3ImageSrc, // ✅ string ODER {de,en}
   l3ImageAlt = "",
   l3Order = "textFirst",
+  chapterIntro = false,
 }) => {
   const { lang = "de" } = useLanguage();
   const [openInfo, setOpenInfo] = useState(null);
@@ -53,6 +54,7 @@ const Sectionzehn = ({
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.set(layout1Ref.current, chapterIntro ? { x: 200, opacity: 0 } : { x: 0, y: 0, opacity: 1 });
       gsap.set([layout2Ref.current, layout3Ref.current], { opacity: 0 });
 
       const tl = gsap.timeline({
@@ -65,7 +67,12 @@ const Sectionzehn = ({
         },
       });
 
-      tl.to(layout1Ref.current, { y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
+      if (chapterIntro) {
+        tl.to(layout1Ref.current, { x: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
+        tl.to({}, { duration: animationConfig.panel.holdDuration });
+      }
+
+      tl.to(layout1Ref.current, { x: 0, y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
 
       tl.fromTo(layout2Ref.current, { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: animationConfig.panel.transitionDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
@@ -76,7 +83,7 @@ const Sectionzehn = ({
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [chapterIntro]);
 
   const lineSrc = getAsset(theme, "line");
   const l1ImgSrc = l1ImageKey ? getAsset(theme, l1ImageKey, lang) : undefined;

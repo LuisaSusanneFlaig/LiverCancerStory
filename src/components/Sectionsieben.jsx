@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import ModelMetastasen from "./Models/ModelMetastasen";
 import { getAsset } from "../../constants/themeAssets";
 import { useMediaQuery } from "react-responsive";
@@ -8,6 +9,8 @@ const Sectionsieben = ({ theme = "blue" }) => {
   const { lang } = useLanguage();
   const isTouchLayout = useMediaQuery({ query: "(max-width: 1024px)" });
   const [controlsEnabled, setControlsEnabled] = useState(!isTouchLayout);
+  const contentRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
   const interactionSrc = getAsset(theme, "interaction");
   const interactionLabel = controlsEnabled
     ? { de: "Interaktion stoppen", en: "Stop interaction" }
@@ -17,6 +20,37 @@ const Sectionsieben = ({ theme = "blue" }) => {
     setControlsEnabled(!isTouchLayout);
   }, [isTouchLayout]);
 
+  useLayoutEffect(() => {
+    if (!contentRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(contentRef.current, { x: 180, opacity: 0 });
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting || hasAnimatedRef.current) return;
+
+          hasAnimatedRef.current = true;
+          gsap.to(contentRef.current, {
+            x: 0,
+            opacity: 1,
+            duration: 1.1,
+            ease: "power3.out",
+          });
+
+          observer.disconnect();
+        },
+        { threshold: 0.25 }
+      );
+
+      observer.observe(contentRef.current);
+
+      return () => observer.disconnect();
+    }, contentRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const t = (value) => {
     if (typeof value === "string") return value;
     if (!value) return "";
@@ -25,7 +59,7 @@ const Sectionsieben = ({ theme = "blue" }) => {
 
   return (
     <section id="sectionsieben" className="relative overflow-hidden">
-      <div className="flex flex-col items-center gap-4">
+      <div ref={contentRef} className="flex flex-col items-center gap-4">
         <button
           type="button"
           aria-pressed={controlsEnabled}

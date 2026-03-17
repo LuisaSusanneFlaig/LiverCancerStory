@@ -67,7 +67,11 @@ const Navbar = ({ version = "A" }) => {
         <ul className="flex flex-1 min-w-0 gap-3 overflow-x-auto whitespace-nowrap">
           {navLinks.map((link) => (
             <li key={link.id}>
-              <a href={`#${link.id}`} data-link={link.id} className="px-2 py-0.5">
+              <a
+                href={`#${link.id}`}
+                data-link={link.id}
+                className="px-2 py-0.5"
+              >
                 {titleFor(link.id, link.title)}
               </a>
             </li>
