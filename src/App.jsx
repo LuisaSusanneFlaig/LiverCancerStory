@@ -10,6 +10,9 @@ import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+const SOSCI_SURVEY_URL =
+  "https://befragungen.ovgu.de/LiverCancer/";
+
 const VALID_VERSIONS = ["A", "B", "C"];
 const VALID_THEMES = ["blue", "green", "red"];
 const IS_DEV = import.meta.env.DEV;
@@ -54,6 +57,14 @@ function getOrCreateLocalPid() {
   return pid;
 }
 
+function buildSurveyReturnUrl(token) {
+  if (!token) return SOSCI_SURVEY_URL;
+
+  const url = new URL(SOSCI_SURVEY_URL);
+  url.searchParams.set("t", token);
+  return url.toString();
+}
+
 const componentNameBySectionId = {
   leber: "Leber",
   organe: "Organe",
@@ -76,8 +87,20 @@ const App = () => {
   const pidFromUrl =
     searchParams.get("PROLIFIC_PID") ||
     searchParams.get("pid") ||
+    searchParams.get("num") ||
+    searchParams.get("participant_id") ||
+    searchParams.get("participant") ||
     "";
-  const pid = pidFromUrl || getOrCreateLocalPid();
+  const pid = pidFromUrl || (IS_DEV ? getOrCreateLocalPid() : "no_pid");
+  const surveyToken =
+    searchParams.get("tk") ||
+    searchParams.get("token") ||
+    searchParams.get("t") ||
+    "";
+  const surveyReturnUrl = useMemo(
+    () => buildSurveyReturnUrl(surveyToken),
+    [surveyToken]
+  );
 
   // --- PROLIFIC (later): you will typically receive pid in URL already
   // const pid = searchParams.get("PROLIFIC_PID") || searchParams.get("pid") || "";
@@ -207,6 +230,8 @@ const App = () => {
             version={version}
             pid={pid}
             cond={cond}
+            surveyToken={surveyToken}
+            surveyReturnUrl={surveyReturnUrl}
             chapterIntro={chapterIntroNames.has(section.name)}
             {...section.props}
           />
