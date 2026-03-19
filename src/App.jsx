@@ -58,9 +58,7 @@ function getOrCreateLocalPid() {
 }
 
 function buildSurveyReturnUrl(token) {
-  if (!token) {
-    return IS_DEV ? SOSCI_SURVEY_URL : "";
-  }
+  if (!token) return SOSCI_SURVEY_URL;
 
   const url = new URL(SOSCI_SURVEY_URL);
   url.searchParams.set("t", token);
