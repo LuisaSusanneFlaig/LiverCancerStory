@@ -61,7 +61,7 @@ function buildSurveyReturnUrl(token) {
   if (!token) return SOSCI_SURVEY_URL;
 
   const url = new URL(SOSCI_SURVEY_URL);
-  url.searchParams.set("t", token);
+  url.searchParams.set("i", token);
   return url.toString();
 }
 
