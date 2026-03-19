@@ -11,7 +11,7 @@ import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const SOSCI_SURVEY_URL =
-  "https://befragungen.ovgu.de/LiverCancer/?act=oqGBceNFyEtkUL4Mjgpodngz";
+  "https://befragungen.ovgu.de/LiverCancer/";
 
 const VALID_VERSIONS = ["A", "B", "C"];
 const VALID_THEMES = ["blue", "green", "red"];
