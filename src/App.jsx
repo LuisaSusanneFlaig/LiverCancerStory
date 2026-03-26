@@ -9,8 +9,7 @@ import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const SOSCI_SURVEY_URL =
-  "https://befragungen.ovgu.de/LiverCancer/?act=D0e4V46N5bJzCLikZkwfHOZr";
+const SOSCI_SURVEY_URL = "https://befragungen.ovgu.de/LiverCancer/";
 const VALID_VERSIONS = ["A", "B", "C"];
 const VALID_THEMES = ["blue", "green", "red"];
 const IS_DEV = import.meta.env.DEV;
