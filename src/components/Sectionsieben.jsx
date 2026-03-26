@@ -1,24 +1,24 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ModelMetastasen from "./Models/ModelMetastasen";
 import { getAsset } from "../../constants/themeAssets";
-import { useMediaQuery } from "react-responsive";
 import { useLanguage } from "./Context/LanguageContext";
+import { useAutoRotateResume } from "../hooks/useAutoRotateResume";
 
 const Sectionsieben = ({ theme = "blue" }) => {
   const { lang } = useLanguage();
-  const isTouchLayout = useMediaQuery({ query: "(max-width: 1024px)" });
-  const [controlsEnabled, setControlsEnabled] = useState(!isTouchLayout);
+  const {
+    autoRotate,
+    handleInteractionStart,
+    handleInteractionEnd,
+    handleToggleRotation,
+  } = useAutoRotateResume();
   const contentRef = useRef(null);
   const hasAnimatedRef = useRef(false);
   const interactionSrc = getAsset(theme, "interaction");
-  const interactionLabel = controlsEnabled
-    ? { de: "Interaktion stoppen", en: "Stop interaction" }
-    : { de: "Interaktion starten", en: "Start interaction" };
-
-  useEffect(() => {
-    setControlsEnabled(!isTouchLayout);
-  }, [isTouchLayout]);
+  const rotationLabel = autoRotate
+    ? { en: "Stop rotation" }
+    : { en: "Start rotation" };
 
   useLayoutEffect(() => {
     if (!contentRef.current) return;
@@ -62,11 +62,11 @@ const Sectionsieben = ({ theme = "blue" }) => {
       <div ref={contentRef} className="flex flex-col items-center gap-4">
         <button
           type="button"
-          aria-pressed={controlsEnabled}
-          aria-label={t(interactionLabel)}
-          onClick={() => setControlsEnabled((value) => !value)}
+          aria-pressed={autoRotate}
+          aria-label={t(rotationLabel)}
+          onClick={handleToggleRotation}
           className={`z-20 flex items-center gap-3 rounded-full bg-white/55 px-4 py-2 text-sm font-medium text-slate-900 shadow-md backdrop-blur-sm transition-opacity ${
-            controlsEnabled ? "opacity-100" : "opacity-65"
+            autoRotate ? "opacity-100" : "opacity-65"
           }`}
         >
           <img
@@ -74,11 +74,15 @@ const Sectionsieben = ({ theme = "blue" }) => {
             alt=""
             className="w-10 md:w-12 lg:w-14"
           />
-          <span>{t(interactionLabel)}</span>
+          <span>{t(rotationLabel)}</span>
         </button>
 
         <div className="hero-3d-layout relative w-full">
-        <ModelMetastasen controlsEnabled={controlsEnabled} />
+        <ModelMetastasen
+          autoRotate={autoRotate}
+          onInteractionStart={handleInteractionStart}
+          onInteractionEnd={handleInteractionEnd}
+        />
         </div>
       </div>
     </section>

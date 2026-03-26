@@ -1,15 +1,4 @@
-
 export const navTitles = {
-  definition: "Definition",
-  anatomie: "Anatomie",
-  symptome: "Symptome",
-  diagnose: "Diagnose",
-  behandlung: "Behandlung",
-  prognose: "Prognose",
-  prävention: "Prävention",
-};
-
-export const navTitlesEn = {
   definition: "Definition",
   anatomie: "Anatomy",
   symptome: "Symptoms",
@@ -51,7 +40,6 @@ export const sectionGroupsByVersion = {
   },
 };
 
-// Option 1: build navLinksByVersion from the order of keys in sectionGroupsByVersion
 export const navLinksByVersion = Object.fromEntries(
   Object.entries(sectionGroupsByVersion).map(([ver, groups]) => {
     const links = Object.keys(groups).map((id) => ({
@@ -62,5 +50,4 @@ export const navLinksByVersion = Object.fromEntries(
   })
 );
 
-// Backward compatibility (optional)
 export const navLinks = navLinksByVersion.A;

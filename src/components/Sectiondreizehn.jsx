@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useMemo } from "react";
+import React, { useLayoutEffect, useRef, useMemo, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ScrollSection from "./Layout/ScrollSection.jsx";
@@ -41,6 +41,7 @@ const Sectiondreizehn = ({
   chapterIntro = false,
 }) => {
   const { lang } = useLanguage();
+  const [showMetastasesInfo, setShowMetastasesInfo] = useState(false);
 
   // Option A: allow string OR {de,en}
   const t = useMemo(() => {
@@ -111,6 +112,45 @@ const Sectiondreizehn = ({
   const femaleSrc = step2FemaleIconKey ? getAsset(theme, step2FemaleIconKey) : undefined;
   const maleSrc = step2MaleIconKey ? getAsset(theme, step2MaleIconKey) : undefined;
   const step3Src = step3IconKey ? getAsset(theme, step3IconKey) : undefined;
+  const step3TextValue = t(step3Text);
+  const distantMetastasesInfo = {
+    en: "This means the cancer has spread from the liver to distant parts of the body.",
+  };
+  const distantMetastasesLabel = {
+    en: "What are distant metastases?",
+  };
+
+  const renderStep3Text = () => {
+    if (!step3TextValue.includes("distant metastases")) {
+      return <p ref={step3TextRef}>{step3TextValue}</p>;
+    }
+
+    const [before, after] = step3TextValue.split("distant metastases");
+
+    return (
+      <div ref={step3TextRef} className="relative">
+        <p>
+          {before}
+          <span className="font-semibold">distant metastases</span>
+          {after}
+          <button
+            type="button"
+            aria-expanded={showMetastasesInfo}
+            aria-label={t(distantMetastasesLabel)}
+            onClick={() => setShowMetastasesInfo((current) => !current)}
+            className="ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/70 bg-slate-900/85 text-sm font-semibold text-white align-middle shadow-md transition hover:scale-105"
+          >
+            ?
+          </button>
+        </p>
+        {showMetastasesInfo ? (
+          <div className="mt-3 max-w-md rounded-xl border border-white/15 bg-slate-950/90 p-3 text-sm text-white shadow-xl backdrop-blur-sm">
+            <p className="text-sm leading-relaxed">{t(distantMetastasesInfo)}</p>
+          </div>
+        ) : null}
+      </div>
+    );
+  };
 
   return (
     <ScrollSection id="sectiondreizehn" ref={containerRef}>
@@ -190,7 +230,7 @@ const Sectiondreizehn = ({
             </div>
 
             {/* STEP 3 TEXT */}
-            <p ref={step3TextRef}>{t(step3Text)}</p>
+            {renderStep3Text()}
 
             {/* STEP 3 ICON */}
             <div ref={step3ImageRef} className="flex flex-col items-center gap-3 text-center -mt-10">

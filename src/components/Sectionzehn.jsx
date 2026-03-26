@@ -92,7 +92,7 @@ const Sectionzehn = ({
     : pickImg(l3ImageSrc);
   const treatmentInfos = {
     curative: {
-      title: { de: "Heilende Behandlung", en: "Curative treatment" },
+      title: { de: "Heilende Behandlung", en: "Curing treatment" },
       body: {
         de: "Ziel ist es, den Krebs vollständig zu entfernen oder zu zerstören.",
         en: "The goal is to remove or destroy the cancer completely.",
@@ -101,7 +101,7 @@ const Sectionzehn = ({
       popupClassName: "left-[22%] top-[66%] -translate-x-1/2",
     },
     palliative: {
-      title: { de: "Palliative Behandlung", en: "Palliative treatment" },
+      title: { de: "Lebensverlängernde Behandlung", en: "Life-prolonging treatment" },
       body: {
         de: "Sie kann den Krebs nicht heilen, aber Beschwerden lindern und das Tumorwachstum verlangsamen.",
         en: "It cannot cure the cancer, but it can relieve symptoms and slow tumor growth.",

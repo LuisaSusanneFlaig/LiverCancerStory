@@ -23,7 +23,7 @@ const RotatingLeber = ({ isMobile, isTablet, shouldRotate }) => {
   );
 };
 
-const ModelLeber = ({ controlsEnabled = true }) => {
+const ModelLeber = ({ autoRotate = true, onInteractionStart, onInteractionEnd }) => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -45,21 +45,21 @@ const ModelLeber = ({ controlsEnabled = true }) => {
   />
 
   <OrbitControls
-    enabled={controlsEnabled}
+    enabled
     enablePan={false}
     enableZoom={false}
     maxDistance={20}
     minDistance={5}
-    minPolarAngle={Math.PI / 3.2}
-    maxPolarAngle={Math.PI / 1.85}
-    minAzimuthAngle={-Math.PI / 3}
-    maxAzimuthAngle={Math.PI / 3}
+    minPolarAngle={Math.PI / 4.2}
+    maxPolarAngle={Math.PI / 1.7}
+    onStart={onInteractionStart}
+    onEnd={onInteractionEnd}
   />
 
   <RotatingLeber
     isMobile={isMobile}
     isTablet={isTablet}
-    shouldRotate={controlsEnabled}
+    shouldRotate={autoRotate}
   />
 </Canvas>
 

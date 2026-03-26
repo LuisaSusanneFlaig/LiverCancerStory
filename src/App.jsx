@@ -5,7 +5,6 @@ import { narratives, componentMap } from "../constants/narratives";
 import { sectionGroupsByVersion } from "../constants";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Navbar from "./components/Navbar";
-import { useLanguage } from "./components/Context/LanguageContext";
 import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -77,7 +76,7 @@ const componentNameBySectionId = {
 
 const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { lang } = useLanguage();
+  const lang = "en";
 
   // =========================================================
   // ✅ PID SOURCE
