@@ -9,27 +9,23 @@ import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const SOSCI_SURVEY_URL =
-  "https://befragungen.ovgu.de/LiverCancer/";
-
+const SOSCI_SURVEY_URL = "https://befragungen.ovgu.de/LiverCancer/";
 const VALID_VERSIONS = ["A", "B", "C"];
 const VALID_THEMES = ["blue", "green", "red"];
 const IS_DEV = import.meta.env.DEV;
 
-// 9 Bedingungen (für späteres Logging)
 const CONDITIONS = [
-  { version: "A", theme: "blue" },
-  { version: "A", theme: "green" },
-  { version: "A", theme: "red" },
-  { version: "B", theme: "blue" },
-  { version: "B", theme: "green" },
-  { version: "B", theme: "red" },
-  { version: "C", theme: "blue" },
-  { version: "C", theme: "green" },
-  { version: "C", theme: "red" },
+  { cond: "1", version: "A", theme: "blue" },
+  { cond: "2", version: "A", theme: "green" },
+  { cond: "3", version: "A", theme: "red" },
+  { cond: "4", version: "B", theme: "blue" },
+  { cond: "5", version: "B", theme: "green" },
+  { cond: "6", version: "B", theme: "red" },
+  { cond: "7", version: "C", theme: "blue" },
+  { cond: "8", version: "C", theme: "green" },
+  { cond: "9", version: "C", theme: "red" },
 ];
 
-// stabiler Hash
 function hashStringToInt(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
@@ -38,14 +34,14 @@ function hashStringToInt(str) {
 
 function assignCondition(pid) {
   const idx = hashStringToInt(pid || "no_pid") % CONDITIONS.length;
-  return { ...CONDITIONS[idx], cond: String(idx) };
+  return CONDITIONS[idx];
 }
 
-/**
- * DEV helper:
- * if there is no ?pid=... in the URL, create a stable local PID once and reuse it.
- * This mimics Prolific behavior so your assignment stays stable across refresh.
- */
+function getConditionByCond(rawCond) {
+  const cond = String(rawCond || "").trim();
+  return CONDITIONS.find((entry) => entry.cond === cond) || null;
+}
+
 function getOrCreateLocalPid() {
   const key = "local_pid";
   let pid = localStorage.getItem(key);
@@ -78,11 +74,6 @@ const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const lang = "en";
 
-  // =========================================================
-  // ✅ PID SOURCE
-  // =========================================================
-
-  // --- DEV: use pid from URL if present; otherwise create a local PID
   const pidFromUrl =
     searchParams.get("PROLIFIC_PID") ||
     searchParams.get("pid") ||
@@ -91,7 +82,9 @@ const App = () => {
     searchParams.get("participant") ||
     "";
   const pid = pidFromUrl || (IS_DEV ? getOrCreateLocalPid() : "no_pid");
+
   const surveyToken =
+    searchParams.get("i") ||
     searchParams.get("tk") ||
     searchParams.get("token") ||
     searchParams.get("t") ||
@@ -101,53 +94,51 @@ const App = () => {
     [surveyToken]
   );
 
-  // --- PROLIFIC (later): you will typically receive pid in URL already
-  // const pid = searchParams.get("PROLIFIC_PID") || searchParams.get("pid") || "";
-
-  // =========================================================
-  // ✅ Read manual overrides (optional)
-  // =========================================================
   const urlVersionRaw = (searchParams.get("version") || "").toUpperCase();
   const urlThemeRaw = (searchParams.get("theme") || "").toLowerCase();
+  const urlCondRaw = searchParams.get("cond") || "";
 
   const hasValidVersion = VALID_VERSIONS.includes(urlVersionRaw);
   const hasValidTheme = VALID_THEMES.includes(urlThemeRaw);
-  const hasCondOverride = searchParams.has("cond");
+  const conditionFromUrl = useMemo(() => getConditionByCond(urlCondRaw), [urlCondRaw]);
+  const hasValidCond = Boolean(conditionFromUrl);
 
-  // =========================================================
-  // ✅ Assign condition deterministically
-  // =========================================================
   const assigned = useMemo(() => assignCondition(pid), [pid]);
+  const manualOverride =
+    IS_DEV && (hasValidCond || hasValidVersion || hasValidTheme);
 
-  const manualOverride = IS_DEV && (hasValidVersion || hasValidTheme || hasCondOverride);
-  const version = IS_DEV && hasValidVersion ? urlVersionRaw : assigned.version;
-  const theme = IS_DEV && hasValidTheme ? urlThemeRaw : assigned.theme;
-  const cond = IS_DEV && hasCondOverride ? searchParams.get("cond") || assigned.cond : assigned.cond;
+  const activeCondition =
+    conditionFromUrl ||
+    (IS_DEV && (hasValidVersion || hasValidTheme)
+      ? {
+          cond: assigned.cond,
+          version: hasValidVersion ? urlVersionRaw : assigned.version,
+          theme: hasValidTheme ? urlThemeRaw : assigned.theme,
+        }
+      : assigned);
 
-  // =========================================================
-  // ✅ OPTIONAL: write chosen params into URL
-  // =========================================================
+  const { version, theme, cond } = activeCondition;
+
   useEffect(() => {
     const next = new URLSearchParams(searchParams);
     let changed = false;
 
-    // Always ensure there's a pid in URL during DEV (nice for debugging)
     if (IS_DEV && !searchParams.get("pid")) {
       next.set("pid", pid);
       changed = true;
     }
 
     if (IS_DEV) {
+      if (!hasValidCond) {
+        next.set("cond", assigned.cond);
+        changed = true;
+      }
       if (!hasValidVersion) {
-        next.set("version", assigned.version);
+        next.set("version", version);
         changed = true;
       }
       if (!hasValidTheme) {
-        next.set("theme", assigned.theme);
-        changed = true;
-      }
-      if (!searchParams.get("cond")) {
-        next.set("cond", assigned.cond);
+        next.set("theme", theme);
         changed = true;
       }
     } else {
@@ -159,21 +150,24 @@ const App = () => {
         next.delete("theme");
         changed = true;
       }
-      if (next.has("cond")) {
-        next.delete("cond");
-        changed = true;
-      }
     }
 
     if (changed) {
       setSearchParams(next, { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [assigned, hasValidTheme, hasValidVersion, pid, searchParams, setSearchParams]);
+  }, [
+    assigned,
+    hasValidCond,
+    hasValidTheme,
+    hasValidVersion,
+    pid,
+    searchParams,
+    setSearchParams,
+    theme,
+    version,
+  ]);
 
-  // =========================================================
-  // ✅ Apply theme to <body> for your CSS variables (Solution A)
-  // =========================================================
   useLayoutEffect(() => {
     const root = document.documentElement;
     const body = document.body;
@@ -185,6 +179,19 @@ const App = () => {
 
   useEffect(() => {
     let active = true;
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        "study_context",
+        JSON.stringify({
+          cond,
+          version,
+          theme,
+          pid,
+          surveyToken,
+        })
+      );
+    }
 
     initAnalytics().then((enabled) => {
       if (!active || !enabled) return;
@@ -201,7 +208,7 @@ const App = () => {
     return () => {
       active = false;
     };
-  }, [cond, lang, manualOverride, theme, version]);
+  }, [cond, lang, manualOverride, pid, surveyToken, theme, version]);
 
   const selectedNarrative = narratives[version] || narratives.A;
   const sectionGroups = sectionGroupsByVersion[version] || sectionGroupsByVersion.A;
