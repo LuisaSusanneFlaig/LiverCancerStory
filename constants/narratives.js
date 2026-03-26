@@ -20,10 +20,6 @@ import Sectionfuenfzehn from "../src/components/Sectionfuenfzehn";
 import ThomasIll from "../src/images/Thomas_ill.png";
 import ThomasHealthy from "../src/images/Thomas_healthy.png";
 import ThomasSick from "../src/images/Thomas_sick.png";
-import LT1 from "../src/images/LT1.png";
-import LT2 from "../src/images/LT2.png";
-import LT3 from "../src/images/LT3.png";
-import LT4 from "../src/images/LT4.png";
 import ThomasAndDoctor from "/src/images/Thomas_and_doctor.png";
 
 const ORDER_FIXED = ["hero","thomas","sectionfuenfzehn"]; 
@@ -205,7 +201,6 @@ A: [
       },
 
       q1Text: { de: "1. Sind Tumore in der Leber vorhanden? Wenn ja, wie viele?", en: "1. Are there tumors in the liver? If so, how many?" },
-      q1ImageSrc: LT1,
       q1ImageAlt: { de: "Tumore in der Leber", en: "Tumors in the liver" },
 
       methodsIntro: {
@@ -222,15 +217,12 @@ A: [
       method3Label: { de: "MRT", en: "MRI" },
 
       q2Text: { de: "2. Wo genau befinden sich die Tumore?", en: "2. Where exactly are the tumors located?" },
-      q2ImageSrc: LT2,
       q2ImageAlt: { de: "Lage der Tumore", en: "Tumor location" },
 
       q3Text: { de: "3. Wie groß sind die Tumore?", en: "3. How large are the tumors?" },
-      q3ImageSrc: LT3,
       q3ImageAlt: { de: "Größe der Tumore", en: "Tumor size" },
 
       q4Text: { de: "4. Was ist der genaue Typ?", en: "4. What is the exact type?" },
-      q4ImageSrc: LT4,
       q4ImageAlt: { de: "Tumortyp", en: "Tumor type" },
     },
   },
@@ -250,8 +242,8 @@ A: [
       l1ImageAlt: { de: "Behandlung", en: "Treatment" },
 
       l2LeftText: {
-        de: "Außerdem spielen das Alter und der allgemeine Gesundheitszustand der Patienten eine wichtige Rolle. Abhängig davon gibt es heilende und palliative Behandlungen.",
-        en: "Age and overall health also matter. Depending on these factors, treatment may be curative or palliative.",
+        de: "Außerdem spielen das Alter und der allgemeine Gesundheitszustand der Patienten eine wichtige Rolle. Abhängig davon gibt es heilende und lebensverlängernde Behandlungen.",
+        en: "Age and overall health also matter. Depending on these factors, treatment may be curative or life-prolonging.",
       },
       l2RightText: {
         de: "Der Grad der Veränderung lässt sich nur durch eine mikroskopische Untersuchung der Krebszellen feststellen. Bei einer Biopsie wird eine kleine Probe des Lebergewebes entnommen und unter dem Mikroskop untersucht.",
@@ -274,7 +266,7 @@ A: [
   {
     name: "Sectionelf",
     props: {
-      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative Treatment for Liver Cancer" },
+      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curing Treatment for Liver Cancer" },
 
       l1RightText: {
         de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -308,11 +300,11 @@ A: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative Treatment for Liver Cancer" },
+      heading: { de: "Lebensverlängernde Behandlung für Leberkrebs", en: "Life-Prolonging Treatment for Liver Cancer" },
 
       p1Text: {
-        de: "Wenn keine Aussicht auf Heilung besteht, kann eine palliative Therapie das Wachstum des Tumors verlangsamen und die Symptome lindern.",
-        en: "If cure is not possible, palliative therapy can slow tumor growth and relieve symptoms.",
+        de: "Wenn keine Aussicht auf Heilung besteht, kann eine lebensverlängernde Therapie das Wachstum des Tumors verlangsamen und die Symptome lindern.",
+        en: "If cure is not possible, life-prolonging treatment can slow tumor growth and relieve symptoms.",
       },
 
       p1Items: [
@@ -529,7 +521,6 @@ B: [
       },
 
       q1Text: { de: "1. Sind Tumore in der Leber vorhanden? Wenn ja, wie viele?", en: "1. Are there tumors in the liver? If so, how many?" },
-      q1ImageSrc: LT1, // später ggf. EN-Variante
       q1ImageAlt: { de: "Tumore in der Leber", en: "Tumors in the liver" },
 
       methodsIntro: {
@@ -546,15 +537,12 @@ B: [
       method3Label: { de: "MRT", en: "MRI" },
 
       q2Text: { de: "2. Wo genau befinden sich die Tumore?", en: "2. Where exactly are the tumors located?" },
-      q2ImageSrc: LT2,
       q2ImageAlt: { de: "Lage der Tumore", en: "Tumor location" },
 
       q3Text: { de: "3. Wie groß sind die Tumore?", en: "3. How large are the tumors?" },
-      q3ImageSrc: LT3,
       q3ImageAlt: { de: "Größe der Tumore", en: "Tumor size" },
 
       q4Text: { de: "4. Was ist der genaue Typ?", en: "4. What is the exact type?" },
-      q4ImageSrc: LT4,
       q4ImageAlt: { de: "Tumortyp", en: "Tumor type" },
     },
   },
@@ -584,7 +572,7 @@ B: [
 
       l3LeftText: {
         de: "Dank seines Alters und seiner Anstrengungen bezüglich seines Gesundheitszustands bestehen gute Chancen auf eine heilende Behandlung. Daher entscheidet sich Thomas gemeinsam mit seinem Behandlungsteam für diesen Weg.",
-        en: "Because of his age and the efforts he has made to improve his health, there is a good chance of curative treatment. Thomas and his care team therefore choose this path.",
+        en: "Because of his age and the efforts he has made to improve his health, there is a good chance of curing treatment. Thomas and his care team therefore choose this path.",
       },
 
       // ✅ Platzhalter für EN-Bild (sprachabhängig)
@@ -598,7 +586,7 @@ B: [
   {
     name: "Sectionelf",
     props: {
-      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative treatment for liver cancer" },
+      heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curing treatment for liver cancer" },
 
       l1RightText: {
         de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -626,11 +614,11 @@ B: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative treatment for liver cancer" },
+      heading: { de: "Lebensverlängernde Behandlung für Leberkrebs", en: "Life-prolonging treatment for liver cancer" },
 
       p1Text: {
-        de: "Zu einer palliativen Behandlung möchte Thomas es nicht kommen lassen, da diese nur noch das Tumorwachstum verlangsamen und die Symptome lindern würde.",
-        en: "Thomas hopes to avoid palliative treatment, as it would only slow tumor growth and relieve symptoms.",
+        de: "Zu einer lebensverlängernden Behandlung möchte Thomas es nicht kommen lassen, da diese nur noch das Tumorwachstum verlangsamen und die Symptome lindern würde.",
+        en: "Thomas hopes to avoid life-prolonging treatment, as it would only slow tumor growth and relieve symptoms.",
       },
 
       p1Items: [
@@ -717,7 +705,7 @@ B: [
 
       l1Text: {
         de: "Nach der heilenden Behandlung zeigen die Nachuntersuchungen, dass der Krebs verschwunden ist. Thomas spürt Erleichterung und Zuversicht, da die Therapie erfolgreich war. Die Ärzte erklären ihm, dass regelmäßige Nachkontrollen und ein gesunder Lebensstil weiterhin wichtig sind, um die Chancen auf ein dauerhaft krebsfreies Leben zu sichern",
-        en: "After curative treatment, follow-up examinations show that the cancer is gone. Thomas feels relieved and hopeful because the therapy was successful. His doctors explain that regular follow-ups and a healthy lifestyle remain important to maximize the chances of staying cancer-free long term.",
+        en: "After curing treatment, follow-up examinations show that the cancer is gone. Thomas feels relieved and hopeful because the therapy was successful. His doctors explain that regular follow-ups and a healthy lifestyle remain important to maximize the chances of staying cancer-free long term.",
       },
 
       l2LeftText: {
@@ -882,7 +870,6 @@ C: [
       },
 
       q1Text: { de: "1. Sind Tumore in der Leber vorhanden? Wenn ja, wie viele?", en: "1. Are there tumors in the liver? If so, how many?" },
-      q1ImageSrc: LT1,
       q1ImageAlt: { de: "Tumore in der Leber", en: "Tumors in the liver" },
 
       methodsIntro: {
@@ -901,15 +888,12 @@ C: [
       method3Label: { de: "MRT", en: "MRI" },
 
       q2Text: { de: "2. Wo genau befinden sich die Tumore?", en: "2. Where exactly are the tumors located?" },
-      q2ImageSrc: LT2,
       q2ImageAlt: { de: "Lage der Tumore", en: "Tumor location" },
 
       q3Text: { de: "3. Wie groß sind die Tumore?", en: "3. How large are the tumors?" },
-      q3ImageSrc: LT3,
       q3ImageAlt: { de: "Größe der Tumore", en: "Tumor size" },
 
       q4Text: { de: "4. Was ist der genaue Typ?", en: "4. What is the exact type?" },
-      q4ImageSrc: LT4,
       q4ImageAlt: { de: "Tumortyp", en: "Tumor type" },
     },
   },
@@ -951,7 +935,7 @@ C: [
   {
   name: "Sectionelf",
   props: {
-    heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curative treatment for liver cancer" },
+    heading: { de: "Heilende Behandlung für Leberkrebs", en: "Curing treatment for liver cancer" },
 
     l1RightText: {
       de: "Bei chirurgischen Eingriffen werden Teile der Leber, die Tumore enthalten, entfernt.",
@@ -979,11 +963,11 @@ C: [
   {
     name: "Sectionzwoelf",
     props: {
-      heading: { de: "Palliative Behandlung für Leberkrebs", en: "Palliative treatment for liver cancer" },
+      heading: { de: "Lebensverlängernde Behandlung für Leberkrebs", en: "Life-prolonging treatment for liver cancer" },
 
       p1Text: {
-        de: "Da der Krebs bei Thomas nach der heilenden Behandlung zurückkomt, kann eine palliative Therapie das Wachstum des Tumors nur noch verlangsamen und die Symptome lindern.",
-        en: "Because Thomas’s cancer returns after curative treatment, palliative therapy can only slow tumor growth and relieve symptoms.",
+        de: "Da der Krebs bei Thomas nach der heilenden Behandlung zurückkomt, kann eine lebensverlängernde Therapie das Wachstum des Tumors nur noch verlangsamen und die Symptome lindern.",
+        en: "Because Thomas’s cancer returns after curing treatment, life-prolonging treatment can only slow tumor growth and relieve symptoms.",
       },
 
       p1Items: [
@@ -1070,8 +1054,8 @@ C: [
       heading: { de: "Das Ergebnis von Thomas's Geschichte", en: "The outcome of Thomas’s story" },
 
       l1Text: {
-        de: "Trotz palliativer Behandlung ist der Leberkrebs bei Thomas nicht verschwunden. Sein Zustand bleibt instabil, und er fühlt sich im Alltag häufig erschöpft und krank. Rückblickend wird deutlich, dass eine frühzeitige Änderung seines Lebensstils seine Chancen auf einen günstigeren Krankheitsverlauf hätte verbessern können.",
-        en: "Despite palliative treatment, Thomas’s liver cancer has not gone away. His condition remains unstable, and he often feels exhausted and unwell in everyday life. In hindsight, it becomes clear that an earlier change in lifestyle could have improved his chances of a more favorable course of disease.",
+        de: "Trotz lebensverlängernder Behandlung ist der Leberkrebs bei Thomas nicht verschwunden. Sein Zustand bleibt instabil, und er fühlt sich im Alltag häufig erschöpft und krank. Rückblickend wird deutlich, dass eine frühzeitige Änderung seines Lebensstils seine Chancen auf einen günstigeren Krankheitsverlauf hätte verbessern können.",
+        en: "Thomas’s condition remains unstable, and he often feels exhausted and unwell in everyday life. In hindsight, it becomes clear that an earlier change in lifestyle could have improved his chances of a more favorable course of disease.",
       },
 
       l2LeftText: {

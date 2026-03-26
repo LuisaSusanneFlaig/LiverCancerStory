@@ -1,19 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
+  const lang = "en";
 
   useEffect(() => {
-    localStorage.setItem("lang", lang);
-    document.documentElement.lang = lang; // <html lang="de|en">
+    document.documentElement.lang = lang;
   }, [lang]);
 
-  const toggleLang = () => setLang((l) => (l === "de" ? "en" : "de"));
-
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang }}>
+    <LanguageContext.Provider value={{ lang }}>
       {children}
     </LanguageContext.Provider>
   );

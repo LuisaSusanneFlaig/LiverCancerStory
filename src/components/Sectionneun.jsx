@@ -120,6 +120,7 @@ const Sectionneun = ({
   const method1Src = method1ImageKey ? getAsset(theme, method1ImageKey) : undefined;
   const method2Src = method2ImageKey ? getAsset(theme, method2ImageKey) : undefined;
   const method3Src = method3ImageKey ? getAsset(theme, method3ImageKey) : undefined;
+  const q1Src = getAsset(theme, "liver1") || q1ImageSrc;
   const q2Src = getAsset(theme, "liver1") || q2ImageSrc;
   const q3Src = getAsset(theme, "liver2") || q3ImageSrc;
   const q4Src = getAsset(theme, "liver3") || q4ImageSrc;
@@ -159,7 +160,7 @@ const Sectionneun = ({
         left={<p>{t(q1Text)}</p>}
         right={
           <img
-            src={q1ImageSrc}
+            src={q1Src}
             alt={t(q1ImageAlt)}
             className="max-w-full mx-auto object-contain"
           />

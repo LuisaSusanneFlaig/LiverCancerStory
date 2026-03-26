@@ -29,7 +29,7 @@ const Sectionsechs = ({ leftText, rightText }) => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: animationConfig.scrollTrigger.panelEnd,
+          end: "+=220%",
           scrub: animationConfig.scrollTrigger.scrub,
           pin: true,
         },
