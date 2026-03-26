@@ -5,7 +5,6 @@ import { narratives, componentMap } from "../constants/narratives";
 import { sectionGroupsByVersion } from "../constants";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Navbar from "./components/Navbar";
-import { initAnalytics, trackStudyVisit } from "./lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -178,37 +177,19 @@ const App = () => {
   }, [theme]);
 
   useEffect(() => {
-    let active = true;
+    if (typeof window === "undefined") return;
 
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem(
-        "study_context",
-        JSON.stringify({
-          cond,
-          version,
-          theme,
-          pid,
-          surveyToken,
-        })
-      );
-    }
-
-    initAnalytics().then((enabled) => {
-      if (!active || !enabled) return;
-
-      trackStudyVisit({
+    sessionStorage.setItem(
+      "study_context",
+      JSON.stringify({
         cond,
         version,
         theme,
-        language: lang,
-        manualOverride,
-      });
-    });
-
-    return () => {
-      active = false;
-    };
-  }, [cond, lang, manualOverride, pid, surveyToken, theme, version]);
+        pid,
+        surveyToken,
+      })
+    );
+  }, [cond, pid, surveyToken, theme, version]);
 
   const selectedNarrative = narratives[version] || narratives.A;
   const sectionGroups = sectionGroupsByVersion[version] || sectionGroupsByVersion.A;
