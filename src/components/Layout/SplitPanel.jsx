@@ -8,10 +8,10 @@ const SplitPanel = forwardRef(
   return (
     <div
       ref={ref}
-      className={`absolute inset-0 flex flex-col lg:flex-row lg:p-20 p-10 items-center justify-center ${className}`}
+      className={`split-panel absolute inset-0 flex flex-col lg:flex-row p-10 lg:p-20 items-center justify-center ${className}`}
     >
       <div
-        className={`w-full flex items-center justify-center lg:p-20 p-10 ${panelClassName} ${
+        className={`split-panel__column w-full min-w-0 flex items-center justify-center p-10 lg:p-20 ${panelClassName} ${
           leftCount > 1 ? "flex-row gap-10" : "flex-col gap-10"
         } ${leftClassName}`}
       >
@@ -19,7 +19,7 @@ const SplitPanel = forwardRef(
       </div>
 
       <div
-        className={`w-full flex items-center justify-center lg:p-20 p-10 ${panelClassName} ${
+        className={`split-panel__column w-full min-w-0 flex items-center justify-center p-10 lg:p-20 ${panelClassName} ${
           rightCount > 1 ? "flex-row gap-10" : "flex-col gap-10"
         } ${rightClassName}`}
       >

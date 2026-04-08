@@ -90,7 +90,7 @@ const Sectionzwoelf = ({
           <>
             <p>{t(p1Text)}</p>
 
-            <div className="grid grid-cols-3 gap-6 mt-6">
+            <div className="w-full max-w-6xl grid grid-cols-3 gap-8 lg:gap-10 mt-6">
               {p1Items.map((item, idx) => {
                 const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
                 const label = t(item.text);
@@ -107,7 +107,7 @@ const Sectionzwoelf = ({
                         />
                       ) : null}
                     </div>
-                    <p className="mt-2 min-h-[2.75rem] lg:min-h-[3.25rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                    <p className="icon-grid-label mt-2 min-h-[2.75rem] lg:min-h-[3.25rem]">
                       {label}
                     </p>
                   </div>
@@ -123,7 +123,7 @@ const Sectionzwoelf = ({
         ref={remainingRef}
         left={<p>{t(p2Text)}</p>}
         right={
-          <div className="grid grid-cols-3 gap-6 mt-6">
+          <div className="w-full max-w-6xl grid grid-cols-3 gap-8 lg:gap-10 mt-6">
             {p2Items.map((item, idx) => {
               const src = item.assetKey ? getAsset(theme, item.assetKey) : undefined;
               const label = t(item.text);
@@ -140,7 +140,7 @@ const Sectionzwoelf = ({
                       />
                     ) : null}
                   </div>
-                  <p className="mt-2 min-h-[2.75rem] lg:min-h-[3.25rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                  <p className="icon-grid-label mt-2 min-h-[2.75rem] lg:min-h-[3.25rem]">
                     {label}
                   </p>
                 </div>

@@ -56,10 +56,8 @@ const Sectiondreizehn = ({
   const layout1Ref = useRef(null);
   const layout2Ref = useRef(null);
   const step1Ref = useRef(null);
-  const step2TextRef = useRef(null);
-  const step2ImagesRef = useRef(null);
-  const step3TextRef = useRef(null);
-  const step3ImageRef = useRef(null);
+  const step2BlockRef = useRef(null);
+  const step3BlockRef = useRef(null);
   const l1RateBlockRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -68,10 +66,8 @@ const Sectiondreizehn = ({
       gsap.set(layout2Ref.current, { opacity: 0, y: 200 });
       gsap.set(l1RateBlockRef.current, { opacity: 0, y: 30 });
       gsap.set(step1Ref.current, { opacity: 0, y: 30 });
-      gsap.set(step2TextRef.current, { opacity: 0, y: 30 });
-      gsap.set(step2ImagesRef.current, { opacity: 0, y: 30 });
-      gsap.set(step3TextRef.current, { opacity: 0, y: 30 });
-      gsap.set(step3ImageRef.current, { opacity: 0, y: 30 });
+      gsap.set(step2BlockRef.current, { opacity: 0, y: 30 });
+      gsap.set(step3BlockRef.current, { opacity: 0, y: 30 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -92,15 +88,8 @@ const Sectiondreizehn = ({
       tl.to(layout1Ref.current, { x: 0, y: -200, opacity: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(layout2Ref.current, { opacity: 1, y: 0, duration: animationConfig.panel.transitionDuration });
       tl.to(step1Ref.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(step2TextRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(step2ImagesRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: animationConfig.reveal.defaultDuration,
-        stagger: animationConfig.panel.staggerDelay,
-      });
-      tl.to(step3TextRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
-      tl.to(step3ImageRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step2BlockRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
+      tl.to(step3BlockRef.current, { opacity: 1, y: 0, duration: animationConfig.reveal.defaultDuration });
       tl.to({}, { duration: animationConfig.panel.holdDuration });
     }, containerRef);
 
@@ -122,13 +111,13 @@ const Sectiondreizehn = ({
 
   const renderStep3Text = () => {
     if (!step3TextValue.includes("distant metastases")) {
-      return <p ref={step3TextRef}>{step3TextValue}</p>;
+      return <p>{step3TextValue}</p>;
     }
 
     const [before, after] = step3TextValue.split("distant metastases");
 
     return (
-      <div ref={step3TextRef} className="relative">
+      <div className="relative">
         <p>
           {before}
           <span className="font-semibold">distant metastases</span>
@@ -157,6 +146,7 @@ const Sectiondreizehn = ({
       {/* LAYOUT 1 */}
       <SplitPanel
         ref={layout1Ref}
+        rightClassName="prognosis-centered-column"
         left={
           <h2>
             {t(heading)}
@@ -168,13 +158,16 @@ const Sectiondreizehn = ({
             <p>{t(l1Text1)}</p>
             <p>{t(l1Text2)}</p>
 
-            <div ref={l1RateBlockRef} className="flex flex-col ">
+            <div
+              ref={l1RateBlockRef}
+              className="prognosis-rate-block flex flex-col items-center text-center"
+            >
               <h2>{t(l1Rate)}</h2>
               {l1IconSrc ? (
                 <img
                   src={l1IconSrc}
                   alt={t(l1RateImageAlt)}
-                  className="w-20 md:w-40 h-auto object-contain"
+                  className="prognosis-rate-icon w-20 md:w-40 h-auto object-contain"
                 />
               ) : null}
             </div>
@@ -185,6 +178,8 @@ const Sectiondreizehn = ({
       {/* LAYOUT 2 */}
       <SplitPanel
         ref={layout2Ref}
+        leftClassName="prognosis-centered-column"
+        rightClassName="prognosis-centered-column"
         left={
           <div ref={step1Ref} className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 lg:gap-x-20 items-stretch">
             <p className="w-full max-w-xl mx-auto !text-center justify-self-center self-center">
@@ -200,48 +195,62 @@ const Sectiondreizehn = ({
         }
         right={
           <>
-            <div className="grid ">
+            <div
+              ref={step2BlockRef}
+              className="prognosis-step2-block grid w-full max-w-3xl gap-6"
+            >
               {/* STEP 2 TEXT */}
-              <p ref={step2TextRef}>{t(step2Text)}</p>
+              <p>{t(step2Text)}</p>
 
               {/* STEP 2 ICONS */}
-              <div ref={step2ImagesRef} className="grid grid-cols-2 ">
+              <div
+                className="prognosis-step2-icons grid grid-cols-2 gap-6"
+              >
                 <div className="flex flex-col items-center gap-3 text-center">
                   <p>{t(step2FemaleRate)}</p>
-                  {femaleSrc ? (
-                    <img
-                      src={femaleSrc}
-                      alt={t(step2FemaleIconAlt)}
-                      className="w-8 md:w-10 h-auto object-contain"
-                    />
-                  ) : null}
+                  <div className="prognosis-icon-box">
+                    {femaleSrc ? (
+                      <img
+                        src={femaleSrc}
+                        alt={t(step2FemaleIconAlt)}
+                        className="prognosis-step2-icon h-full w-full object-contain"
+                      />
+                    ) : null}
+                  </div>
                 </div>
                 <div className="flex flex-col items-center gap-3 text-center">
                   <p>{t(step2MaleRate)}</p>
-                  {maleSrc ? (
-                    <img
-                      src={maleSrc}
-                      alt={t(step2MaleIconAlt)}
-                      className="w-8 md:w-10 h-auto object-contain"
-                    />
-                  ) : null}
+                  <div className="prognosis-icon-box">
+                    {maleSrc ? (
+                      <img
+                        src={maleSrc}
+                        alt={t(step2MaleIconAlt)}
+                        className="prognosis-step2-icon h-full w-full object-contain"
+                      />
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* STEP 3 TEXT */}
-            {renderStep3Text()}
-
-            {/* STEP 3 ICON */}
-            <div ref={step3ImageRef} className="flex flex-col items-center gap-3 text-center -mt-10">
+            <div
+              ref={step3BlockRef}
+              className="prognosis-step3 flex flex-col items-center gap-3 text-center"
+            >
+              <div className="prognosis-step3-text">
+                {renderStep3Text()}
+              </div>
               <p>{t(step3Rate)}</p>
-              {step3Src ? (
-                <img
-                  src={step3Src}
-                  alt={t(step3IconAlt)}
-                  className="w-20 h-20 md:w-24 md:h-24 lg:w-26 lg:h-26 object-contain"
-                />
-              ) : null}
+              <div className="prognosis-icon-box prognosis-icon-box--wide">
+                {step3Src ? (
+                  <img
+                    src={step3Src}
+                    alt={t(step3IconAlt)}
+                    className="prognosis-step3-icon h-full w-full object-contain"
+                  />
+                ) : null}
+              </div>
             </div>
           </>
         }

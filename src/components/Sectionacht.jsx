@@ -118,7 +118,7 @@ const Sectionacht = ({
                     />
                   ) : null}
                 </div>
-                <p className="mt-4 min-h-[2.75rem] lg:min-h-[4rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                <p className="icon-grid-label mt-4 min-h-[2.75rem] lg:min-h-[4rem]">
                   {t(item.text)}
                 </p>
               </div>
@@ -145,7 +145,7 @@ const Sectionacht = ({
                       />
                     ) : null}
                   </div>
-                  <p className="mt-4 min-h-[2.75rem] lg:min-h-[4rem] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-snug">
+                  <p className="icon-grid-label mt-4 min-h-[2.75rem] lg:min-h-[4rem]">
                     {t(item.text)}
                   </p>
                 </div>

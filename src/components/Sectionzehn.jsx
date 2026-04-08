@@ -126,8 +126,12 @@ const Sectionzehn = ({
           <>
             <p>{t(l1Text)}</p>
             {l1ImgSrc ? (
-              <div className="relative w-full max-w-3xl">
-                <img src={l1ImgSrc} alt={t(l1ImageAlt)} className="w-full" />
+              <div className="relative w-full max-w-3xl self-center">
+                <img
+                  src={l1ImgSrc}
+                  alt={t(l1ImageAlt)}
+                  className="h-auto max-h-[42vh] w-full object-contain"
+                />
                 {Object.entries(treatmentInfos).map(([key, info]) => {
                   const isOpen = openInfo === key;
                   return (
